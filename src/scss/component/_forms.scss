@@ -75,7 +75,10 @@ input[type="file"] {
 }
 
 input[type="checkbox"],
-input[type="radio"] {}
+input[type="radio"] {
+  display: inline-block;
+  width: auto;
+}
 
 // Form action buttons
 input[type="submit"],
