@@ -30,7 +30,8 @@
     text-align: center;
     width: 60px;
     
-    .most-legible {
+    &.most-legible {
+      font-weight: $font-weight-bold;
       width: auto;
     }
   }
