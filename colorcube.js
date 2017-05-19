@@ -4,7 +4,9 @@
 const WHITE_LUMINANCE  = tinycolor("white").getLuminance();
 const BLACK_LUMINANCE  = tinycolor("black").getLuminance();
 
-var color = tinycolor("00FFFF");
+// To do: get the colors inputted by the user
+
+var color = tinycolor("DA2442");
 document.getElementsByClassName("color")[0].innerHTML = color;
 document.getElementsByClassName("color")[0].style.color = color;
 
@@ -21,12 +23,3 @@ if( whiteRatio > 4.5 ) {
 } else {
   document.getElementsByClassName("on-white")[0].style.color = 'red';
 }
-
-
-// compare chosen color's brightness and luminance to black
-
-console.log(whiteRatio);
-
-console.log(WHITE_LUMINANCE);
-console.log(luminance);
-
