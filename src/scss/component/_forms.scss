@@ -17,7 +17,7 @@ fieldset {
 
 label {}
 
-#{$all-text-inputs},
+input,
 textarea {
   @include transition( all 250ms ease );
   border: $form-input-border-width solid $form-input-border-color;
@@ -95,4 +95,14 @@ input[type="url"],
 input[type="tel"],
 input[type="number"] {
   -webkit-appearance: textfield;
+}
+
+
+/* ! ===== Colorcube Form element ===== */
+.cc-form {
+  
+  &__submit {
+    text-align: center;
+    padding: $vert-line-height/2 0;
+  }
 }
