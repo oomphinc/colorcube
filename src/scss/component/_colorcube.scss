@@ -16,7 +16,7 @@
 
   &--column {
     float: left;
-    width: 33.33%
+    width: 25%
   }
 
   /* Individual Color Swatches */
@@ -29,6 +29,10 @@
     margin-bottom: 10px;
     text-align: center;
     width: 60px;
+    
+    .most-legible {
+      width: auto;
+    }
   }
 
   .fail {

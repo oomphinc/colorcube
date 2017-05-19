@@ -57,7 +57,7 @@ $palettes: (
 
 
 // Specific colors used for major elements
-$color-text: palette(mono);
+$color-text: palette(mono, 66);
 $color-link: palette(brand);
 $color-hover: palette(brand, dark);
 $color-code: palette(brand, green);
