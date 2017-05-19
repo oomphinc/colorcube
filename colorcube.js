@@ -57,7 +57,7 @@ button.onclick = function(e) {
     
     // what's most readable with the current color?
     var bestPick = tinycolor.mostReadable(colorArray[i], colorArray);
-    // get the third container
+    // get the fourth container
     var div4 = document.getElementsByClassName('color-ratios--column color-ratios--most-legible')[0];
     // append a div with the corresponding background color
     div4.innerHTML = div4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + bestPick['_originalInput'] + '; color: ' + colorArray[i] + '">' + bestPick['_originalInput'] + '</div>';
