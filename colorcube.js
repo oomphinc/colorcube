@@ -1,8 +1,6 @@
-// Two colors provide good color visibility if the brightness difference and the color difference between the two colors are greater than a set range.
-// The range for color brightness difference is 125. The range for color difference is 500.
-
-const WHITE  = tinycolor("white");
-const BLACK  = tinycolor("black");
+const WHITE  = tinycolor("#ffffff");
+const BLACK  = tinycolor("#000000");
+const AARATIO = 4.5;
 var colorArray = [];
 
 var button = document.querySelector('#brand-color--button');
@@ -20,18 +18,21 @@ button.onclick = function(e) {
     div1.innerHTML = div1.innerHTML + '<div class="color-ratios--swatch" style="background-color: ' + colorArray[i] + '"></div>';
     
     // get the color's contrast ratio compared to white
-    var ratio = tinycolor.readability(colorArray[i], WHITE);
-        ratio = Math.round(ratio * 10) / 10;
+    var ratio     = tinycolor.readability(colorArray[i], WHITE);
+        ratio     = Math.round(ratio * 10) / 10;
     
     // get the second container
     var div2 = document.getElementsByClassName('color-ratios--column color-ratios--on-white')[0];
     
-    // check if the color is readable
-    if ( tinycolor.isReadable(colorArray[i], WHITE) ) {
-      // if it is, append a green div
+    // how readable is it?
+    if ( ratio > (AARATIO + 0.5) ) {
+      // if it passes by more than .5, append a green div
       div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+    } else if ( ratio < (AARATIO + 0.5) && ratio > AARATIO ) {
+      // if it barely passes
+      div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch edge">' + ratio + '</div>';
     } else {
-      // append a red div
+      // if it fails by more than .5, append a red div
       div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch fail">' + ratio + '</div>';
     }
     
