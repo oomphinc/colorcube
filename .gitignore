@@ -3,7 +3,7 @@
 
 # Build files that aren't needed
 node_modules/
-src/scss/libraries/neat/
-src/scss/libraries/bourbon/
-src/css/styles.css
-src/css/styles.css.map
+/src/scss/libraries/neat/
+/src/scss/libraries/bourbon/
+/src/css/styles.css
+/src/css/styles.css.map
