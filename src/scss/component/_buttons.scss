@@ -68,15 +68,15 @@ $form-button-padding: .625em 1em .5em;
 }
 
 // Classes can be used independently: 
-// class="button", or class="button--primary"
+// class="button", or class="button__primary"
 .button {
   @include button();
 
-  &--primary {
+  &__primary {
     @include button('primary');
   }
 
-  &--secondary {
+  &__secondary {
     @include button('secondary');
   }
 }
