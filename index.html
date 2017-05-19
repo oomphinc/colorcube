@@ -22,34 +22,14 @@
             <div class="column">
               <h3>Step 1:</h3>
               <p>Paste your brand color palette colors as a comma-delimited list. Hex colors are easiest, but any color value is acceptable.</p>
-        
+            </div>
+            <div class="column">
               <!-- Brand Color Textarea Field -->
               <label for="brand-color--field">Paste your brand color palette.
                 <span class="required">*</span>
               </label>
               <br>
               <textarea id="brand-color--field" aria-required="true" name="brand-color--field" rows="5" autofocus></textarea>
-            </div>
-            <div class="column">
-              <h3>Step 2:</h3>
-              <p>Choose the size of your text. This will control which color contrast ratios the tool uses as its baseline. </p>
-        
-              <!-- Font Size Field -->
-              <fieldset aria-describedby="brand-color__size" id="edit-brand-color__size--wrapper" class="fieldgroup form-wrapper">
-                <legend id="brand-color__size">Select a text size.<span class="required">*</span></legend>
-                <div class="fieldset-wrapper">
-                  <div id="edit-brand-color__size" class="form-radios">
-                    <div class="form-item form-type-radio">
-                      <input type="radio" id="edit-brand-color__size-small" name="brand-color__size" value="yes" class="form-radio" aria-describedby="brand-color__size">
-                      <label for="edit-brand-color__size-small" class="option">Small text: less than 24px</label>
-                    </div>
-                    <div class="form-item form-type-radio">
-                      <input type="radio" id="edit-brand-color__size-large" name="brand-color__size" value="no" class="form-radio" aria-describedby="brand-color__size">
-                      <label for="edit-brand-color__size-large" class="option">Large text: greater than 24px</label>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
             </div>
           </div><!-- end layout__two-col -->
 
@@ -60,7 +40,7 @@
         </form><!-- /ccr form -->
 
         <div id="results-content" class="column results">
-          <h3>Step 3: Review your colors!</h3>
+          <h3>Step 2: Review your colors!</h3>
           <p>Below is a list of your brand color palette, and how those colors perform over white or black, or how white or black text performs over this color as a background. <strong>Avoid red ratio values (fail) or values that barely meet the requirement (yellow)</strong>.</p>
 
           <div class="color-ratios">
