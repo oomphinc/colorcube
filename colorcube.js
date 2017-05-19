@@ -29,7 +29,7 @@ button.onclick = function(e) {
       // if it passes by more than .5, append a green div
       div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch pass">' + ratio + '</div>';
     } else if ( ratio < (AARATIO + 0.5) && ratio > AARATIO ) {
-      // if it barely passes
+      // if it barely passes, append a yellow div
       div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch edge">' + ratio + '</div>';
     } else {
       // if it fails by more than .5, append a red div
@@ -43,12 +43,15 @@ button.onclick = function(e) {
     // get the third container
     var div3 = document.getElementsByClassName('color-ratios--column color-ratios--on-black')[0];
     
-    // check if the color is readable
-    if ( tinycolor.isReadable(colorArray[i], BLACK) ) {
-      // if it is, append a green div
+    // how readable is it?
+    if ( ratio > (AARATIO + 0.5) ) {
+      // if it passes by more than .5, append a green div
       div3.innerHTML = div3.innerHTML + '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+    } else if ( ratio < (AARATIO + 0.5) && ratio > AARATIO ) {
+      // if it barely passes, append a yellow div
+      div3.innerHTML = div3.innerHTML + '<div class="color-ratios--swatch edge">' + ratio + '</div>';
     } else {
-      // append a red div
+      // if it fails by more than .5, append a red div
       div3.innerHTML = div3.innerHTML + '<div class="color-ratios--swatch fail">' + ratio + '</div>';
     }
   }
