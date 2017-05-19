@@ -1,0 +1,98 @@
+// @file forms.scss
+
+$form-input-border-color: palette(mono, 25);
+$form-input-border-focus: palette(mono, 33);
+$form-input-border-width: 1px;
+$form-input-border-radius: $default-border-radius;
+$form-input-placeholder-color: palette(mono, 33);
+$form-input-color: palette(mono, 66);
+$form-input-padding: .25em;
+
+fieldset {
+  border: $form-input-border-width solid $form-input-border-color;
+  border-radius: $form-input-border-radius;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+label {}
+
+#{$all-text-inputs},
+textarea {
+  @include transition( all 250ms ease );
+  border: $form-input-border-width solid $form-input-border-color;
+  box-sizing: border-box; // Declare explicitly, as form elements do not inherit from HTML declaration in iOS and Android
+  border-radius: $form-input-border-radius;
+  color: $form-input-color;
+  padding: $form-input-padding;
+  width: 100%;
+
+  @include placeholder {
+    color: $form-input-placeholder-color;
+    font-style: italic;
+  }
+
+  // A visual hint for the user that this element is interactive
+  &:hover {
+    border-color: darken($form-input-border-focus, 10%);
+    outline: none;
+  }
+
+  // Adjust colors when this element is focused
+  &:focus {
+    border-color: $form-input-border-focus;
+    color: $form-input-color;
+  }
+
+  &[required]:focus,
+  &[required=true]:focus,
+  &[required="required"]:focus {
+    border-color: $color-error;
+    box-shadow: 0 0 .5em rgba( $color-error, .5 );
+    outline: none;
+  }
+}
+
+textarea {
+  overflow: auto;
+  padding-left: $form-input-padding;
+  vertical-align: top;
+  width: 100%;
+}
+
+select {
+  background-color: palette(mono, white);
+  background-image: none;
+  border: $form-input-border-width solid $form-input-border-color;
+  border-radius: $form-input-border-radius;
+  color: $form-input-color;
+  padding: $form-input-padding;
+	width: 100%;
+}
+
+input[type="file"] {
+  line-height: 1;
+}
+
+input[type="checkbox"],
+input[type="radio"] {}
+
+// Form action buttons
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  @include transition(all 250ms ease);
+  border: $form-input-border-width solid $form-input-border-color;
+  display: inline-block;
+  width: auto;
+}
+
+// ! ===== Special rules for older Safari and iOS =====
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"] {
+  -webkit-appearance: textfield;
+}

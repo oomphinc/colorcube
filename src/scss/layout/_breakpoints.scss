@@ -1,0 +1,28 @@
+// Breakpoints Map
+$breakpoints: (
+	// List as unitless pixels
+	base: 480,
+	small: 620, // 480 + 140
+	medium: 760, // 640 + 140
+	large: 1000, // 760 + 240
+	x-large: 1360, // 1000 + 360
+	xx-large: 1600 // 1360 + 240
+);
+
+// Reusable Media Queries
+$xsmall-up: new-breakpoint( min-width bppx(base) );
+$xsmall: new-breakpoint( min-width ( bppx(base) ) max-width ( (bppx(small)-1px) ) );
+
+$small-up: new-breakpoint( min-width bppx(small) );
+$small: new-breakpoint( min-width ( bppx(small) ) max-width ( bppx(medium)-1px ) );
+
+$medium-up: new-breakpoint( min-width bppx(medium) );
+$medium: new-breakpoint( min-width ( bppx(medium) ) max-width (bppx(large)-1px) );
+
+$large-up: new-breakpoint( min-width bppx(large) );
+$large: new-breakpoint( min-width ( bppx(large) ) max-width (bppx(x-large)-1px) );
+
+$xlarge-up: new-breakpoint( min-width bppx(x-large) );
+$xlarge: new-breakpoint( min-width ( bppx(x-large) ) max-width (bppx(xx-large)-1px) );
+
+$xxlarge-up: new-breakpoint( min-width bppx(xx-large) );

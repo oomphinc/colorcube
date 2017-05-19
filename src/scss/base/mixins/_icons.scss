@@ -1,0 +1,37 @@
+/// icon() =
+/// Set a font-family and use this mixin to simplify declaring properties to :before or :after elements
+/// @author jcionci
+///
+/// @require {variable} $icon-font-family
+///
+/// @require {function} unquote
+///
+/// @param {String} $icon
+///   Expects a character value to be inserted into "content: ''"
+/// @param {String} $position [before]
+/// @param {Color} $color [inherit]
+///
+/// @example scss - Usage
+///  // .element { @include icon('\f105', after); }
+///
+@mixin icon($icon, $position: 'before', $color:inherit) {
+  &::#{unquote($position)} {
+    content: $icon;
+    color: $color;
+    display: inline-block;
+    font-family: $icon-font-family;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    moz-osx-font-smoothing: grayscale;
+
+    @if $position == 'before' {
+      margin-right: .5em;
+    }
+
+    @if $position == 'after' {
+      margin-left: .5em;
+    }
+  }
+}

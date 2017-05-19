@@ -1,0 +1,82 @@
+// @file buttons.scss
+
+// Remove and edit styles as needed. This basic idea provides three button styles
+// Can easily be expanded to accomodate more
+
+$form-button-background-default: palette(mono, 10);
+$form-button-color-default: palette(mono, 66);
+$form-button-border-color-default: palette(mono, 33);
+$form-button-border-width: 1px;
+$form-button-border-radius: $default-border-radius;
+$form-button-padding: .625em 1em .5em;
+
+//
+// Usage: @include button()
+// Accepts: null (default), primary, secondary
+// Returns: A compiled set of buttons styles including idle and hover
+// Authors: The Oomph Team
+//
+@mixin button($type:default) {
+  border: $form-button-border-width solid $form-button-border-color-default;
+  border-radius: $form-button-border-radius;
+  display: inline-block;
+  padding: $form-button-padding;
+  text-transform: uppercase;
+
+  // Default styles are light grey, hover to darker grey
+  @if $type == 'default' {
+
+    @include touch-hover('idle') {
+      background-color: $form-button-background-default;
+      color: $form-button-color-default;
+    }
+
+    @include touch-hover('hover') {
+      background-color: darken($form-button-background-default, 8%);
+      color: lighten($form-button-color-default, 8%);
+      cursor: pointer;
+    }
+  }
+
+  @if $type == 'primary' {
+
+    @include touch-hover('idle') {
+      background-color: palette(brand);
+      border-color: darken(palette(brand), 8%);
+      color: palette(mono, 10);
+    }
+  
+    @include touch-hover('hover') {
+      background-color: palette(brand, dark);
+      color: palette(mono, white);
+    }
+  }
+
+  @if $type == 'secondary' {
+
+    @include touch-hover('idle') {
+      background-color: palette(mono, 90);
+      border-color: palette(mono, black);
+      color: palette(mono, 25);
+    }
+
+    @include touch-hover('hover') {
+      background-color: palette(mono, black);
+      color: palette(mono, white);
+    }
+  }
+}
+
+// Classes can be used independently: 
+// class="button", or class="button--primary"
+.button {
+  @include button();
+
+  &--primary {
+    @include button('primary');
+  }
+
+  &--secondary {
+    @include button('secondary');
+  }
+}

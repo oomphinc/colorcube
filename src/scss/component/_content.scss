@@ -1,0 +1,75 @@
+.content {
+	clear: both;
+
+	&--main {
+
+		h1 {
+			margin-top: 1.9375em;
+			margin-bottom: .5625em;
+		}
+
+		h2 {
+			margin-top: 1.5em; 
+			margin-bottom: .875em;
+		}
+
+		h3 { 
+			margin-top: 2em;
+			margin-bottom: 1.125em;
+		}
+
+		h4 {
+			margin-top: -.1875em;
+			margin-bottom: 1.375em;
+		}
+
+		h5 {
+			margin-top: -.0625em;
+		}
+
+		h6 {
+			margin-top: -.125em;
+		}
+
+		// Adjust some pairings
+		h2 + h3 { margin-top: 1.875em; }
+
+		h3 + h4 { margin-top: -.125em; }
+
+		// Default vertical rhythm
+		p,
+		dl,
+		address,
+		form,
+		table {
+			margin-bottom: $vert-line-height;
+		}
+
+		// Remove margin bottom when nested
+		ul,
+		ol {
+			margin-bottom: $vert-line-height + .125em;
+
+			& ul, 
+			& ol {
+				margin-left: 1.5em;
+				margin-bottom: 0;
+			}
+		}
+
+		// Adjust line height to tighten multi-line LIs, and add space in between to maintain rhythm
+		ul {
+
+			li {
+				line-height: 1.5;
+				padding-bottom: .25em;
+			}
+		}
+
+		dl {
+
+			dt,
+			dd { line-height: 1.5; }
+		}
+	}
+}

@@ -1,0 +1,66 @@
+// Color palettes using SASS maps
+// Link: http://chir.ag/projects/name-that-color/
+$palettes: (
+
+	// We NEED to define a "base" for each, so that we can use pallette(brand) without throwing an error
+	// Brand should contain this project's specific color scheme
+	brand: (
+		base: #d62901, // Oomph red
+		dark: #a31f02,
+		green: #61a143
+	),
+
+	// Default color scheme, edit values in relation to the numeric representation
+	// In other words, keep high values dark and low values light
+	mono: (
+		black: #131313,
+		90: #303030,
+		75: #4f4f4f,
+		66: #666,
+		base: #888,
+		33: #999,
+		25: #ccc,
+		15: #e6e6e6,
+		10: #f2f2f2,
+		white: #fff
+	),
+
+	// Default color scheme, if we need it
+	drupal: (
+		base: #0077c0, //blue
+		light: #81ceff,
+		dark: #00598e
+	),
+
+	// Default color scheme, if we need it
+	wordpress: (
+		base: #21759b, // blue
+		orange: #d54e21,
+		grey: #464646
+	),
+
+	// Default social color scheme, if we need it
+	social: (
+		base: #666,
+		facebook: #305891,
+		twitter: #2ca8d2,
+		youtube: #cc1f1f,
+		instagram: #285a85,
+		pinterest: #c82828,
+		tumblr: #384853,
+		linkedin: #007bb5,
+	 ),
+);
+
+
+// Specific colors used for major elements
+$color-text: palette(mono);
+$color-link: palette(brand);
+$color-hover: palette(brand, dark);
+$color-code: palette(brand, green);
+$color-error: palette(brand);
+$color-body: palette(mono, 90);
+$color-background: palette(mono, white);
+$color-header: palette(mono, 10);
+$color-footer: $color-body;
+$color-borders: palette(mono, 25);

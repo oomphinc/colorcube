@@ -1,0 +1,78 @@
+
+// Type Sizes
+$base-type-size: 1em;
+
+//
+// Root Elements
+//
+html {
+	font-size: $base-type-size;
+	-webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+//
+// Media Elements
+//
+img,
+video,
+object {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+//
+// Text selection colors. Keep declarations separate
+//
+::selection {
+	background: palette(brand);
+	color: palette(mono, white);
+}
+::-moz-selection {
+	background: palette(brand);
+	color: palette(mono, white);
+}
+
+//
+// Reset lists when used as navigational elements
+//
+nav > ul,
+nav > ol,
+ul.menu,
+ol.menu {
+    @include list-reset();
+
+    // More often than not, we want anchors in menus to display block
+    a { display: block; }
+}
+
+/* General Column */
+.color-ratios--column {
+  float: left;
+  width: 33.33%
+}
+
+/* Individual Color Swatches */
+.color-ratios--swatch {
+  border: 2px solid black;
+  color: white;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 60px;
+}
+
+.fail {
+  background-color: red;
+}
+
+.pass {
+  background-color: green;
+}

@@ -1,0 +1,114 @@
+/// list-reset() =
+/// Remove the margin, padding, and bullets from lists
+/// @author jcionci
+///
+/// @param {None}
+///
+/// @example scss - Usage
+///   // ul {
+///   //   @include list-reset();
+///   // }
+///
+/// @example css - Output
+///   // ul {
+///   //   list-style-type: none;
+///   //   margin: 0;
+///   //   padding: 0;
+///   // }
+///
+@mixin list-reset() {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/// rem() =
+/// Provide rem and px fallback for any property
+/// @author jhogue
+///
+/// @param {String} valid css property
+///   The property to calculate px and rem for
+///
+/// @param {Numeric} value
+///   The value, assumed ot be pixels
+///
+/// @require {function} unquote
+/// @require {function} px
+///
+/// @require {library} Bourbon
+/// @require {function} strip-units
+/// @require {function} rem
+///
+/// @example scss - Usage
+///  // @include rem('padding-top', 32)
+///
+/// @example css - Output
+///  // padding-top: 32px;
+///  // padding-top: 2rem;
+///
+@mixin rem($property, $value) {
+  $number: strip-units($value * 1);
+  $declaration: unquote($property);
+
+  // scss-lint:disable DuplicateProperty
+  #{$declaration}: px($number);
+  #{$declaration}: rem($number);
+}
+
+/// Alias of rem() for font-size only
+@mixin rem-fontsize($value) {
+  @include rem('font-size', $value);
+}
+
+
+/// javascript-listener() =
+/// Provide a method for passing parameters to JS
+/// @author jhogue
+/// @link https://adactio.com/journal/5429
+///
+/// @param {String} $content
+///
+/// @example scss - Usage
+///  // @include javascript-listener('action-hook')
+///
+/// @example css - Output
+///  // body:after {
+///  //   content: 'action-hook',
+///  //   display: none;
+///  //   speak: none;
+///  // }
+///
+@mixin javascript-listener($content) {
+  body:after {
+    content: $content;
+    display: none;
+    speak: none;
+  }
+}
+
+
+/// writing-mode() =
+/// Bourbon-style helper to output vendor-prefixed rulesets
+/// @author jhogue
+/// @link http://labs.jensimmons.com/#writing-modes
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode
+///
+/// @param {String} $mode
+///   Expects valid writing-mode values
+///
+/// @require {library} Bourbon
+/// @require {function} prefixer
+///
+/// @example scss - Usage
+///   // @include writing-mode(vertical-rl);
+///
+/// @example css - Output
+///   // -webkit-writing-mode: vertical-rl;
+///   // writing-mode: vertical-rl;
+///
+@mixin writing-mode($mode) {
+  // 01-24-2017 Webkit vendor prefix still needed
+  // 01-24-2017 dropping MS prefix as IE11+ supports the spec
+  @include prefixer(writing-mode, $mode, webkit spec);
+}

@@ -1,2 +1,7 @@
 # Mac image stores
 .DS_Store
+
+# Build files that aren't needed
+node_modules/
+src/scss/libraries/neat/
+src/scss/libraries/bourbon/

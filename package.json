@@ -1,0 +1,12 @@
+{
+  "license": "UNLICENSED",
+  "repository": {},
+  "devDependencies": {
+    "brunch": "^2.8.2",
+    "clean-css-brunch": "^2.0.0",
+    "css-brunch": "^2.6.1",
+    "javascript-brunch": "^2.0.0",
+    "sass-brunch": "^2.6.3",
+    "uglify-js-brunch": "^2.0.1"
+  }
+}

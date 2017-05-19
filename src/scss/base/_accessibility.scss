@@ -1,0 +1,11 @@
+// @file accessibility.scss
+
+// Text meant only for screen readers.
+.screen-reader-text {
+	// scss-lint:disable ImportantRule
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+}

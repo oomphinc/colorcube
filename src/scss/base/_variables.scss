@@ -1,0 +1,29 @@
+// Variables throughout the project
+// Most variables are localized at the top of the file from which they are first used
+
+
+// Default constants used by our mixins
+// Change below only if you require a different value
+$icon-font-family: 'font-awesome';
+$min-vw: bp(small) !default;
+$max-vw: bp(x-large) !default;
+
+
+// Global font declarations
+$font-sans: $helvetica;
+$font-serif: $georgia;
+$font-mono: $monospace;
+
+// Declare the custom font and fallback
+// Declare font weights as specified by the custom family: Google usually prefers numeric weights
+$font-custom: 'Google font name', $font-sans;
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+
+// Other globals
+$default-border-radius: 4px;
+
+// Tables
+$table-border-collapse: true;
+$table-border-color: $color-borders;
+$table-cell-padding: .5em;

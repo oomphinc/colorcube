@@ -1,0 +1,63 @@
+/// fluid-units() =
+/// Set a minimum value, maximum value, and use calc() to fluidly go from one to the other in between
+/// @author Indrek Paas @indrekpaas
+/// @link http://www.sassmeister.com/gist/7f22e44ace49b5124eec
+/// @link Inspired by http://madebymike.com.au/writing/precise-control-responsive-typography/
+///
+/// @require {library} Bourbon
+/// @require {function} strip-units
+///
+/// @param {List} $properties
+///   List one or multiple properties to assign values to
+///
+/// @param {String} $min-value
+/// @param {String} $max-value
+///   Min/Max values for the measurement. The same units should be used (px, em, rem)
+///
+/// @param {String} $min-vw
+/// @param {String} $max-vw
+///   Min/Max viewport width. Which viewport "locks" should the fluid measurements start and end at?
+///
+/// @example scss - Usage
+///  // .element {
+///  //   @include fluid-unit(padding-top padding-bottom, 1em, 4em, em(480), em(1200));
+///  // }
+///
+/// @example css - Output
+///  // .element {
+///  //   padding-top: 1em;
+///  //   padding-bottom: 1em;
+///  // }
+///  // @media (min-width: 38.75em) {
+///  //   .element {
+///  //     padding-top: calc(1em + 3 * (100vw - 38.75em) / 46.25);
+///  //     padding-bottom: calc(1em + 3 * (100vw - 38.75em) / 46.25);
+///  //   }
+///  // }
+///  // @media (min-width: 85em) {
+///  //   .element {
+///  //     padding-top: calc(1em + 3 * 1em);
+///  //     padding-bottom: calc(1em + 3 * 1em);
+///  //   }
+///  // }
+///
+@mixin fluid-units($properties, $min-value, $max-value, $min-vw, $max-vw) {
+  // Mobile-first: declare the $min-value as the default for any property passed
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  // Now declare the creamy, fluid center using a media query at the min-width
+  @media (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-units($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-units($max-vw - $min-vw)});
+    }
+  }
+
+  // Finally, stop the crazy fluidity and set the max value at the max viewport width
+  @media (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-units($max-value - $min-value)} * 1em);
+    }
+  }
+}
