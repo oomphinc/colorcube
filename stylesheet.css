@@ -1,0 +1,25 @@
+/* General Column */
+.color-ratios--column {
+  float: left;
+  width: 33.33%
+}
+
+/* Individual Color Swatches */
+.color-ratios--swatch {
+  border: 2px solid black;
+  color: white;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 60px;
+}
+
+.fail {
+  background-color: red;
+}
+
+.pass {
+  background-color: green;
+}

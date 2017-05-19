@@ -3,14 +3,66 @@
   <head>
     <meta charset="UTF-8">
     <title>ColorCube</title>
-  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=font1|font2|etc' type='text/css'>
-  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=font1|font2|etc' type='text/css'>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
   </head>
   <body>
     <h1>ColorCube!</h1>
-  
-  <script type="text/javascript" src="tinycolor.js"></script>
-  <script type="text/javascript" src="colorcube.js" ></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.5.3/modernizr.min.js" type="text/javascript"></script>
+    <form action="/" class="brand-colors" method="post">
+      <!-- Brand Color Textarea Field -->
+      <label for="brand-color--field">Add the hex values for your brand colors <span class="required">*</span></label>
+      <br>
+      <textarea id="brand-color--field" aria-required="true" name="brand-color--field" rows="5" autofocus></textarea>
+
+      <!-- Font Size Field -->
+      <fieldset aria-describedby="brand-color__size" id="edit-brand-color__size--wrapper" class="fieldgroup form-wrapper">
+        <legend id="brand-color__size">What size is your font? <span class="required">*</span></legend>
+        <div class="fieldset-wrapper">
+          <div id="edit-brand-color__size" class="form-radios">
+            <div class="form-item form-type-radio">
+              <input type="radio" id="edit-brand-color__size-small" name="brand-color__size" value="yes" class="form-radio" aria-describedby="brand-color__size">
+              <label for="edit-brand-color__size-small" class="option">Small Text</label>
+            </div>
+            <div class="form-item form-type-radio">
+              <input type="radio" id="edit-brand-color__size-large" name="brand-color__size" value="no" class="form-radio" aria-describedby="brand-color__size">
+              <label for="edit-brand-color__size-large" class="option">Large Text</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Submit Button -->
+      <input id="brand-color--button" name="brand-color--button" type="submit" value="Get Ratios">
+    </form>
+
+    <div class="color-ratios">
+      <div class="color-ratios--column color-ratios--brand-colors">
+        <h2 class="color-ratios--title">Brand Color</h2>
+        <div class="color-ratios--swatch" style="background-color: #333333"></div>
+        <div class="color-ratios--swatch" style="background-color: #0099CC"></div>
+        <div class="color-ratios--swatch" style="background-color: #999999"></div>
+        <div class="color-ratios--swatch" style="background-color: #DED2AA"></div>
+      </div>
+
+      <div class="color-ratios--column color-ratios--on-white">
+        <h2 class="color-ratios--title">On White</h2>
+        <div class="color-ratios--swatch pass">4.7</div>
+        <div class="color-ratios--swatch fail">2.9</div>
+        <div class="color-ratios--swatch fail">3.4</div>
+        <div class="color-ratios--swatch pass">8.3</div>
+      </div>
+
+      <div class="color-ratios--column color-ratios--on-black">
+        <h2 class="color-ratios--title">On Black</h2>
+        <div class="color-ratios--swatch fail">2.2</div>
+        <div class="color-ratios--swatch fail">3.3</div>
+        <div class="color-ratios--swatch pass">9.1</div>
+        <div class="color-ratios--swatch pass">4.3</div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="tinycolor.js"></script>
+    <script type="text/javascript" src="colorcube.js" ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.5.3/modernizr.min.js" type="text/javascript"></script>
   </body>
 </html>
