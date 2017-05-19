@@ -16,10 +16,12 @@
   width: 60px;
 }
 
+/* Styles output red if contrast ratio fails */
 .fail {
   background-color: red;
 }
 
+/* Styles output green if contrast ratio passes */
 .pass {
   background-color: green;
 }
