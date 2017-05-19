@@ -1,3 +1,8 @@
+html,
+body {
+  font-family: 'Cabin', sans-serif;
+}
+
 /* General Column */
 .color-ratios--column {
   float: left;
