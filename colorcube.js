@@ -18,22 +18,28 @@ button.onclick = function(e) {
     div1.innerHTML = div1.innerHTML + '<div class="color-ratios--swatch" style="background-color: ' + colorArray[i] + '"></div>';
     
     // get the color's contrast ratio compared to white
-    var ratio     = tinycolor.readability(colorArray[i], WHITE);
-        ratio     = Math.round(ratio * 10) / 10;
+    var ratio = tinycolor.readability(colorArray[i], WHITE);
+        ratio = Math.round(ratio * 10) / 10;
     
     // get the second container
     var div2 = document.getElementsByClassName('color-ratios--column color-ratios--on-white')[0];
     
     // how readable is it?
     if ( ratio > (AARATIO + 0.5) ) {
-      // if it passes by more than .5, append a green div
-      div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+      // if it passes by more than .5, create a green div
+      ratioGreen = '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+      // and append it
+      div2.innerHTML = div2.innerHTML + ratioGreen;
     } else if ( ratio < (AARATIO + 0.5) && ratio > AARATIO ) {
-      // if it barely passes, append a yellow div
-      div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch edge">' + ratio + '</div>';
+      // if it barely passes, create a yellow div
+      ratioYellow = '<div class="color-ratios--swatch edge">' + ratio + '</div>';
+      // and append it
+      div2.innerHTML = div2.innerHTML + ratioYellow;
     } else {
-      // if it fails by more than .5, append a red div
-      div2.innerHTML = div2.innerHTML + '<div class="color-ratios--swatch fail">' + ratio + '</div>';
+      // if it fails by more than .5, create a red div
+      ratioRed = '<div class="color-ratios--swatch fail">' + ratio + '</div>';
+      // and append it
+      div2.innerHTML = div2.innerHTML + ratioRed;
     }
     
     // get the color's contrast ratio compared to black
@@ -45,24 +51,50 @@ button.onclick = function(e) {
     
     // how readable is it?
     if ( ratio > (AARATIO + 0.5) ) {
-      // if it passes by more than .5, append a green div
-      div3.innerHTML = div3.innerHTML + '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+      // if it passes by more than .5, create a green div
+      ratioGreen = '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+      // and append it
+      div3.innerHTML = div3.innerHTML + ratioGreen;
     } else if ( ratio < (AARATIO + 0.5) && ratio > AARATIO ) {
-      // if it barely passes, append a yellow div
-      div3.innerHTML = div3.innerHTML + '<div class="color-ratios--swatch edge">' + ratio + '</div>';
+      // if it barely passes, create a yellow div
+      ratioYellow = '<div class="color-ratios--swatch edge">' + ratio + '</div>';
+      // and append it
+      div3.innerHTML = div3.innerHTML + ratioYellow;
     } else {
-      // if it fails by more than .5, append a red div
-      div3.innerHTML = div3.innerHTML + '<div class="color-ratios--swatch fail">' + ratio + '</div>';
+      // if it fails by more than .5, create a red div
+      ratioRed = '<div class="color-ratios--swatch fail">' + ratio + '</div>';
+      // and append it
+      div3.innerHTML = div3.innerHTML + ratioRed;
     }
     
     // what's most readable with the current color?
     var bestPick = tinycolor.mostReadable(colorArray[i], colorArray);
     // get the color's contrast ratio compared to white
-    var ratio     = tinycolor.readability(bestPick['_originalInput'], colorArray[i]);
-        ratio     = Math.round(ratio * 10) / 10;
+    var ratio = tinycolor.readability(bestPick['_originalInput'], colorArray[i]);
+        ratio = Math.round(ratio * 10) / 10;
+    
     // get the fourth container
     var div4 = document.getElementsByClassName('color-ratios--column color-ratios--most-legible')[0];
+    
     // append a div with the corresponding background color
-    div4.innerHTML = div4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + bestPick['_originalInput'] + '; color: ' + colorArray[i] + '">' + bestPick['_originalInput'] + ' Ratio = ' + ratio + '</div>';
+    div4.innerHTML = div4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + bestPick['_originalInput'] + '; color: ' + colorArray[i] + '">' + bestPick['_originalInput'] + '</div>';
+    
+    // how readable is it?
+    if ( ratio > (AARATIO + 0.5) ) {
+      // if it passes by more than .5, create a green div
+      ratioGreen = '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+      // and append it
+      div4.innerHTML = div4.innerHTML + ratioGreen;
+    } else if ( ratio < (AARATIO + 0.5) && ratio > AARATIO ) {
+      // if it barely passes, create a yellow div
+      ratioYellow = '<div class="color-ratios--swatch edge">' + ratio + '</div>';
+      // and append it
+      div4.innerHTML = div4.innerHTML + ratioYellow;
+    } else {
+      // if it fails by more than .5, create a red div
+      ratioRed = '<div class="color-ratios--swatch fail">' + ratio + '</div>';
+      // and append it
+      div4.innerHTML = div4.innerHTML + ratioRed;
+    }
   }
 }
