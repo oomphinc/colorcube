@@ -51,6 +51,14 @@
     color: black;
   }
   
+  &--on-black {
+    .fail,
+    .pass,
+    .edge {
+      color: black;
+    }
+  }
+  
   &--most-legible {
     .fail,
     .pass,
