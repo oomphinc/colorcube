@@ -29,7 +29,12 @@
                 <span class="required">*</span>
               </label>
               <br>
-              <textarea id="brand-color--field" aria-required="true" name="brand-color--field" rows="5" autofocus></textarea>
+              <textarea id="brand-color--field" aria-required="true" name="brand-color--field" rows="5" autofocus>#d62901 
+#2d5070 
+#70bdc1 
+#e89424 
+#008a65
+#373737</textarea>
             </div>
           </div><!-- end layout__two-col -->
 
@@ -57,14 +62,18 @@
             </div>
             
             <div class="color-ratios--column color-ratios--most-legible">
-              <h4 class="color-ratios--title">Most Readable</h4>
+              <h4 class="color-ratios--title">Most Readable Pair</h4>
             </div>
           </div>
         </div>
       </div>
     </main>
     <footer class="cc-foot">
-      <h3>Explanation:</h3>
+      <h3>What is this?</h3>
+      <p>ColorCube taskes in a list of colors and returns a bunch of information about the accessibility (a11y) of those colors. The first colukmn is the color itself. The second column is the legibility ratio with white, then with black. The last column is the most readable pairing given the same list of colors, and what the resulting ratio of those colors may be. </p>
+      <p>In all cases, red denotes a color contrast ratio that is too small. Green denotes a good color contrast ratio, and yellow means it is right on the edge of legibility, so be careful.</p>
+      
+      <h3>The Target Ratios:</h3>
       <p><a title="Got to w3 website, link opens in a new window." target="_blank" href="http://www.w3.org/TR/WCAG20/">WCAG 2.0</a> level AA requires a contrast ratio of 4.5:1 for normal text and 3:1 for large text. Level AAA requires a contrast ratio of 7:1 for normal text and 4.5:1 for large text. Large text is defined as 14 point (typically 18.66px) and bold or larger, or 18 point (typically 24px) or larger.</p>
   
       <h3>Check your hover text color vs. your body text color:</h3>
