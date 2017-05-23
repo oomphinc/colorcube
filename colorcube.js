@@ -81,7 +81,7 @@ button.onclick = function(e) {
     var ratio = getRoundedRatio(colorArray[i], bestPick['_originalInput'])
     // 4) from among colors provided, output a div with
     //    the most legible bg-color to pair with the current color
-    column4.innerHTML = column4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + bestPick['_originalInput'] + '; color: ' + colorArray[i] + '">' + bestPick['_originalInput'] + '</div>';
+    column4.innerHTML = column4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + colorArray[i] + '; color: ' + bestPick['_originalInput'] + '">' + bestPick['_originalInput'] + '</div>';
     // 4) from among colors provided, output a div with
     //    the ratio between those two colors
     outputRatio(ratio, column4);
