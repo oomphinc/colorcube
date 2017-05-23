@@ -31,8 +31,10 @@
     width: 60px;
     
     &.most-legible {
+      float: left;
       font-weight: $font-weight-bold;
-      width: auto;
+      margin-right: 10px;
+      width: calc(100% - 70px);
     }
   }
 
@@ -47,5 +49,13 @@
   .edge {
     background-color: yellow;
     color: black;
+  }
+  
+  &--most-legible {
+    .fail,
+    .pass,
+    .edge {
+      display: inline-block;
+    }
   }
 }
