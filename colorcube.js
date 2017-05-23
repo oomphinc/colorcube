@@ -31,6 +31,20 @@ function outputRatio(ratio, div) {
 var button = document.querySelector('#brand-color--button');
 button.onclick = function(e) {
   e.preventDefault();
+  // get each of the four columns where we will be outputting results
+  var column1 = document.getElementsByClassName('color-ratios--column color-ratios--brand-colors')[0];
+  var column2 = document.getElementsByClassName('color-ratios--column color-ratios--on-white')[0];
+  var column3 = document.getElementsByClassName('color-ratios--column color-ratios--on-black')[0];
+  var column4 = document.getElementsByClassName('color-ratios--column color-ratios--most-legible')[0];
+
+  // if there are already results displayed, clear them
+  if ( column1.children.length > 1 ) {
+    column1.innerHTML = '<h4 class="color-ratios--title">Brand Color</h4>';
+    column2.innerHTML = '<h4 class="color-ratios--title">With White</h4>';
+    column3.innerHTML = '<h4 class="color-ratios--title">With Black</h4>';
+    column4.innerHTML = '<h4 class="color-ratios--title">Most Readable Pair</h4>';
+  }
+  
   // get the colors inputted by the user
   var stringInput = document.querySelector('#brand-color--field').value;
   // turn it into an array
@@ -44,36 +58,32 @@ button.onclick = function(e) {
   //        a) the most legible bg-color to pair with the current color
   //        b) the ratio between those two colors
   for (var i = 0; i < colorArray.length; i++) {
-    // get the first column container
-    var div1 = document.getElementsByClassName('color-ratios--column color-ratios--brand-colors')[0];
     // 1) output current color
-    div1.innerHTML = div1.innerHTML + '<div class="color-ratios--swatch" style="background-color: ' + colorArray[i] + '"></div>';
+    column1.innerHTML = column1.innerHTML + '<div class="color-ratios--swatch" style="background-color: ' + colorArray[i] + '"></div>';
     
     // get the color's contrast ratio compared to white
     var ratio = getRoundedRatio(colorArray[i], WHITE);
-    // get the second column container
-    var div2 = document.getElementsByClassName('color-ratios--column color-ratios--on-white')[0];
     // 2) output a div with that color's ratio on white
-    outputRatio(ratio, div2);
+    outputRatio(ratio, column2);
     
     // get the color's contrast ratio compared to black
     var ratio = getRoundedRatio(colorArray[i], BLACK);
-    // get the third column container
-    var div3 = document.getElementsByClassName('color-ratios--column color-ratios--on-black')[0];
     // 3) output a div with that color's ratio on black
-    outputRatio(ratio, div3);
+    outputRatio(ratio, column3);
     
     // what's most readable with the current color?
     var bestPick = tinycolor.mostReadable(colorArray[i], colorArray);
     // get the color's contrast ratio compared to the best pick
     var ratio = getRoundedRatio(colorArray[i], bestPick['_originalInput'])
-    // get the fourth column container
-    var div4 = document.getElementsByClassName('color-ratios--column color-ratios--most-legible')[0];
     // 4) from among colors provided, output a div with
     //    the most legible bg-color to pair with the current color
-    div4.innerHTML = div4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + bestPick['_originalInput'] + '; color: ' + colorArray[i] + '">' + bestPick['_originalInput'] + '</div>';
+    column4.innerHTML = column4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + bestPick['_originalInput'] + '; color: ' + colorArray[i] + '">' + bestPick['_originalInput'] + '</div>';
     // 4) from among colors provided, output a div with
     //    the ratio between those two colors
-    outputRatio(ratio, div4);
+    outputRatio(ratio, column4);
   }
+  // jump to the results
+  window.location.href = '#results-content';
+  // clear the input field
+  document.querySelector('#brand-color--field').value = '';
 }
