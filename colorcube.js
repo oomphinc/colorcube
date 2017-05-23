@@ -33,6 +33,10 @@ button.onclick = function(e) {
   e.preventDefault();
   // get the colors inputted by the user
   var stringInput = document.querySelector('#brand-color--field').value;
+  // if there's no input, get outta here
+  if ( stringInput == '' ) {
+    return;
+  }
   // turn it into an array
   colorArray = stringInput.split("\n");
   
