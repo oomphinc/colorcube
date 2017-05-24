@@ -20,7 +20,9 @@
   }
 
   /* Individual Color Swatches */
-  &--swatch {
+  &--swatch,
+  &--swatch__normal,
+  &--swatch__large, {
     border: 2px solid black;
     color: white;
     font-size: 24px;

@@ -857,7 +857,7 @@ input[type="search"] {
   .color-ratios--column {
     float: left;
     width: 25%; }
-  .color-ratios--swatch {
+  .color-ratios--swatch, .color-ratios--swatch__normal, .color-ratios--swatch__large {
     border: 2px solid black;
     color: white;
     font-size: 24px;
@@ -866,7 +866,7 @@ input[type="search"] {
     margin-bottom: 10px;
     text-align: center;
     width: 60px; }
-    .color-ratios--swatch.most-legible {
+    .color-ratios--swatch.most-legible, .color-ratios--swatch__normal.most-legible, .color-ratios--swatch__large.most-legible {
       float: left;
       font-weight: 700;
       margin-right: 10px;
