@@ -1,3 +1,7 @@
+$standard-red: #ff0000;
+$standard-green: #008000;
+$standard-yellow: #ffff00;
+
 /* ! ===== Colorcube Form element ===== */
 .cc-form {
   
@@ -21,8 +25,8 @@
 
   /* Individual Color Swatches */
   &--swatch {
-    border: 2px solid black;
-    color: white;
+    border: 2px solid palette(mono, black);
+    color: palette(mono, white);
     font-size: 24px;
     height: 60px;
     line-height: 60px;
@@ -39,23 +43,23 @@
   }
 
   .fail {
-    background-color: red;
+    background-color: $standard-red;
   }
   
   .pass {
-    background-color: green;
+    background-color: $standard-green;
   }
   
   .edge {
-    background-color: yellow;
-    color: black;
+    background-color: $standard-yellow;
+    color: palette(mono, black);
   }
   
   &--on-black {
     .fail,
     .pass,
     .edge {
-      color: black;
+      color: palette(mono, black);
     }
   }
   
