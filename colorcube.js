@@ -1,6 +1,6 @@
 const WHITE  = tinycolor("#ffffff");
 const BLACK  = tinycolor("#000000");
-const LARGETEXTAARATIO = 3.1;
+const LARGETEXTAARATIO = 3;
 var colorArray = [];
 
 function getRoundedRatio(color1, color2) {
@@ -10,12 +10,12 @@ function getRoundedRatio(color1, color2) {
 }
 
 function outputRatio(ratio, div) {
-  if ( ratio > (LARGETEXTAARATIO + 0.5) ) {
+  if ( ratio >= (LARGETEXTAARATIO + 0.5) ) {
     // if it passes by more than .5, create a green div
     ratioGreen = '<div class="color-ratios--swatch pass">' + ratio + '</div>';
     // and append it
     div.innerHTML = div.innerHTML + ratioGreen;
-  } else if ( ratio < (LARGETEXTAARATIO + 0.5) && ratio > LARGETEXTAARATIO ) {
+  } else if ( ratio <= (LARGETEXTAARATIO + 0.5) && ratio >= LARGETEXTAARATIO ) {
     // if it barely passes, create a yellow div
     ratioYellow = '<div class="color-ratios--swatch edge">' + ratio + '</div>';
     // and append it
