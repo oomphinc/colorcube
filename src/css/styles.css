@@ -878,6 +878,10 @@ input[type="search"] {
   .color-ratios .edge {
     background-color: yellow;
     color: black; }
+  .color-ratios--on-black .fail,
+  .color-ratios--on-black .pass,
+  .color-ratios--on-black .edge {
+    color: black; }
   .color-ratios--most-legible .fail,
   .color-ratios--most-legible .pass,
   .color-ratios--most-legible .edge {
