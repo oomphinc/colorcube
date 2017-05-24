@@ -858,8 +858,8 @@ input[type="search"] {
     float: left;
     width: 25%; }
   .color-ratios--swatch {
-    border: 2px solid black;
-    color: white;
+    border: 2px solid #131313;
+    color: #fff;
     font-size: 24px;
     height: 60px;
     line-height: 60px;
@@ -872,16 +872,16 @@ input[type="search"] {
       margin-right: 10px;
       width: calc(100% - 70px); }
   .color-ratios .fail {
-    background-color: red; }
+    background-color: #ff0000; }
   .color-ratios .pass {
-    background-color: green; }
+    background-color: #008000; }
   .color-ratios .edge {
-    background-color: yellow;
-    color: black; }
+    background-color: #ffff00;
+    color: #131313; }
   .color-ratios--on-black .fail,
   .color-ratios--on-black .pass,
   .color-ratios--on-black .edge {
-    color: black; }
+    color: #131313; }
   .color-ratios--most-legible .fail,
   .color-ratios--most-legible .pass,
   .color-ratios--most-legible .edge {
