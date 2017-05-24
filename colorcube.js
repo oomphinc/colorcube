@@ -1,6 +1,7 @@
 const WHITE  = tinycolor("#ffffff");
 const BLACK  = tinycolor("#000000");
 const LARGETEXTAARATIO = 3;
+const NORMALTEXTAARATIO = 4.5;
 var colorArray = [];
 
 function getRoundedRatio(color1, color2) {
@@ -9,20 +10,26 @@ function getRoundedRatio(color1, color2) {
   return ratio;
 }
 
-function outputRatio(ratio, div) {
-  if ( ratio >= (LARGETEXTAARATIO + 0.5) ) {
-    // if it passes by more than .5, create a green div
-    ratioGreen = '<div class="color-ratios--swatch pass">' + ratio + '</div>';
+function outputRatio(ratio, ratioSize, div) {
+  // change modifier class based on which ratio we're checking against
+  if ( ratioSize == 3 ) {
+    var modifier = '__large';
+  } else {
+    var modifier = '__normal';
+  }
+  if ( ratio >= (ratioSize + 0.5) ) {
+    // if it passes by more than .5, create a div with .pass
+    ratioGreen = '<div class="color-ratios--swatch' + modifier +  ' pass">Pass ' + ratio + '</div>';
     // and append it
     div.innerHTML = div.innerHTML + ratioGreen;
-  } else if ( ratio <= (LARGETEXTAARATIO + 0.5) && ratio >= LARGETEXTAARATIO ) {
-    // if it barely passes, create a yellow div
-    ratioYellow = '<div class="color-ratios--swatch edge">' + ratio + '</div>';
+  } else if ( ratio < (ratioSize + 0.5) && ratio >= ratioSize ) {
+    // if it barely passes, create a div with .edge
+    ratioYellow = '<div class="color-ratios--swatch' + modifier +  ' edge">Edge ' + ratio + '</div>';
     // and append it
     div.innerHTML = div.innerHTML + ratioYellow;
   } else {
-    // if it fails by more than .5, create a red div
-    ratioRed = '<div class="color-ratios--swatch fail">' + ratio + '</div>';
+    // if it fails by more than .5, create a div with .fail
+    ratioRed = '<div class="color-ratios--swatch' + modifier +  ' fail">Fail ' + ratio + '</div>';
     // and append it
     div.innerHTML = div.innerHTML + ratioRed;
   }
@@ -68,12 +75,14 @@ button.onclick = function(e) {
     // get the color's contrast ratio compared to white
     var ratio = getRoundedRatio(colorArray[i], WHITE);
     // 2) output a div with that color's ratio on white
-    outputRatio(ratio, column2);
+    outputRatio(ratio, NORMALTEXTAARATIO, column2);
+    outputRatio(ratio, LARGETEXTAARATIO, column2);
     
     // get the color's contrast ratio compared to black
     var ratio = getRoundedRatio(colorArray[i], BLACK);
     // 3) output a div with that color's ratio on black
-    outputRatio(ratio, column3);
+    outputRatio(ratio, NORMALTEXTAARATIO, column3);
+    outputRatio(ratio, LARGETEXTAARATIO, column3);
     
     // what's most readable with the current color?
     var bestPick = tinycolor.mostReadable(colorArray[i], colorArray);
@@ -84,7 +93,8 @@ button.onclick = function(e) {
     column4.innerHTML = column4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + colorArray[i] + '; color: ' + bestPick['_originalInput'] + '">' + bestPick['_originalInput'] + '</div>';
     // 4) from among colors provided, output a div with
     //    the ratio between those two colors
-    outputRatio(ratio, column4);
+    outputRatio(ratio, NORMALTEXTAARATIO, column4);
+    outputRatio(ratio, LARGETEXTAARATIO, column4);
   }
   // jump to the results
   window.location.href = '#results-content';
