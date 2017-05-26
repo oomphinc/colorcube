@@ -14,7 +14,7 @@ input,
 select,
 textarea {
   color: $color-text;
-  font-family: $font-custom;
+  font-family: $font-sans;
   font-weight: $font-weight-normal;
   line-height: $line-height;
 }
@@ -24,7 +24,7 @@ a {
 
   @include touch-hover('idle') {
     color: $color-link;
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   @include touch-hover('hover') {

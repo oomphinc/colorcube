@@ -1,18 +1,35 @@
 // @file header.scss
 .cc-branding {
-  background-color: #f2f2f2;
-  border-bottom: 1px solid #ccc;
+  background-color: palette(mono, 10);
+  border-bottom: 1px solid palette(mono, 25);
   padding: 1rem 2rem;
-}
 
-.cc-branding__title {
-  font-size: 3rem;
-  letter-spacing: .03125em;
-}
+  &__title {
+    font-size: 3rem;
+    letter-spacing: .03125em;
+  }
 
-.cc-branding__subtitle {}
+  &__subtitle {
+    font-size: 1.25rem;
+  }
 
-.cc-branding__logo {
-  display: inline-block;
-  vertical-align: middle;
+  &__logo {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @include media($large-up) {
+    @include display(flex);
+    @include flex-flow(row nowrap);
+    @include align-items(center);
+
+    &__title,
+    &__subtitle {
+      width: 50%;
+    }
+
+    &__subtitle {
+      text-align: right;
+    }
+  }
 }
