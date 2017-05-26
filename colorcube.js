@@ -1,50 +1,58 @@
 const WHITE  = tinycolor("#ffffff");
 const BLACK  = tinycolor("#000000");
-const AARATIO = 4.5;
+const AANORMALRATIO = 4.5;
+const AALARGERATIO = 3.0;
 var colorArray = [];
 
 function getRoundedRatio(color1, color2) {
   var ratio = tinycolor.readability(color1, color2);
-      ratio = Math.round(ratio * 10) / 10;
+  ratio = Math.round(ratio * 10) / 10;
   return ratio;
 }
 
-function outputRatio(ratio, div) {
-  if ( ratio > (AARATIO + 0.5) ) {
-    // if it passes by more than .5, create a green div
-    ratioGreen = '<div class="color-ratios--swatch pass">' + ratio + '</div>';
-    // and append it
-    div.innerHTML = div.innerHTML + ratioGreen;
-  } else if ( ratio < (AARATIO + 0.5) && ratio > AARATIO ) {
-    // if it barely passes, create a yellow div
-    ratioYellow = '<div class="color-ratios--swatch edge">' + ratio + '</div>';
-    // and append it
-    div.innerHTML = div.innerHTML + ratioYellow;
-  } else {
-    // if it fails by more than .5, create a red div
-    ratioRed = '<div class="color-ratios--swatch fail">' + ratio + '</div>';
-    // and append it
-    div.innerHTML = div.innerHTML + ratioRed;
+function outputRatio(color, ratio, base, target) {
+  var passfail = 'fail',
+      output = '',
+      iclass = 'times-circle',
+      size = 'normal';
+
+  if ( ratio >= (target + 0.5) ) {
+    // It passes if the ratio is greater than our constant plus 0.5 for gamma correction
+    passfail = 'pass';
+    iclass = 'check-circle';
+  } else if ( ratio <= (target + 0.5) && ratio > target ) {
+    // It barely passes if the ratio is less than our constant plus 0.5 for gamma correction
+    // AND greater than the constant. So, within 0.5.
+    passfail = 'edge';
+    iclass = 'exclamation-triangle';
   }
+  if ( target == AALARGERATIO ) {
+    size = 'large'
+  }
+
+  var output = '<div class="color-ratio__wrapper '+ size +' '+ passfail +'"><div class="color-ratio__swatch" style="color: '+ color +'; border-color: '+ color +'; background-color:' + base + ';">Aa</div><span class="fa fa-' + iclass + '"></span><span class="color-ratio__passfail" title="The target ratio is ' + target + '"><b>' + passfail + '</b> ' + ratio + '</span></div>';
+  return output;
 }
 
 var button = document.querySelector('#brand-color--button');
 button.onclick = function(e) {
   e.preventDefault();
-  // get each of the four columns where we will be outputting results
-  var column1 = document.getElementsByClassName('color-ratios--column color-ratios--brand-colors')[0];
-  var column2 = document.getElementsByClassName('color-ratios--column color-ratios--on-white')[0];
-  var column3 = document.getElementsByClassName('color-ratios--column color-ratios--on-black')[0];
-  var column4 = document.getElementsByClassName('color-ratios--column color-ratios--most-legible')[0];
+
+  var results = document.getElementById('results-output');
 
   // if there are already results displayed, clear them
-  if ( column1.children.length > 1 ) {
-    column1.innerHTML = '<h4 class="color-ratios--title">Brand Color</h4>';
-    column2.innerHTML = '<h4 class="color-ratios--title">With White</h4>';
-    column3.innerHTML = '<h4 class="color-ratios--title">With Black</h4>';
-    column4.innerHTML = '<h4 class="color-ratios--title">Most Readable Pair</h4>';
+  if ( results.children.length > 1 ) {
+    results.innerHTML = '';
   }
-  
+
+  // Set the header row
+  results.innerHTML = '<div class="results__row results__row__header">' +
+    '<div class="results__col ratios__original">Original</div>' +
+    '<div class="results__col ratios__on-white">With white</div>' +
+    '<div class="results__col ratios__on-black">With black</div>' +
+    '<div class="results__col ratios__most-legible">Most legible from available</div>' +
+  '</div>';
+
   // get the colors inputted by the user
   var stringInput = document.querySelector('#brand-color--field').value;
   // if there's no input, get outta here
@@ -53,41 +61,37 @@ button.onclick = function(e) {
   }
   // turn it into an array
   colorArray = stringInput.split("\n");
-  
-  // for each value in the array of user-inputted colors
-  // 1) output a div with the current color
-  // 2) output a div with that color's ratio on white
-  // 3) output a div with that color's ratio on black
-  // 4) from among colors provided, output a div with
-  //        a) the most legible bg-color to pair with the current color
-  //        b) the ratio between those two colors
+
   for (var i = 0; i < colorArray.length; i++) {
-    // 1) output current color
-    column1.innerHTML = column1.innerHTML + '<div class="color-ratios--swatch" style="background-color: ' + colorArray[i] + '"></div>';
     
-    // get the color's contrast ratio compared to white
-    var ratio = getRoundedRatio(colorArray[i], WHITE);
-    // 2) output a div with that color's ratio on white
-    outputRatio(ratio, column2);
+    // get the color's contrast ratios
+    var ratio_onwhite = getRoundedRatio(colorArray[i], WHITE),
+        ratio_onblack = getRoundedRatio(colorArray[i], BLACK),
+        most_legible = tinycolor.mostReadable(colorArray[i], colorArray),
+        ratio_mostlegible = getRoundedRatio(most_legible, colorArray[i]);
     
-    // get the color's contrast ratio compared to black
-    var ratio = getRoundedRatio(colorArray[i], BLACK);
-    // 3) output a div with that color's ratio on black
-    outputRatio(ratio, column3);
-    
-    // what's most readable with the current color?
-    var bestPick = tinycolor.mostReadable(colorArray[i], colorArray);
-    // get the color's contrast ratio compared to the best pick
-    var ratio = getRoundedRatio(colorArray[i], bestPick['_originalInput'])
-    // 4) from among colors provided, output a div with
-    //    the most legible bg-color to pair with the current color
-    column4.innerHTML = column4.innerHTML + '<div class="color-ratios--swatch most-legible" style="background-color: ' + colorArray[i] + '; color: ' + bestPick['_originalInput'] + '">' + bestPick['_originalInput'] + '</div>';
-    // 4) from among colors provided, output a div with
-    //    the ratio between those two colors
-    outputRatio(ratio, column4);
+    // outputRatio( {color & border color}, ratio, {background color}, {ratio to test against} )
+    results.innerHTML += '<div class="results__row">' + 
+      '<div class="results__col ratios__original">' + 
+        '<div class="original__label">' + colorArray[i] + '</div>' + 
+        '<div class="original__swatch" style="background-color: ' + colorArray[i] + ';"></div>' + 
+      '</div>' + 
+      '<div class="results__col ratios__on-white">' + 
+        outputRatio(colorArray[i], ratio_onwhite, '#fff', AANORMALRATIO) + 
+        outputRatio(colorArray[i], ratio_onwhite, '#fff', AALARGERATIO) + 
+      '</div>' + 
+      '<div class="results__col ratios__on-black">' + 
+        outputRatio(colorArray[i], ratio_onblack, '#000', AANORMALRATIO) + 
+        outputRatio(colorArray[i], ratio_onblack, '#000', AALARGERATIO) + 
+      '</div>' +
+      '<div class="results__col ratios__most-legible">' + 
+        outputRatio(most_legible, ratio_mostlegible, colorArray[i], AANORMALRATIO) + 
+        outputRatio(most_legible, ratio_mostlegible, colorArray[i], AALARGERATIO) + 
+      '</div>';
   }
+
   // jump to the results
   window.location.href = '#results-content';
   // clear the input field
-  document.querySelector('#brand-color--field').value = '';
+  //document.querySelector('#brand-color--field').value = '';
 }
