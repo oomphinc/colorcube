@@ -24,7 +24,7 @@ a {
 
   @include touch-hover('idle') {
     color: $color-link;
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   @include touch-hover('hover') {

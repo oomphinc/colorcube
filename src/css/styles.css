@@ -143,7 +143,7 @@ a {
   transition: all 250ms ease; }
   a, a:link, a:visited {
     color: #d62901;
-    text-decoration: none; }
+    text-decoration: underline; }
   .no-js a:hover, .no-js a:focus, .js.no-touchevents a:hover, .js.no-touchevents a:focus, .js.touchevents a:active {
     color: #a31f02;
     text-decoration: none; }
