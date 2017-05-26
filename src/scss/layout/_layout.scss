@@ -24,9 +24,15 @@ $gutter: 1rem;
   padding-bottom: $vert-line-height;
 }
 
-@include media($small-up) {
-  
-  .layout__two-col {
+.text__col {
+  max-width: rem(1160);
+  margin: 0 auto;
+}
+
+.layout__two-col {
+  @extend %container-margin;
+
+  @include media($small-up) {
     @include display(flex);
     @include flex-flow(row wrap);
     @include align-items(flex-start);

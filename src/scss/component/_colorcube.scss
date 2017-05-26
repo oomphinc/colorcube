@@ -9,61 +9,142 @@
 
 
 /* ! ===== Results ===== */
-.results {}
+//<div id="results-output">
+//  <div class="results__row results__row__header">
+//    <div class="results__col ratios__original">Original</div>
+//    <div class="results__col ratios__on-white">White white</div>
+//    <div class="results__col ratios__on-black">White black</div>
+//    <div class="results__col ratios__most-legible">Most readable from available</div>
+//  </div>
+//  <div class="results__row">
+//    <div class="results__col ratios__original">
+//      <div class="original__label">#d62901 </div>
+//      <div class="original__swatch" style="background-color: "></div>
+//    </div>
+//    <div class="results__col ratios__on-white">
+//      <div class="color-ratio__wrapper normal fail">
+//        <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
+//        <span class="fa fa-times-circle"></span>
+//        <span class="color-ratio__passfail"><b>fail</b> 5</span>
+//      </div>
+//      <div class="color-ratio__wrapper large pass">
+//        <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
+//        <span class="fa fa-check-circle"></span>
+//        <span class="color-ratio__passfail"><b>pass</b> 5</span>
+//      </div>
+//    </div>
 
-.color-ratios {
-  @include clearfix;
+#results-output {
+  margin: $vert-line-height 0;
 
-  &--column {
-    float: left;
-    width: 25%
+  &:empty {
+    background-color: palette(mono, 10);
+    border: 1px solid palette(mono, 25);
+    height: 2rem;
+  }
+}
+
+.results {
+  
+  &__row {
+    @include display(flex);
+    @include flex-flow(row nowrap);
+    border-bottom: 1px solid palette(mono, 25);
+    padding-top: 1rem;
+
+    &__header {
+      font-size: rem(18);
+    }
   }
 
-  /* Individual Color Swatches */
-  &--swatch {
-    border: 2px solid black;
-    color: white;
-    font-size: 24px;
-    height: 60px;
-    line-height: 60px;
-    margin-bottom: 10px;
+  &__col {
+    padding-bottom: 1rem;
+    width: 20%;
+  }
+}
+
+// Specific Columns
+.ratios {
+
+  &__original {
+    width: 40%;
+  }
+
+  &__on-white {}
+
+  &__on-black {}
+}
+
+
+// Original color
+.original {
+  
+  &__label {
+    font-size: rem(18);
+    font-weight: $font-weight-bold;
+    margin-top: -.25rem;
+  }
+
+  &__swatch {
+    height: rem(120);
+    width: rem(120);
+  }
+}
+
+//  <div class="color-ratio__wrapper large pass">
+//    <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
+//    <span class="fa fa-check-circle"></span>
+//    <span class="color-ratio__passfail"><b>pass</b> 5</span>
+//  </div>
+.color-ratio {
+  
+  &__wrapper {
+
+    span { display: inline-block; }
+
+    .fa {
+      font-size: rem(24);
+      margin: 0 .5em 0 1rem;
+    }
+
+    &.pass .fa { color: $pass; }
+
+    &.edge .fa { color: $edge; }
+
+    &.fail .fa { color: $fail; }
+  }
+
+  &__label {
+    font-size: rem(15);
+    font-weight: $font-weight-bold;
+
+    .large & {
+      @include hide;
+    }
+  }
+
+  &__swatch {
+    border-style: solid;
+    border-width: 6px;
+    display: inline-block;
+    font-size: rem(18);
+    height: rem(64);
+    padding-top: .75rem;
     text-align: center;
-    width: 60px;
-    
-    &.most-legible {
-      float: left;
-      font-weight: $font-weight-bold;
-      margin-right: 10px;
-      width: calc(100% - 70px);
-    }
+    width: rem(80);
   }
 
-  .fail {
-    background-color: red;
+  .normal &__swatch {}
+
+  .large &__swatch {
+    font-size: rem(24);
+    margin-top: -6px;
+    padding-top: .375rem;
   }
-  
-  .pass {
-    background-color: green;
-  }
-  
-  .edge {
-    background-color: yellow;
-    color: black;
-  }
-  
-  &--on-black {
-    .fail,
-    .pass,
-    .edge {
-      color: black;
-    }
-  }
-  
-  &--most-legible {
-    .fail,
-    .pass,
-    .edge {
-      display: inline-block;
-    }
+
+  &__passfail {
+    text-transform: uppercase;
+
+    b {}
   }
 }

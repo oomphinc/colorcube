@@ -3,40 +3,43 @@
   <head>
     <meta charset="UTF-8">
     <title>ColorCube: A color A11y Tool for Designers &amp; Developers</title>
-    <link href="https://fonts.googleapis.com/css?family=Cabin:500,500i,700,700i" rel="stylesheet">
+    <script src="https://use.fontawesome.com/4d174c70ae.js"></script>
     <link rel="stylesheet" href="src/css/styles.css" type="text/css">
   </head>
   <body>
+
     <header class="cc-branding">
       <h1 class="cc-branding__title">
         <img class="cc-branding__logo" src="img/ColorCube-logo.png" alt="" width="90">
         ColorCube
       </h1>
-      <h2 class="cc-branding__subtitle">Brand Color Palette Accessibility Color Checker Tool</h2>
+      <h2 class="cc-branding__subtitle">Brand Palette Color Accessibility Checker from <a title="Go to Oomph website, link opens in a new window." target="_blank" href="//oomphinc.com">Oomph</a></h2>
     </header>
     <main class="cc-main">
       <div class="container">
         <form action="/" class="cc-form brand-colors" method="post"><!-- ccr form -->
     
-          <div class="layout__two-col">
-            <div class="column">
-              <h3>Step 1:</h3>
-              <p>Paste your brand color palette colors (each on its own line). Hex colors are easiest, but any color value is acceptable.</p>
-            </div>
-            <div class="column">
-              <!-- Brand Color Textarea Field -->
-              <label for="brand-color--field">Paste your brand color palette.
-                <span class="required">*</span>
-              </label>
-              <br>
-              <textarea id="brand-color--field" aria-required="true" name="brand-color--field" rows="5" autofocus>#d62901 
+          <div class="text__col">
+            <div class="layout__two-col">
+              <div class="column">
+                <h3>Step 1:</h3>
+                <p>Paste your brand color palette colors (each on its own line). Hex colors are easiest, but rgb() values are also acceptable. Use our default list to see what happens, or delete it and paste your own.</p>
+              </div>
+              <div class="column">
+                <!-- Brand Color Textarea Field -->
+                <label for="brand-color--field">Paste your brand color palette.
+                  <span class="required">*</span>
+                </label>
+                <br>
+                <textarea id="brand-color--field" aria-required="true" name="brand-color--field" rows="5" autofocus>#d62901 
 #2d5070 
-#70bdc1 
-#e89424 
+rgb(112,189,193)
+rgb(232,138,46) 
 #008a65
 #373737</textarea>
-            </div>
-          </div><!-- end layout__two-col -->
+              </div>
+            </div><!-- end layout__two-col -->
+          </div>
 
           <!-- Submit Button -->
           <div class="cc-form__submit column">
@@ -45,40 +48,31 @@
         </form><!-- /ccr form -->
 
         <div id="results-content" class="column results">
-          <h3>Step 2: Review your colors!</h3>
-          <p>Below is a list of your brand color palette and how those colors perform over white or black, or how white or black text performs over this color as a background. <strong>Avoid red ratio values (fail) or values that barely meet the requirement (yellow)</strong>.</p>
+          <div class="results__description text__col">
+            <h3>Step 2: Review your colors below!</h3>
+          </div>
 
-          <div class="color-ratios">
-            <div class="color-ratios--column color-ratios--brand-colors">
-              <h4 class="color-ratios--title">Brand Color</h4>
-            </div>
-
-            <div class="color-ratios--column color-ratios--on-white">
-              <h4 class="color-ratios--title">With White</h4>
-            </div>
-
-            <div class="color-ratios--column color-ratios--on-black">
-              <h4 class="color-ratios--title">With Black</h4>
-            </div>
+          <div id="results-output"></div>
+          
+          <div class="results__description text__col">
+            <p>Above is your color palette list and how each of the colors perform with white or black as a ratio. For normal text (under 18px), the ratio must be over <b>4.5</b> to pass <a title="Go to w3 website, link opens in a new window." target="_blank" href="http://www.w3.org/TR/WCAG20/">WCAG 2.0</a> AA standards. For large text, it must pass <b>3.0</b>. This tool shows you the difference between the color ratio and the target ratio. Hover over the results to see the math. </p>
+            <p>Avoid failing color pairs, and be careful with <b>EDGE</b> values&mdash;the color passes validation, but is within 0.5 so therefore it may still present a legibility issue. </p>
+            <p><b>Most legible from available</b>: From the given list, which color pairs are the <i>most legible</i>? This does not mean that the color pair will pass minimum requirements, but they have the best chance of passing.</p>
             
-            <div class="color-ratios--column color-ratios--most-legible">
-              <h4 class="color-ratios--title">Most Readable Pair</h4>
-            </div>
+            <h3>Check your hover text color vs. your body text color:</h3>
+            <p>If <a title="Go to webaim.org, link opens in a new window." href="http://www.w3.org/TR/WCAG20/">links are not underlined</a>, there must be 3:1 contrast between link text and body text and also an additional change (e.g., underlining) on mouse hover and keyboard focus. Use the tool to compare your link color against your body text color to see how they pair in the Most Legible column.</p>
           </div>
         </div>
+
       </div>
     </main>
     <footer class="cc-foot">
-      <h3>What is this?</h3>
-      <p>ColorCube taskes in a list of colors and returns a bunch of information about the accessibility (a11y) of those colors. The first column is the color itself. The second column is the legibility ratio with white, then with black. The last column is the most readable pairing given the same list of colors, and what the resulting ratio of those colors may be.</p>
-      <p>In all cases, red denotes a color contrast ratio that is too small. Green denotes a good color contrast ratio. Yellow means it is right on the edge of legibility, so be careful.</p>
-      
-      <h3>The Target Ratios:</h3>
-      <p><a title="Got to w3 website, link opens in a new window." target="_blank" href="http://www.w3.org/TR/WCAG20/">WCAG 2.0</a> level AA requires a contrast ratio of 4.5:1 for normal text and 3:1 for large text. Level AAA requires a contrast ratio of 7:1 for normal text and 4.5:1 for large text. Large text is defined as 14 point (typically 18.66px) and bold or larger, or 18 point (typically 24px) or larger.</p>
-  
-      <h3>Check your hover text color vs. your body text color:</h3>
-      <p>If <a title="Go to webaim.org, link opens in a new window." href="http://www.w3.org/TR/WCAG20/">links are not underlined</a>, there must be 3:1 contrast between link text and body text and also an additional change (e.g., underlining) on mouse hover and keyboard focus.</p>
-
+      <div class="text__col">
+        <h3>What is this?</h3>
+        <p>ColorCube is an accessibility (a11y) tool aimed at designers and developers. From a list of colors, we give you lots of information about how those colors perform with common color combinations. </p>
+        <p><strong>Why?</strong> A11y is a real issue that all users struggle with, and companies want to help. At Oomph we believe a better web is an accessible web for all. We wanted a tool that could be used before a project starts&mdash;one that helps assess how an existing brand color palette might perform in an accessible way. Starting early means that we can make adjustments early to avoid non-accessible colors later.</p>
+        <p>This tool started as a prototype during a company-wide HackDay. We liked it so much, and saw so much potential, that we worked extra hard post-HackDay to improve it and release it to the world.</p>
+      </div>
     </footer>
     <script type="text/javascript" src="tinycolor.js"></script>
     <script type="text/javascript" src="colorcube.js" ></script>
