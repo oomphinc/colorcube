@@ -1,7 +1,7 @@
-# colorcube
+# ColorCube (view on [Github.io](https://oomphinc.github.io/colorcube/))
 Codename: ColorCube. A brand color palette accessibility checker.
 
-Made possible by the excellent [TinyColor](https://bgrins.github.io/TinyColor/)
+Made possible by the excellent [TinyColor](https://bgrins.github.io/TinyColor/) JS library.
 
 ## Table of Contents
 - [Local Setup](#local-setup)
@@ -21,11 +21,12 @@ To debug errors run brunch `build -d`.
 1. Open a new Pull Request
 1. Profit!
 
-## Alternatives
+## Other Tools
 - [Color Safe](http://colorsafe.co/)
 - [Contrast Ratio](https://leaverou.github.io/contrast-ratio/)
 - [Contrast Checker](http://contrastchecker.com/)
-- [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
+- [SSB Bart Color Contrast Checker](http://www.ssbbartgroup.com/reference/color-contrast-checker/)
+- [Snook's Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
 
 ## Team
 Initially created by [Kathy Beck](https://github.com/kbeck303), [Brandon Herford](https://github.com/BrandonDH), [Brian Hogue](https://github.com/syzygy333), and [J Hogue](https://github.com/jhogue) during Oomph Inc.'s Hack Day, May 2017.
