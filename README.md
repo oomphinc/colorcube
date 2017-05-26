@@ -28,4 +28,4 @@ To debug errors run brunch `build -d`.
 - [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
 
 ## Team
-Initially created by [Kathy Beck](https://github.com/kbeck303), [Brandon Herford](https://github.com/BrandonDH), [Brian Hogue](https://github.com/syzygy333), and [J Hogue](https://github.com/jhogue) during Oomph Inc.'s Hack Day.
+Initially created by [Kathy Beck](https://github.com/kbeck303), [Brandon Herford](https://github.com/BrandonDH), [Brian Hogue](https://github.com/syzygy333), and [J Hogue](https://github.com/jhogue) during Oomph Inc.'s Hack Day, May 2017.
