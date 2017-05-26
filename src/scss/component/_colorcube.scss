@@ -82,11 +82,12 @@
   &__label {
     font-size: rem(18);
     font-weight: $font-weight-bold;
+    margin-top: -.25rem;
   }
 
   &__swatch {
-    height: rem(96);
-    width: rem(96);
+    height: rem(120);
+    width: rem(120);
   }
 }
 
@@ -112,7 +113,16 @@
 
     &.fail .fa { color: $fail; }
   }
-  
+
+  &__label {
+    font-size: rem(15);
+    font-weight: $font-weight-bold;
+
+    .large & {
+      @include hide;
+    }
+  }
+
   &__swatch {
     border-style: solid;
     border-width: 6px;
@@ -123,15 +133,15 @@
     text-align: center;
     width: rem(80);
   }
-  
+
   .normal &__swatch {}
-  
+
   .large &__swatch {
     font-size: rem(24);
     margin-top: -6px;
     padding-top: .375rem;
   }
-  
+
   &__passfail {
     text-transform: uppercase;
 
