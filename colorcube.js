@@ -4,17 +4,73 @@ const AANORMALRATIO = 4.5;
 const AALARGERATIO = 3.0;
 var colorArray = [];
 
+// Decimal Rounding: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+(function() {
+  /**
+   * Decimal adjustment of a number.
+   *
+   * @param {String}  type  The type of adjustment.
+   * @param {Number}  value The number.
+   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+   * @returns {Number} The adjusted value.
+   */
+  function decimalAdjust(type, value, exp) {
+    // If the exp is undefined or zero...
+    if (typeof exp === 'undefined' || +exp === 0) {
+      return Math[type](value);
+    }
+    value = +value;
+    exp = +exp;
+    // If the value is not a number or the exp is not an integer...
+    if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+      return NaN;
+    }
+    // If the value is negative...
+    if (value < 0) {
+      return -decimalAdjust(type, -value, exp);
+    }
+    // Shift
+    value = value.toString().split('e');
+    value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+    // Shift back
+    value = value.toString().split('e');
+    return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+  }
+
+  // Decimal round
+  if (!Math.round10) {
+    Math.round10 = function(value, exp) {
+      return decimalAdjust('round', value, exp);
+    };
+  }
+  // Decimal floor
+  if (!Math.floor10) {
+    Math.floor10 = function(value, exp) {
+      return decimalAdjust('floor', value, exp);
+    };
+  }
+  // Decimal ceil
+  if (!Math.ceil10) {
+    Math.ceil10 = function(value, exp) {
+      return decimalAdjust('ceil', value, exp);
+    };
+  }
+})();
+
+
 function getRoundedRatio(color1, color2) {
   var ratio = tinycolor.readability(color1, color2);
   ratio = Math.round(ratio * 10) / 10;
   return ratio;
 }
 
+
 function outputRatio(color, ratio, base, target) {
   var passfail = 'fail',
       output = '',
       iclass = 'times-circle',
-      size = 'normal';
+      size = 'normal',
+      difference = 0;
 
   if ( ratio >= (target + 0.5) ) {
     // It passes if the ratio is greater than our constant plus 0.5 for gamma correction
@@ -30,7 +86,9 @@ function outputRatio(color, ratio, base, target) {
     size = 'large'
   }
 
-  var output = '<div class="color-ratio__wrapper '+ size +' '+ passfail +'"><div class="color-ratio__swatch" style="color: '+ color +'; border-color: '+ color +'; background-color:' + base + ';">Aa</div><span class="fa fa-' + iclass + '"></span><span class="color-ratio__passfail" title="The target ratio is ' + target + '"><b>' + passfail + '</b> ' + ratio + '</span></div>';
+  difference = Math.round10( (ratio - target), -1 );
+
+  var output = '<div class="color-ratio__wrapper '+ size +' '+ passfail +'"><div class="color-ratio__swatch" style="color: '+ color +'; border-color: '+ color +'; background-color:' + base + ';">Aa</div><span class="fa fa-' + iclass + '"></span><span class="color-ratio__passfail" title="Color ratio ' + ratio + ' minus target ratio '+ target +'"><b>' + passfail + '</b> ' + difference + '</span></div>';
   return output;
 }
 
