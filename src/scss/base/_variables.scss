@@ -16,9 +16,9 @@ $font-mono: $monospace;
 
 // Declare the custom font and fallback
 // Declare font weights as specified by the custom family: Google usually prefers numeric weights
-$font-custom: 'Cabin', $font-sans;
-$font-weight-normal: 500;
-$font-weight-bold: 700;
+$font-custom: $font-sans;
+$font-weight-normal: normal;
+$font-weight-bold: bold;
 
 // Other globals
 $default-border-radius: 3px;
