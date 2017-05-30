@@ -57,13 +57,11 @@ var colorArray = [];
   }
 })();
 
-
 function getRoundedRatio(color1, color2) {
   var ratio = tinycolor.readability(color1, color2);
   ratio = Math.round(ratio * 10) / 10;
   return ratio;
 }
-
 
 function outputRatio(color, ratio, base, target) {
   var passfail = 'fail',
@@ -96,6 +94,7 @@ var button = document.querySelector('#brand-color--button');
 button.onclick = function(e) {
   e.preventDefault();
 
+  var resultsBlock = document.getElementById('results-content');
   var results = document.getElementById('results-output');
 
   // if there are already results displayed, clear them
@@ -147,6 +146,10 @@ button.onclick = function(e) {
         outputRatio(most_legible, ratio_mostlegible, colorArray[i], AALARGERATIO) + 
       '</div>';
   }
+  
+  // make the results content visible
+  resultsBlock.style.display = 'block';
+  resultsBlock.style.visibility = 'visible';
 
   // jump to the results
   window.location.href = '#results-content';

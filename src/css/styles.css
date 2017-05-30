@@ -832,6 +832,10 @@ input[type="number"] {
     border: 1px solid #ccc;
     height: 2rem; }
 
+#results-content {
+  display: none;
+  visibility: hidden; }
+
 .results__row {
   display: -webkit-box;
   display: -moz-box;
