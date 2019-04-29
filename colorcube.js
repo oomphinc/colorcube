@@ -81,12 +81,20 @@ function outputRatio(color, ratio, base, target) {
     iclass = 'exclamation-triangle';
   }
   if ( target == AALARGERATIO ) {
-    size = 'large'
+    size = 'large';
   }
 
   difference = Math.round10( (ratio - target), -1 );
 
-  var output = '<div class="color-ratio__wrapper ' + size + ' ' + passfail + '"><div class="color-ratio__label">' + color + ' over ' + base + '</div><div class="color-ratio__swatch" style="color: ' + color + '; border-color: ' + color + '; background-color:' + base + ';">Aa</div><span class="fa fa-' + iclass + '"></span><span class="color-ratio__passfail" title="Color ratio ' + ratio + ' minus target ratio ' + target + '"><b>' + passfail + '</b> ' + difference + '</span></div>';
+  var output =
+  `<div class="color-ratio__wrapper ${size} ${passfail}">
+    <div class="color-ratio__label">color over base</div>
+    <div class="color-ratio__swatch" style="color: ${color}; border-color: ${color}; background-color: ${base};">Aa</div>
+    <span class="fa fa-${iclass}"></span>
+    <span class="color-ratio__passfail" title="Color ratio ${ratio} minus target ratio ${target}">
+      <b>${passfail}</b>${difference}
+    </span>
+  </div>`;
   return output;
 }
 
@@ -103,12 +111,13 @@ button.onclick = function(e) {
   }
 
   // Set the header row
-  results.innerHTML = '<div class="results__row results__row__header">' +
-    '<div class="results__col ratios__original">Original</div>' +
-    '<div class="results__col ratios__on-white">With white</div>' +
-    '<div class="results__col ratios__on-black">With black</div>' +
-    '<div class="results__col ratios__most-legible">Most legible from available</div>' +
-  '</div>';
+  results.innerHTML =
+  `<div class="results__row results__row__header">
+    <div class="results__col ratios__original">Original</div>
+    <div class="results__col ratios__on-white">With white</div>
+    <div class="results__col ratios__on-black">With black</div>
+    <div class="results__col ratios__most-legible">Most legible from available</div>
+  </div>`;
 
   // get the colors inputted by the user
   var stringInput = document.querySelector('#brand-color--field').value;
@@ -120,33 +129,35 @@ button.onclick = function(e) {
   colorArray = stringInput.split("\n");
 
   for (var i = 0; i < colorArray.length; i++) {
-    
+
     // get the color's contrast ratios
     var ratio_onwhite = getRoundedRatio(colorArray[i], WHITE),
         ratio_onblack = getRoundedRatio(colorArray[i], BLACK),
         most_legible = tinycolor.mostReadable(colorArray[i], colorArray),
         ratio_mostlegible = getRoundedRatio(most_legible, colorArray[i]);
-    
+
     // outputRatio( {color & border color}, ratio, {background color}, {ratio to test against} )
-    results.innerHTML += '<div class="results__row">' + 
-      '<div class="results__col ratios__original">' + 
-        '<div class="original__label">' + colorArray[i] + '</div>' + 
-        '<div class="original__swatch" style="background-color: ' + colorArray[i] + ';"></div>' + 
-      '</div>' + 
-      '<div class="results__col ratios__on-white">' + 
-        outputRatio(colorArray[i], ratio_onwhite, '#fff', AANORMALRATIO) + 
-        outputRatio(colorArray[i], ratio_onwhite, '#fff', AALARGERATIO) + 
-      '</div>' + 
-      '<div class="results__col ratios__on-black">' + 
-        outputRatio(colorArray[i], ratio_onblack, '#000', AANORMALRATIO) + 
-        outputRatio(colorArray[i], ratio_onblack, '#000', AALARGERATIO) + 
-      '</div>' +
-      '<div class="results__col ratios__most-legible">' + 
-        outputRatio(most_legible, ratio_mostlegible, colorArray[i], AANORMALRATIO) + 
-        outputRatio(most_legible, ratio_mostlegible, colorArray[i], AALARGERATIO) + 
-      '</div>';
+    results.innerHTML +=
+    `<div class="results__row">
+      <div class="results__col ratios__original">
+        <div class="original__label">${colorArray[i]}</div>
+        <div class="original__swatch" style="background-color: ${colorArray[i]}';"></div>
+      </div>
+      <div class="results__col ratios__on-white">
+        ${outputRatio(colorArray[i], ratio_onwhite, '#fff', AANORMALRATIO)}
+        ${outputRatio(colorArray[i], ratio_onwhite, '#fff', AALARGERATIO)}
+      </div>
+      <div class="results__col ratios__on-black">
+        ${outputRatio(colorArray[i], ratio_onblack, '#000', AANORMALRATIO)}
+        ${outputRatio(colorArray[i], ratio_onblack, '#000', AALARGERATIO)}
+      </div>
+      <div class="results__col ratios__most-legible">
+        ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AANORMALRATIO)}
+        ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AALARGERATIO)}
+      </div>
+    </div>`;
   }
-  
+
   // make the results content visible
   resultsBlock.style.display = 'block';
   resultsBlock.style.visibility = 'visible';
