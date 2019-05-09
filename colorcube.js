@@ -88,8 +88,8 @@ function outputRatio(color, ratio, base, target) {
 
   var output =
   `<div class="color-ratio__wrapper ${size} ${passfail}">
-    <div class="color-ratio__label">color over ${color}</div>
-    <div class="color-ratio__swatch" style="color: ${color}; border-color: ${color}; background-color: ${base};">Aa</div>
+    <div class="color-ratio__label">color over ${base}</div>
+    <div class="color-ratio__swatch" style="color: ${base}; border-color: ${base}; background-color: ${color};">Aa</div>
     <span class="fa fa-${iclass}"></span>
     <span class="color-ratio__passfail" title="Color ratio ${ratio} minus target ratio ${target}">
       <b>${passfail}</b>${difference}
