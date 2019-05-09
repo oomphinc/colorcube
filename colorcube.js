@@ -141,7 +141,7 @@ button.onclick = function(e) {
     `<div class="results__row">
       <div class="results__col ratios__original">
         <div class="original__label">${colorArray[i]}</div>
-        <div class="original__swatch" style="background-color: ${colorArray[i]}';"></div>
+        <div class="original__swatch" style="background-color: ${colorArray[i]};"></div>
       </div>
       <div class="results__col ratios__on-white">
         ${outputRatio(colorArray[i], ratio_onwhite, '#fff', AANORMALRATIO)}
