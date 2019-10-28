@@ -1,0 +1,11 @@
+// Utilities to make hiding or showing an element quicker
+
+@mixin hide {
+  display: none;
+  visibility: hidden;
+}
+
+@mixin show($d: block) {
+  display: $d;
+  visibility: visible;
+}

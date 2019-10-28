@@ -1,0 +1,96 @@
+/// Various ways to do line clamping
+/// @author jhogue
+///
+/// @param {String} Max-width value
+///
+/// @example scss - Usage
+///   // .element {
+///   //   @include single-line-clamp(em(240));
+///   // }
+///
+/// @example css - Output
+///   // .element {
+///   //   max-width: 15em;
+///   //   overflow: hidden;
+///   //   text-overflow: ellipsis;
+///   //   white-space: nowrap;
+///   // }
+///
+@mixin single-line-clamp($width) {
+  max-width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/// Simple approach for multi-lines
+/// @author jhogue
+///
+/// @param {Numeric} Number of lines to clamp to
+/// @param {String} Font-size
+/// @param {String} Line-height
+///
+/// @example scss - Usage
+///   // .element {
+///   //   @include multi-line-clamp(2);
+///   // }
+///
+/// @example css - Output
+///   // .element {
+///   //   position: relative;
+///   //   overflow: hidden;
+///   //   max-height: 3.125rem;
+///   //   padding-right: 1em;
+///   // }
+///   // .element::before,
+///   // .element::after {
+///   //   position: absolute;
+///   //   bottom: 0;
+///   //   right: 0;
+///   // }
+///   // .element::before {
+///   //   z-index: 2;
+///   //   content: '\2026';
+///   // }
+///   // .element::after {
+///   //   content: "";
+///   //   z-index: 1;
+///   //   width: 1em;
+///   //   height: 1em;
+///   // }
+///
+/// @example With more complicated $font-size declaration
+///   // .element {
+///   //   @include multi-line-clamp(2, rem(map-get(map-get($type-sizes, x-large), h3)));
+///   // }
+///
+@mixin multi-line-clamp($lines, $fs: $font-size-base, $lh: $line-height-base) {
+  // Set up the variables
+  $lines: $lines * 1rem;
+  $fs: strip-unit($fs);
+  $lh: strip-unit($lh);
+  
+  position: relative;
+  overflow: hidden;
+  max-height: ($lh * $fs) * $lines;
+  padding-right: 1em; // space for ellipsis
+  
+  &::before,
+  &::after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  &::before {
+    z-index: 2;
+    content: '\2026';
+  }
+  
+  &::after {
+    content: "";
+    z-index: 1;
+    width: 1em;
+    height: 1em;
+  }
+}

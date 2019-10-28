@@ -1,0 +1,124 @@
+////
+/// Oomph Scaffold Functions
+/// @access public
+/// @group Oomph Functions
+/// @author Oomph, Inc. UX Engineers
+/// @parameter none
+/// @require no 3rd party requirements
+////
+
+
+/// Remove (strip) Units
+/// @author Bourbon / Thoughbot
+/// @parameter {Value} $value -Value, assumed number with unit
+/// @example  scss - Usage
+///   line-height: strip-unit(1.5em);
+/// @example css - Output
+///   line-height: 1.5;
+@function strip-unit($value) {
+  @return ($value / ($value * 0 + 1));
+}
+
+
+/// px()
+/// Change a unitless value to px
+/// @author jhogue
+/// @require strip-unit()
+/// @param {float} $value - Numeric value assumed to be pixels
+/// @example scss - Usage
+///   width: px(48);
+/// @example css - Output
+///   width: 48px;
+@function px($value) {
+  @if not unitless($value) {
+    $value: strip-unit($value);
+  }
+  @return ($value * 1px);
+}
+
+
+/// em()
+/// Change a (assumed) pixel value to an em
+/// @author Bourbon / Thoughbot
+/// @require strip-unit()
+/// @param {float} $value - Numeric value assumed to be pixels
+/// @param {float} $base - (optional) Numeric value for the pixel multiplier
+/// @example scss - Usage
+///   font-size: em(24);
+///   width: em(48, 24);
+/// @example css - Output
+///   font-size: 1.5em;
+///   width: 2em;
+@function em($value, $base: 16) {
+  @if not unitless($value) {
+    $value: strip-unit($value);
+  }
+  @if not unitless($base) {
+    $base: strip-unit($base);
+  }
+  @return ($value / $base) * 1em;
+}
+
+
+/// rem()
+/// Change a (assumed) pixel value to an rem
+/// @author Bourbon / Thoughbot
+/// @require strip-unit()
+/// @param {float} $value - Numeric value assumed to be pixels
+/// @param {float} $base - (very optional) Numeric value for the pixel multiplier
+/// @example scss - Usage
+///   width: rem(48);
+/// @example css - Output
+///   width: 3rem;
+@function rem($value, $base: 16px) {
+  @if not unitless($value) {
+    $value: strip-unit($value);
+  }
+  @if not unitless($base) {
+    $base: strip-unit($base);
+  }
+  @return ($value / $base) * 1rem;
+}
+
+
+/// clearfix()
+/// Clearfix still useful, though less and less
+/// @author Bourbon / Thoughbot
+/// @require {None}
+/// @param {None}
+/// @example scss - Usage
+///   .element {
+///     @include clearfix;
+///   }
+/// @example css - Output
+///   .element::after {
+///     clear: both;
+///     content: "";
+///     display: block;
+///   }
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+
+/// percent-color() =
+/// Emulate the way Adobe Illustrator allows percentages of defined global colors
+/// @link http://thesassway.com/intermediate/mixins-for-semi-transparent-colors
+/// @require Bourbon strip-units(), SASS opacify() and mix()
+/// @param $color - A color as Hex, RGB or HSL. Percent as numeric
+/// @param $percent - Optional background color for mixing function
+/// @param $background [white]
+/// @example scss - Usage
+///   background-color: percent-color(#666, 50%);
+/// @example css - Output
+///   background-color: #ccc;
+@function percent-color($color, $percent, $background: white) {
+  $percent: strip-unit($percent);
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  @return $solid-color;
+}

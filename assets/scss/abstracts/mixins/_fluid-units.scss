@@ -1,0 +1,81 @@
+/// fluid-units() =
+/// Set a minimum value, maximum value, and use calc() to fluidly go from one to the other in between
+/// @author J. Hogue @artinruins
+/// @link http://www.sassmeister.com/gist/7f22e44ace49b5124eec
+/// @link Inspired by http://madebymike.com.au/writing/precise-control-responsive-typography/
+///
+/// @require All numbers passed must be the same unit and unitless. The last parameter is the unit of the output
+///
+/// @param {List} $properties
+///   List one or multiple properties to assign values to
+///
+/// @param {String} $min-value
+/// @param {String} $max-value
+///   Min/Max values for the measurement. Both should be unitless values.
+///
+/// @param {String} $min-vw
+/// @param {String} $max-vw
+///   Min/Max viewport width. Which viewport "locks" should the fluid measurements start and end at?
+///
+/// @param {String} $unit
+///   Assumes 1rem by default
+///
+/// @example scss - Usage with CSS vars
+///  // .element {
+///  //   @include fluid-units('padding-top' 'padding-bottom', 1, 3, (480/16), (1200/16), 1rem);
+///  // }
+///
+/// @example css - Output
+///  // .element {
+///  //   padding-top: 1rem;
+///  //   padding-bottom: 1rem;
+///  // }
+///  // @media (min-width: 30rem) {
+///  //   .element {
+///  //     padding-top: calc(1rem + (3 - 1) * (100vw - 30rem) / 35);
+///  //     padding-bottom: calc(1rem + (3 - 1) * (100vw - 30rem) / 35);
+///  //   }
+///  // }
+///  // @media (min-width: 75rem) {
+///  //   .element {
+///  //     padding-top: 3rem;
+///  //     padding-bottom: 3rem;
+///  //   }
+///  // }
+///
+
+/// Helper function
+@function fluid-calc($min-value, $max-value, $min-vw, $max-vw, $unit: 1rem) {
+  @return calc(#{$min-value * $unit} + (#{$max-value} - #{$min-value}) * ((100vw - #{$min-vw * $unit}) / #{$max-vw - $min-vw}));
+}
+
+/// Actual mixin
+@mixin fluid-units($properties, $min-value, $max-value, $min-vw, $max-vw, $unit: 1rem, $mobile: true) {
+  
+  // Strip units if not unitless
+  $min-value: strip-unit($min-value);
+  $max-value: strip-unit($max-value);
+  $min-vw: strip-unit($min-vw);
+  $max-vw: strip-unit($max-vw);
+  
+  // Mobile-first: declare the $min-value as the default for any property passed
+  @if ($mobile == true) {
+    @each $property in $properties {
+      #{$property}: #{$min-value * $unit};
+    }
+  }
+
+  // Now declare the creamy, fluid center using a media query at the min-width
+  @media (min-width: #{$min-vw * $unit}) {
+    @each $property in $properties {
+      #{$property}: fluid-calc($min-value, $max-value, $min-vw, $max-vw, $unit);
+    }
+  }
+
+  // Finally, stop the crazy fluidity and set the max value at the max viewport width
+  @media (min-width: #{$max-vw * $unit}) {
+    @each $property in $properties {
+      #{$property}: #{$max-value * $unit};
+    }
+  }
+}

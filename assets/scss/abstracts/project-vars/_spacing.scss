@@ -1,0 +1,13 @@
+// Establishing some vertical rhythm for block elements
+// We use em so that they scale based on the font size of the element and breakpoint
+$project-vertical-rhythm: ($project-lineheight-base * 1rem);
+
+// Horizontal spacing
+$inside-min: 1rem;
+$inside-max: 2rem;
+
+$outside-min: 1rem;
+$outside-max: 3rem;
+
+$vertical-min: $project-vertical-rhythm;
+$vertical-max: ($project-vertical-rhythm * 3);

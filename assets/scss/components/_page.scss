@@ -1,0 +1,23 @@
+
+.p {
+  &__header {
+    background-color: $project-color-body-bg;
+  }
+  
+  &__main {
+    background-color: $project-color-main-bg;
+  }
+  
+  &__footer {
+    background-color: $project-color-body-bg;
+    
+    small {
+      color: palette(grey-300);
+    }
+    
+    &__logo {
+      float: left;
+      margin-right: $inside-min;
+    }
+  }
+}

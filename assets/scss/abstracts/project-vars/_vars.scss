@@ -1,0 +1,20 @@
+//
+// General variables
+//
+
+$transition: all 250ms ease;
+$kerning: 0.03125em;
+
+// Focus styles
+$focus-outline-width: 0.125rem;
+$focus-outline-style: solid;
+
+// Z Indices
+$z-indices: (
+  base: 1,
+);
+
+// Z-index helper
+@function z($name: base) {
+  @return map-get($z-indices, $name);
+}

@@ -1,0 +1,114 @@
+
+/// Deep getter to go into the $type-sizes array
+/// @author jhogue
+///
+/// @require {map} $type-sizes
+///
+/// @require {function} type-of
+/// @require {function} map-get
+///
+/// @param {String} Breakpoint map key name
+/// @param {String} Element name [base]
+///
+/// @example scss - Usage
+///    font-size: px(one-type-size('x-large', 'h1'));
+///
+/// @example css - Output
+///    font-size: 31px;
+///
+@function one-type-size($element, $break: null, $unit: 1rem) {
+  @if $break == null {
+    // No breakpoint name is defined, so grab the first one
+    $keys: map-keys($type-sizes);
+    $break: nth($keys, 1);
+  }
+  @if type-of($type-sizes) != 'map' {
+    @error 'A list named $type-sizes is undefined. [Function one-type-size()]';
+  }
+  @if type-of(map-get($type-sizes, $break)) != 'map' {
+    @error 'Can’t reach into the $type-sizes map for another map. [Function one-type-size()]';
+  }
+  $elementsize: map-get(map-get($type-sizes, $break), $element);
+  
+  // Not sure I like this. We assume pixels in and REM/EM out with this math
+  @return strip-unit(rem($elementsize)) * $unit;
+}
+
+
+/// Use fluid-units() to output all sizes for a typographic element
+/// @author jhogue
+///
+/// @require {map} $type-sizes
+/// @require {map} $project-breakpoints
+///
+/// @require {function} type-of
+/// @require {function} map-keys
+/// @require {function} map-has-key
+/// @require {function} nth
+/// @require {function} length
+/// @require {function} em
+///
+/// @require {function} bp
+///
+/// @require {mixin} one-type-size
+/// @require {mixin} fluid-units
+///
+/// @param {String} Element name [base]
+/// @param {String} Render mobile values [true]
+///
+/// @example scss - Usage
+///   @include one-element-size(h1);
+///
+/// @example css - Output
+///   h1 {
+///     font-size: 1.9375em;
+///   }
+///   @media (min-width: 30em) {
+///     h1 {
+///       font-size: calc(1.9375em + 0.8125 * (100vw - 30em) / 55);
+///     }
+///   }
+///   @media (min-width: 85em) {
+///     h1 {
+///       font-size: calc(1.9375em + 0.8125 * 1em);
+///     }
+///   }
+///
+@mixin fluid-type-sizes($elem: 'base', $mobile: true) {
+  @if type-of($type-sizes) != 'map' {
+    @error 'A list named $type-sizes is undefined. [Mixin one-element-size()]';
+  }
+
+  // List only the keys from the $type-sizes list.
+  // Expects only two. Only uses the first and last
+  $keys: map-keys($type-sizes);
+  $first-key: nth($keys, 1);
+  $last-key: nth($keys, length($keys));
+
+  // Change these key values into a typographic value
+  // by getting the matching key/value pair from the $type-sizes array
+  $min-value: strip-unit((one-type-size($elem, $first-key)));
+  $max-value: strip-unit((one-type-size($elem, $last-key)));
+
+  // Use the same keys to grab the corresponding breakpoints
+  @if type-of($project-breakpoints) != 'map' {
+    @error 'A list named $project-breakpoints is undefined. [Mixin one-element-size()]';
+  }
+  @if not map-has-key($project-breakpoints, $first-key) {
+    @error 'Your $type-sizes map key "#{$first-key}" does not have a corresponding key in $project-breakpoints. [Mixin one-element-size()]';
+  }
+  @if not map-has-key($project-breakpoints, $last-key) {
+    @error 'Your $type-sizes map key "#{$last-key}" does not have a corresponding key in $project-breakpoints. [Mixin one-element-size()]';
+  }
+
+  $min-vw: strip-unit(rem(bp($first-key)));
+  $max-vw: strip-unit(rem(bp($last-key)));
+
+  // Finally, use this mixin to set the base size and max size within the viewport range
+  @if $min-value != $max-value {
+    // Min and Max are different, so output the crazy calc function
+    @include fluid-units('font-size', $min-value, $max-value, $min-vw, $max-vw, 1rem, $mobile);
+  } @else {
+    font-size: ($min-value * 1rem);
+  }
+}

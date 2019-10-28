@@ -1,0 +1,182 @@
+// Resets of Bootstrap
+
+b,
+strong,
+th,
+dt {
+  font-weight: $font-weight-bold;
+  letter-spacing: $kerning;
+}
+
+// All display and utility classes
+//.display-1,
+//.display-2,
+//.display-3,
+//.display-4 {}
+
+.display-1 {
+  @include fluid-type-sizes('display-1');
+  line-height: 1.105;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.display-2 {
+  @include fluid-type-sizes('display-2');
+  line-height: 1;
+  margin-top: 1.625rem;
+  margin-bottom: 1.5rem;
+}
+
+.display-3 {
+  @include fluid-type-sizes('display-3');
+  line-height: 1.1875;
+  margin-top: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.display-4 {
+  @include fluid-type-sizes('display-4');
+  line-height: 1.375;
+  margin-top: -0.5rem;
+  margin-bottom: 0.875rem;
+}
+
+// All headers and utility classes
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  color: palette(grey-100);
+  font-family: $font-family-serif;
+  font-weight: normal;
+}
+
+// Set Type fluidly
+h1,
+.h1 {
+  @include fluid-type-sizes('h1');
+  //margin-top: 1.875rem;
+  //margin-bottom: 1.625rem;
+}
+
+h2,
+.h2 {
+  @include fluid-type-sizes('h2');
+  //line-height: 1.333;
+  //margin-top: 2.125rem;
+  //margin-bottom: 1.375rem;
+}
+
+h3,
+.h3 {
+  @include fluid-type-sizes('h3');
+  //font-weight: $font-weight-bold;
+  //margin-top: 2.5rem;
+  //margin-bottom: 1.25rem;
+}
+
+h4,
+.h4 {
+  @include fluid-type-sizes('h4');
+  //margin-top: -0.25rem;
+  //margin-bottom: 1.5rem;
+}
+
+h5,
+.h5 {
+  @include fluid-type-sizes('h5');
+  font-weight: $font-weight-bold;
+  //margin-top: 1.625rem;
+  //margin-bottom: 0.25rem;
+}
+
+h6,
+.h6 {
+  @include fluid-type-sizes('h6');
+  font-weight: $font-weight-bold;
+  letter-spacing: $kerning;
+  //line-height: 1.35;
+  //margin-top: 1.625rem;
+  //margin-bottom: 0.125rem;
+  text-transform: uppercase;
+}
+
+// Base size applied to elements (not containers)
+p,
+blockquote,
+address,
+li,
+dt,
+dd,
+label,
+input,
+.text-size-normal {
+  @include fluid-type-sizes('base', false);
+}
+
+// Margin bottoms
+// p already declared properly via BS4
+//blockquote,
+//address,
+//ul,
+//ol,
+//dl {
+//  margin-bottom: $paragraph-margin-bottom;
+//}
+
+// A little more space after list-items
+li {
+  padding-bottom: 0.125rem;
+}
+
+details {
+  border-bottom: 1px solid rgba($white, 0.15);
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+summary {
+  
+  > * {
+    display: inline-block;
+  }
+  
+  &::-webkit-details-marker {
+    color: palette(white);
+    font-size: 1.75em;
+  }
+}
+
+
+// Type utilities
+small,
+.text-small {
+  @include fluid-type-sizes('small');
+}
+
+.text-uppercase {
+  letter-spacing: $kerning;
+  text-transform: uppercase;
+}
+
+.text-italic {
+  font-family: $font-family-serif;
+  font-style: italic;
+  letter-spacing: $kerning;
+}
+
+abbr,
+.text-abbr {
+  font-size: 93.75%;
+  letter-spacing: $kerning;
+  text-transform: uppercase;
+}
