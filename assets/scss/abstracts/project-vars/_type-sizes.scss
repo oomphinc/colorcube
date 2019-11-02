@@ -1,0 +1,51 @@
+//
+// Fluid Type-size system
+//
+
+////
+/// Required list of sizes for typographics elements
+/// 1) Decide which breakpoint that the fluidity will begin and end.
+///    These should correspond to named keys in the $rpp-breakpoints map
+/// 3) Set base font sizes for mobile first
+/// 4) Set the desired sizes for desktop
+/// Mixins will fluidly change between the two values
+////
+
+
+/// Typographic Scales Map
+/// List as unitless pixels, use SASS function to convert to whatever you want
+///
+$type-sizes: (
+
+  // 1.125 typographic scale base 15
+  small: (
+    small: 13,
+    base: 15,
+    h6: 15,
+    h5: 16,
+    h4: 18,
+    h3: 20,
+    h2: 22,
+    h1: 24,
+    display-4: 27,
+    display-3: 30,
+    display-2: 33,
+    display-1: 37
+  ),
+
+  // 1.22 typographic scale base 18
+  x-large: (
+    small: 15,
+    base: 18,
+    h6: 18,
+    h5: 21,
+    h4: 25,
+    h3: 30,
+    h2: 36,
+    h1: 43,
+    display-4: 52,
+    display-3: 63,
+    display-2: 76,
+    display-1: 92
+  ),
+);

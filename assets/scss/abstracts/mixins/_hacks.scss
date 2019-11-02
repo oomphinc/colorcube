@@ -1,0 +1,22 @@
+///
+/// Store useful Browser Hacks here
+/// Test them to pass the Linter and then document them for everyone else
+///
+/// See http://browserhacks.com/ for some inspiration when you encounter a browser that needs hacking
+///
+
+// Target old IE only — works for IE10 and 11, not newer
+@mixin hack-for-old-ie() {
+  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+// Target ANY Firefox browser
+@mixin hack-for-any-firefox() {
+  // stylelint-disable function-url-quotes
+  @-moz-document url-prefix() {
+    @content;
+  }
+  // stylelint-enable function-url-quotes
+}

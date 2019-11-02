@@ -1,0 +1,157 @@
+$swatch-border-width: 5px;
+
+//<div id="results-output">
+//  <div class="results__row results__row__header">
+//    <div class="results__col ratios__original">Original</div>
+//    <div class="results__col ratios__on-white">White white</div>
+//    <div class="results__col ratios__on-black">White black</div>
+//    <div class="results__col ratios__most-legible">Most readable from available</div>
+//  </div>
+//  <div class="results__row">
+//    <div class="results__col ratios__original">
+//      <div class="original__label">#d62901 </div>
+//      <div class="original__swatch" style="background-color: "></div>
+//    </div>
+//    <div class="results__col ratios__on-white">
+//      <div class="color-ratio__wrapper normal fail">
+//        <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
+//        <span class="fa fa-times-circle"></span>
+//        <span class="color-ratio__passfail"><b>fail</b> 5</span>
+//      </div>
+//      <div class="color-ratio__wrapper large pass">
+//        <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
+//        <span class="fa fa-check-circle"></span>
+//        <span class="color-ratio__passfail"><b>pass</b> 5</span>
+//      </div>
+//    </div>
+
+.results {
+  
+  &__row {
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid rgba($white, 0.15);
+    padding-top: 1rem;
+
+    &__header {}
+  }
+
+  &__col {
+    padding-bottom: 1rem;
+    flex: 1 0 22%;
+  }
+}
+
+// Specific Columns
+.ratios {
+
+  &__original {
+    flex: 1 0 34%;
+  }
+
+  &__on-white {}
+
+  &__on-black {}
+  
+  &__most-legible {}
+}
+
+
+// Original color
+.original {
+  
+  &__label {}
+
+  &__swatch {
+    height: rem(120);
+    width: rem(120);
+  }
+}
+
+//  <div class="color-ratio__wrapper large pass">
+//    <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
+//    <span class="fa fa-check-circle"></span>
+//    <span class="color-ratio__passfail"><b>pass</b> 5</span>
+//  </div>
+.color-ratio {
+  
+  &__wrapper {
+    .icon {
+      color:  palette(white);
+      display: inline-block;
+      font-size: rem(24);
+      text-align: center;
+      width: 0.875em;
+    }
+
+    &.pass b { color: $pass; }
+
+    &.edge b { color: $edge; }
+
+    &.fail b { color: $fail; }
+  }
+
+  &__wrapper + &__wrapper {
+    margin-top: - $swatch-border-width;
+  }
+
+  &__label {
+    padding-bottom: 0.5rem;
+    
+    strong {
+      color: palette(white);
+    }
+    
+    .target-45 &,
+    .target-3 & {
+      @include hide;
+    }
+  }
+
+  &__swatch {
+    border-style: solid;
+    border-width: $swatch-border-width;
+    display: inline-block;
+    line-height: $project-lineheight-tight;
+    overflow: hidden;
+    padding: 0.625rem 0.5rem;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 7rem;
+  }
+  
+  .fail &__swatch::before {
+    border: 2px solid currentColor;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    transform: translate(-50%, -50%) rotate(-33deg);
+  }
+
+  .target-7 &__swatch {}
+
+  .target-45 &__swatch {}
+  
+  .target-3 &__swatch {}
+
+  &__passfail {
+    text-transform: uppercase;
+  }
+  
+  &__results {
+    display: inline-block;
+    padding-left: 0.5rem;
+    vertical-align: middle;
+  }
+}
+
+.level {
+  
+  &--AAplus,
+  &--AAAplus {
+    font-size: rem(24);
+  }
+}

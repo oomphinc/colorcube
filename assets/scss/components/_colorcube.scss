@@ -1,0 +1,75 @@
+.cc {
+  &__brand {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    
+    &__title {
+      
+      a {
+        color: palette(grey-100);
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 0.5rem;
+        text-decoration: none;
+
+        img {
+          margin: 0 1rem -0.625rem 0;
+        }
+      }
+    }
+    
+    &__subtitle {}
+  }
+  
+  &__form {
+    
+    &__label {
+      color: palette(grey-100);
+    }
+    
+    &__textarea {
+      color: palette(grey-300);
+      background-color: $project-color-body-bg;
+      border: 1px solid rgba($white, 0.15);
+      padding: 0.75rem;
+      height: 10.5em;
+      width: 100%;
+    }
+    
+    &__button {
+      background-color: palette(teal);
+      border: 0;
+      color: palette(blackest);
+      cursor: pointer;
+      display: inline-block;
+      font-weight: $font-sans-weight-bold;
+      padding: 0.5rem 1.5rem;
+      text-transform: uppercase;
+      transition: $transition;
+      -webkit-appearance: none;
+      
+      &:hover,
+      &:focus {
+        background-color: palette(blue);
+        color: palette(white);
+      }
+      
+      &:active {
+        background-color: palette(red);
+        color: palette(white);
+      }
+    }
+  }
+  
+  &__results {
+    @include hide;
+
+    &__title {}
+    
+    &__content {}
+  }
+}

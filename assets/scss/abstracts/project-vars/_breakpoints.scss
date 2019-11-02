@@ -1,0 +1,31 @@
+//
+// Breakpoints
+//
+
+$project-breakpoints: (
+  // List as unitless pixels
+  base: 440,  // 620-440= 180
+  small: 620,  // 760-620= 140
+  medium: 760,  // 960-760= 200
+  large: 960,  // 1200-960= 240
+  x-large: 1200, // 1520-1200 = 320
+  xx-large: 1520  // 1520-1200 = 320
+);
+
+$project-maxwidths: (
+  base: 1380,
+  text: 800
+);
+
+// Helpers
+@function bp($bp) {
+  @return em(map-get($project-breakpoints, $bp));
+}
+
+// For responsive typography
+// Declare a minimum and maximum viewport size for fluidity to happen within
+$min-vw: strip-unit(em(bp(base)));
+$max-vw: strip-unit(em(bp(large)));
+
+$maxwidth-container: em(map-get($project-maxwidths, base));
+$maxwidth-text: em(map-get($project-maxwidths, text));

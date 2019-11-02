@@ -1,0 +1,46 @@
+//
+// Color system
+//
+
+$white: #fff;
+$black: #1a1818; // slightly warm black h0 s5 b10
+
+// Oomph color palette
+$project-colors: (
+  red: #d62901,
+  teal: #70BDC1,
+  blue: #4a7090,
+  denim: #2d5070,
+  orange: #e89424,
+  green: #008a65,
+  white: $white,
+  grey-100: #f0e4e4, // h0 s5 b94
+  grey-300: #b8aeae, // h0 s5 b72
+  grey-400: #999191, // h0 s5 b60
+  black: $black,
+  blackest: #0f0e0e
+);
+
+// Helper
+@function palette($color) {
+  @return map-get($project-colors, $color);
+}
+
+
+// Project colors
+$project-color-body-bg: palette(blackest);
+$project-color-main-bg: palette(black);
+$project-color-body-fg: palette(grey-400);
+
+// Links
+$link-color: palette(teal); 
+$link-decoration: underline;
+$link-hover-color: palette(grey-100);
+$link-hover-decoration: none;
+
+// Other 
+$code-color: palette(green);
+
+$pass: #14cc45;
+$fail: #f23900;
+$edge: #fe6;

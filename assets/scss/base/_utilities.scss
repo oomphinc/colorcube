@@ -1,0 +1,60 @@
+
+// Spacing
+.u__space__outer {
+  @include fluid-units (
+    'padding-left' 'padding-right',
+    $outside-min,
+    $outside-max,
+    $min-vw,
+    $max-vw,
+    1rem
+  );
+}
+
+.u__space__inner {
+  @include fluid-units (
+    'padding-left' 'padding-right',
+    $inside-min,
+    $inside-max,
+    $min-vw,
+    $max-vw,
+    1rem
+  );
+}
+
+.u__space__vertical {
+  @include fluid-units (
+    'padding-top' 'padding-bottom',
+    $vertical-min,
+    $vertical-max,
+    $min-vw,
+    $max-vw,
+    1rem
+  );
+}
+
+.u__space__vertical--top {
+  @include fluid-units (
+    'padding-top',
+    $vertical-min,
+    $vertical-max,
+    $min-vw,
+    $max-vw,
+    1rem
+  );
+}
+
+.u__space__vertical--bottom {
+  @include fluid-units (
+    'padding-bottom',
+    $vertical-min,
+    $vertical-max,
+    $min-vw,
+    $max-vw,
+    1rem
+  );
+}
+
+.text-light {
+  color: palette(grey-100);
+}

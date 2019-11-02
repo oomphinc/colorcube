@@ -1,0 +1,126 @@
+// A simple, modern reset without a lot of opinions
+// https://hankchizljaw.com/wrote/a-modern-css-reset/
+
+// Box sizing rules
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Remove default margin
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+// Set core body defaults
+body {
+  //line-height: 1.5;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  
+  // Since we replaced BS4 Reboot, need to declare some things:
+  font-family: $font-family-base;
+  font-size: 100%;
+  font-weight: $font-weight-base;
+  line-height: $project-lineheight-base;
+  color: $project-color-body-fg;
+  text-align: left;
+  background-color: $project-color-body-bg;
+  
+  @media (max-width: bp(small)) {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+// Remove styles on ul, ol elements with a class attribute
+//ul[class],
+//ol[class] {
+//  list-style: none;
+//  margin: 0; // be careful, though, this can be have more specificity than we want
+//}
+.list-unstyled {
+  margin: 0;
+}
+
+// A elements that don't have a class get default styles
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+// Make images easier to work with
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// Natural flow and rhythm in articles by default
+.rhythm > * + * {
+  margin-top: $project-vertical-rhythm;
+}
+
+// Inherit fonts for inputs and buttons
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+
+  transition: $transition;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// And undo these styles for placeholder links/named anchors (without href)
+// which have not been made explicitly keyboard-focusable (without tabindex).
+// See https://github.com/twbs/bootstrap/issues/19402
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: 0;
+  }
+}
+
+// Suppress the focus outline on elements that cannot be accessed via keyboard.
+// This prevents an unwanted focus outline from appearing around elements that
+// might still respond to pointer events.
+// Credit: https://github.com/suitcss/base
+[tabindex="-1"]:focus {
+  outline: 0 !important;
+}
+
+// Remove all animations and transitions for people that prefer not to see them
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
