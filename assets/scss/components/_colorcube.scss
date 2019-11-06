@@ -32,12 +32,25 @@
     }
     
     &__textarea {
+      height: 10.5em;
+      width: 100%;
+    }
+    
+    &__input {
       color: palette(grey-300);
       background-color: $project-color-body-bg;
       border: 1px solid rgba($white, 0.15);
       padding: 0.75rem;
-      height: 10.5em;
-      width: 100%;
+    }
+    
+    &__row &__label {
+      display: inline-block;
+      padding: 0.75rem;
+      width: 4em;
+    }
+    
+    &__row &__input {
+      width: 6em;
     }
     
     &__button {
