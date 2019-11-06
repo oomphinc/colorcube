@@ -58,19 +58,35 @@ var colorArray = [];
   }
 })();
 
-function getRoundedRatio(color1, color2) {
-  var ratio = tinycolor.readability(color1, color2);
-  ratio = Math.round(ratio * 10) / 10;
-  return ratio;
+function round(number) {
+  return Math.round(number);
 }
 
-function outputRatio(color, ratio, base, target) {
+// Preserves a place after the decimal
+function round2places(number) {
+  return (Math.round(number * 100) / 100).toFixed(2);
+}
+
+function decimalToPercent(number) {
+  return Math.round(number * 100);
+}
+
+function getRoundedRatio(color1, color2) {
+  var ratio = tinycolor.readability(color1, color2);
+  return round2places(ratio);
+}
+
+function outputRatio(color, ratio, bg, target) {
   // Default values: AA normal and AAA large with failing grades
-  var passfail = 'fail',
+  var color = tinycolor(color),
+      hex = color.toHexString(),
+      background = tinycolor(bg),
+      bghex = background.toHexString(),
+      passfail = 'fail',
       output = '',
       targetclass = 'target-45',
       icontent = '&#x2718;', // x mark
-      swatchcontent = '<p class="level--AA">AA</p><span class="level--AAAplus">AAA</span> 24px';
+      swatchcontent = '<p class="level--AA">AA</p><span class="level--AAAplus">AAA</span> 24px',
       difference = 0;
 
   // Check for passing grades
@@ -95,12 +111,12 @@ function outputRatio(color, ratio, base, target) {
     swatchcontent = '<span class="level--AAplus">AA</span> 24px';
   }
 
-  difference = Math.round10( (ratio - target), -1 );
+  difference = round2places( (ratio - target), -1 );
 
   var output =
   `<div class="color-ratio__wrapper ${targetclass} ${passfail}" title="Criteria needed minimum ${target}">
-    <p class="color-ratio__label"><strong>${ratio}</strong>: ${color} with ${base}</p>
-    <div class="color-ratio__swatch" style="color: ${color}; border-color: ${color}; background-color: ${base};">${swatchcontent}</div>
+    <p class="color-ratio__label"><strong>${ratio}</strong>: with ${bghex}</p>
+    <div class="color-ratio__swatch" style="color: ${hex}; border-color: ${hex}; background-color: ${bghex};">${swatchcontent}</div>
     <p class="color-ratio__results">
       <span class="icon">${icontent}</span>
       <span class="color-ratio__passfail">
@@ -109,6 +125,25 @@ function outputRatio(color, ratio, base, target) {
     </p>
   </div>`;
   return output;
+}
+
+function outputAllRatios(color) {
+  var ratio_onwhite = getRoundedRatio(color, WHITE),
+      ratio_onblack = getRoundedRatio(color, BLACK),
+      results = "";
+  
+  results = 
+    `<div class="results__col ratios__on-white">
+        ${outputRatio(color, ratio_onwhite, '#fff', AAANORMALRATIO)}
+        ${outputRatio(color, ratio_onwhite, '#fff', AANORMALRATIO)}
+        ${outputRatio(color, ratio_onwhite, '#fff', AALARGERATIO)}
+      </div>
+      <div class="results__col ratios__on-black">
+        ${outputRatio(color, ratio_onblack, '#000', AAANORMALRATIO)}
+        ${outputRatio(color, ratio_onblack, '#000', AANORMALRATIO)}
+        ${outputRatio(color, ratio_onblack, '#000', AALARGERATIO)}
+      </div>`;
+  return results;
 }
 
 var button = document.querySelector('#brand-color-button');
@@ -127,6 +162,7 @@ button.onclick = function(e) {
   results.innerHTML =
   `<div class="results__row results__row__header">
     <div class="results__col ratios__original">Original</div>
+    <div class="results__col ratios__mod"><b>Modify</b></div>
     <div class="results__col ratios__on-white">With white</div>
     <div class="results__col ratios__on-black">With black</div>
     <div class="results__col ratios__most-legible">Most legible from available</div>
@@ -144,32 +180,43 @@ button.onclick = function(e) {
   for (var i = 0; i < colorArray.length; i++) {
 
     // get the color's contrast ratios
-    var ratio_onwhite = getRoundedRatio(colorArray[i], WHITE),
-        ratio_onblack = getRoundedRatio(colorArray[i], BLACK),
-        most_legible = tinycolor.mostReadable(colorArray[i], colorArray),
-        ratio_mostlegible = getRoundedRatio(most_legible, colorArray[i]);
+    var most_legible = tinycolor.mostReadable(colorArray[i], colorArray),
+        ratio_mostlegible = getRoundedRatio(most_legible, colorArray[i]),
+        color = tinycolor(colorArray[i]),
+        hex = color.toHex(),
+        hashhex = color.toHexString(),
+        hslColor = color.toHsl();
 
     // outputRatio( {color & border color}, ratio, {background color}, {ratio to test against} )
     results.innerHTML +=
     `<div class="results__row">
       <div class="results__col ratios__original">
-        <div class="original__label">${colorArray[i]}</div>
-        <div class="original__swatch" style="background-color: ${colorArray[i]};"></div>
+        <p class="original__label">${hashhex}</p>
+        <div class="original__hsl">
+          <p title="Hue"><b>H:</b> ${round(hslColor.h)}</p>
+          <p title="Saturation"><b>S:</b> ${decimalToPercent(hslColor.s)}</p>
+          <p title="Lightness"><b>L:</b> ${decimalToPercent(hslColor.l)}</p>
+        </div>
+        <div class="original__swatch" style="background-color: ${hashhex};"></div>
       </div>
-      <div class="results__col ratios__on-white">
-        ${outputRatio(colorArray[i], ratio_onwhite, '#fff', AAANORMALRATIO)}
-        ${outputRatio(colorArray[i], ratio_onwhite, '#fff', AANORMALRATIO)}
-        ${outputRatio(colorArray[i], ratio_onwhite, '#fff', AALARGERATIO)}
+      <div class="results__col ratios__mod">
+        <p class="mod__label mod-label-${i}">${hashhex}</p>
+        <div class="mod__swatch mod-swatch-${i}" style="background-color: ${hashhex};"></div>
+        <div class="mod__controls">
+          <p class="mod__hue"><label for="adjust-hue-${i}">H</label><input type="number" class="adjust-hue" data-target="${i}" data-color="${hex}" id="adjust-hue-${i}" name="adjust-hue-${i}" value="${round(hslColor.h)}" min="0" max="360" /></p>
+          <p class="mod__saturation"><label for="adjust-sat-${i}">S</label><input type="number" class="adjust-sat" data-target="${i}" data-color="${hex}" id="adjust-sat-${i}" name="adjust-sat-${i}" value="${decimalToPercent(hslColor.s)}" min="0" max="100" /></p>
+          <p class="mod__lightness"><label for="adjust-lig-${i}">L</label><input type="number" class="adjust-lig" data-target="${i}" data-color="${hex}" id="adjust-lig-${i}" name="adjust-lig-${i}" value="${decimalToPercent(hslColor.l)}" min="0" max="100" /></p>
+        </div>
       </div>
-      <div class="results__col ratios__on-black">
-        ${outputRatio(colorArray[i], ratio_onblack, '#000', AAANORMALRATIO)}
-        ${outputRatio(colorArray[i], ratio_onblack, '#000', AANORMALRATIO)}
-        ${outputRatio(colorArray[i], ratio_onblack, '#000', AALARGERATIO)}
-      </div>
-      <div class="results__col ratios__most-legible">
-        ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AAANORMALRATIO)}
-        ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AANORMALRATIO)}
-        ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AALARGERATIO)}
+      <div class="results__row">
+        <div id="row-${i}" class="results__row">
+          ${outputAllRatios(colorArray[i])}
+        </div>
+        <div class="results__col ratios__most-legible">
+          ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AAANORMALRATIO)}
+          ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AANORMALRATIO)}
+          ${outputRatio(most_legible, ratio_mostlegible, colorArray[i], AALARGERATIO)}
+        </div>
       </div>
     </div>`;
   }
@@ -180,6 +227,80 @@ button.onclick = function(e) {
 
   // jump to the results
   window.location.href = '#results-content';
-  // clear the input field
-  //document.querySelector('#brand-color--field').value = '';
 }
+
+// Adjust Hue
+$(document).on("change paste keyup blur", ".adjust-hue", function() {
+  var target = $(this).data("target"),
+      color = $(this).data("color"),
+      newValue = $(this).val(),
+      originalColor = tinycolor(color).toHsl(),
+      newColorHSL = tinycolor("hsl(" + newValue + "," + originalColor.s + ", " + originalColor.l + ")"),
+      newColorRAW = newColorHSL.toHex(),
+      newColor = newColorHSL.toHexString(),
+      targetSwatch = $('.mod-swatch-' + target),
+      targetContainer = $('#row-' + target);
+  
+  // Change the starting color on the inputs, stored in data-color
+  var inputs = $("input[data-target=" + target + "]");
+  inputs.each(function() {
+    $(this).data('color', newColorRAW);
+  });
+  $('.mod-label-' + target).html(newColor);
+  
+  // Change the swatch
+  targetSwatch.css("background-color", newColor);
+  
+  // Change the contents of the white/black outputs
+  //console.log(newColor);
+  targetContainer.html('');
+  targetContainer.html(outputAllRatios(newColor));
+});
+
+// Adjust Saturation
+$(document).on("change paste keyup blur", ".adjust-sat", function() {
+  var target = $(this).data("target"),
+      color = $(this).data("color"),
+      newValue = $(this).val(),
+      originalColor = tinycolor(color).toHsl(),
+      newColorHSL = tinycolor("hsl(" + originalColor.h + "," + newValue + ", " + originalColor.l + ")"),
+      newColorRAW = newColorHSL.toHex(),
+      newColor = newColorHSL.toHexString(),
+      targetSwatch = $('.mod-swatch-' + target),
+      targetContainer = $('#row-' + target);
+  
+  var inputs = $("input[data-target=" + target + "]");
+  inputs.each(function() {
+    $(this).data('color', newColorRAW);
+  });
+  $('.mod-label-' + target).html(newColor);
+  
+  targetSwatch.css("background-color", newColor);
+  //console.log(newColor);
+  targetContainer.html('');
+  targetContainer.html(outputAllRatios(newColor));
+});
+
+// Adjust Lightness
+$(document).on("change paste keyup blur", ".adjust-lig", function() {
+  var target = $(this).data("target"),
+      color = $(this).data("color"),
+      newValue = $(this).val(),
+      originalColor = tinycolor(color).toHsl(),
+      newColorHSL = tinycolor("hsl(" + originalColor.h + "," + originalColor.s + ", " + newValue + ")"),
+      newColorRAW = newColorHSL.toHex(),
+      newColor = newColorHSL.toHexString(),
+      targetSwatch = $('.mod-swatch-' + target),
+      targetContainer = $('#row-' + target);
+  
+  var inputs = $("input[data-target=" + target + "]");
+  inputs.each(function() {
+    $(this).data('color', newColorRAW);
+  });
+  $('.mod-label-' + target).html(newColor);
+  
+  targetSwatch.css("background-color", newColor);
+  //console.log(newColor);
+  targetContainer.html('');
+  targetContainer.html(outputAllRatios(newColor));
+});
