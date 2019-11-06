@@ -23,39 +23,60 @@
     <main class="l__main p__main">
       <article class="l__max u__space__outer">
         
-        <form action="/" class="l__max--text u__space__outer u__space__vertical cc__form" method="post">
+        <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
           <div class="g__row">
-            <div class="g__col g--two rhythm">
+            <div class="g__col g--three rhythm">
               <h2>Step 1:</h2>
-              <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Or use our default list to see what happens.</p>
+              <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Submit our default list to see what happens. Click the button and Go!</p>
             </div>
-            <div class="g__col g--two">
+            <div class="g__col g--three">
               <label class="cc__form__label" for="brand-color-field">Enter a color or list (required):</label>
-              <textarea class="cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901 
+              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901 
 #2d5070 
 rgb(112,189,193)
 rgb(232,138,46) 
 #008a65
 #373737</textarea>
-              <!-- Submit Button -->
-              <div class="cc__form__submit">
-                <input id="brand-color-button" name="brand-color-button" type="submit" class="cc__form__button" value="Get Ratios">
+            </div>
+            <div class="g__col g--three">
+              <div class="cc__form__row">
+                <label class="cc__form__label" for="white-value">Light</label>
+                <input class="cc__form__input" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
+              </div>
+              <div class="cc__form__row">
+                <label class="cc__form__label" for="black-value">Dark</label>
+                <input class="cc__form__input" type="text" id="black-value" name="black-value" value="#101010" required />
               </div>
             </div>
+            
+            <!-- Submit Button -->
+            <div class="cc__form__submit g--wide text-align-center">
+              <input id="brand-color-button" name="brand-color-button" type="submit" class="cc__form__button" value="Get Ratios">
+            </div>
+            
           </div>
         </form>
 
         <div id="results-content" class="u__space__vertical--bottom cc__results">
-          <div class="l__max--text u__space__outer rhythm cc__results__description">
-            <h2 class="cc__results__title">Step 2: Review your colors!</h2>
-            <h3>Criteria</h3>
-            <p>This tool shows three different ratio targets and how your color performs with each — white, black, or other colors in your palette:</p>
-            <ul>
-              <li>To reach WCAG Level AAA, a <strong class="text-light">7.0</strong> or greater ratio is needed. For large-scale text a ratio of <strong class="text-light">4.5</strong> is needed.</li>
-              <li>To reach a WCAG Level AA, <strong class="text-light">4.5</strong> or greater ratio is needed. For large-scale text a ratio of <strong class="text-light">3.0</strong> is needed.</li>
-              <li>Text that is considered “Large-scale” is <strong>18 points (24px)</strong> or larger or <strong>14 points (19px) and bold</strong> or larger.</li>
-            </ul>
-            <p>Success criteria can be found at the <a title="Go to w3 website in a new window" target="_blank" href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 minimum contrast ratios</a> page.</p>
+          <div class="u__space__outer cc__results__description">
+            <h2 class="cc__results__title u__space__vertical--bottom">Step 2: Review colors!</h2>
+            <div class="g__row">
+              <div class="g__col g--two rhythm">
+                <h3>Criteria</h3>
+                <p>This tool shows three different ratio targets and how your color performs with each — white, black, or other colors in your palette:</p>
+                <ul>
+                  <li><strong class="text-light">WCAG Level AAA:</strong> a contrast ratio equal or greater than <strong>7.0</strong>. For large-scale text, a ratio equal or greater than <strong>4.5</strong>.</li>
+                  <li><strong class="text-light">WCAG Level AA:</strong> a contrast ratio equal or greater than <strong>4.5</strong>. For large-scale text, a ratio equal or greater than <strong>3.0</strong>.</li>
+                  <li>Text that is considered “Large-scale” is <strong>18 points (24px)</strong> or larger or <strong>14 points (19px) and bold</strong> or larger.</li>
+                </ul>
+              </div>
+              <div class="g__col g--two rhythm">
+                <p>For more details about success criteria, see the <a title="Go to w3 website in a new window" target="_blank" href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 minimum contrast ratios</a> page.</p>
+                
+                <h3>Modify with HSL</h3>
+                <p><strong>Why HSL?</strong> By modifying primarily the saturation and/or lightness, the original intention of the color is intact. To modify the Hue would be to start to modify the color from a blue to a blue-green, or from a red to an orange. Of course, modify the Hue as you wish as well, but our intention is to show how small movements to the saturation and lightness can increase accessibility while retaining the intention of the brand color. <a href="https://www.nixsensor.com/what-is-hsl-color/" target="_blank">More about how HSL works</a>.</p>
+              </div>
+            </div>
           </div>
           
           <div id="results-output" class="u__space__vertical--top cc__results__content"></div>
@@ -66,7 +87,7 @@ rgb(232,138,46)
             
             <h3>Most legible Pair</h3>
             <p>From the given list of colors, which color combination is the <em>most legible</em>? This does not mean that the color pair will pass minimum requirements, but it has the best chance of passing. </p>
-            <p><strong class="text-light">Hint:</strong> To test a specific color combination, pass only those two colors into ColorCube.</p>
+            <p><strong class="text-light">Custom:</strong> Use the text input to change the color pairing.</p>
             
             <h3>Check your hover text color vs. your body text color</h3>
             <p>If <a title="Go to Webaim.org, link opens in a new window." target="_blank" href="http://webaim.org/techniques/hypertext/link_text#appearance">links are not underlined</a>, there must be 3:1 contrast between link text and body text and also an additional change (e.g., underlining) on mouse hover and keyboard focus. Use the tool to compare your link color against your body text color to see how they pair in the Most Legible column.</p>
