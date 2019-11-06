@@ -26,7 +26,7 @@
         <form action="/" class="l__max--text u__space__outer u__space__vertical cc__form" method="post">
           <div class="g__row">
             <div class="g__col g--two rhythm">
-              <h3>Step 1:</h3>
+              <h2>Step 1:</h2>
               <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Or use our default list to see what happens.</p>
             </div>
             <div class="g__col g--two">
@@ -46,11 +46,8 @@ rgb(232,138,46)
         </form>
 
         <div id="results-content" class="u__space__vertical--bottom cc__results">
-          <h3 class="cc__results__title">Step 2: Review your colors!</h3>
-
-          <div id="results-output" class="cc__results__content"></div>
-          
-          <div class="l__max--text u__space__outer u__space__vertical--top rhythm cc__results__description">
+          <div class="l__max--text u__space__outer rhythm cc__results__description">
+            <h2 class="cc__results__title">Step 2: Review your colors!</h2>
             <h3>Criteria</h3>
             <p>This tool shows three different ratio targets and how your color performs with each — white, black, or other colors in your palette:</p>
             <ul>
@@ -59,7 +56,11 @@ rgb(232,138,46)
               <li>Text that is considered “Large-scale” is <strong>18 points (24px)</strong> or larger or <strong>14 points (19px) and bold</strong> or larger.</li>
             </ul>
             <p>Success criteria can be found at the <a title="Go to w3 website in a new window" target="_blank" href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 minimum contrast ratios</a> page.</p>
-            
+          </div>
+          
+          <div id="results-output" class="u__space__vertical--top cc__results__content"></div>
+          
+          <div class="l__max--text u__space__outer u__space__vertical--top rhythm cc__results__description">
             <h3>Edge values</h3>
             <p>Be careful with <strong class="text-light">EDGE</strong> values &mdash; the color passes validation, but is within 0.5. It may still present a legibility issue even though it gets a passing grade. </p>
             
@@ -78,7 +79,7 @@ rgb(232,138,46)
     <footer class="l__foot u__space__vertical p__footer">
       <div class="l__max--text u__space__outer">
         <details class="rhythm">
-          <summary><h3>What is this?</h3></summary>
+          <summary><h2>What is this?</h2></summary>
           <p>ColorCube is an accessibility (<abbr title="">a11y</abbr>) tool aimed at designers and developers. From a list of colors, we produce performance information with common color combinations. And then we give you the tools to adjust those colors until they pass the recommended color contrast ratios.</p>
           <p><strong class="text-light">Why?</strong> At Oomph we believe a better web is an accessible web for all. We wanted a tool that could be used before a project starts &mdash; one that helps assess how an existing brand color palette performs. Starting early means that we can make adjustments early to avoid non-accessible color combinations later. </p>
           <p>Corporate brand color palettes often do not take accessibility into account. And their colors are hard to change. By changing the saturation or brightness of a color <em>but not the hue</em> the color intention is preserved. Most users may not even notice that the color has been adjusted for readability.</p>
@@ -93,6 +94,10 @@ rgb(232,138,46)
       </div>
     </footer>
     
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/js/tinycolor.js"></script>
     <script type="text/javascript" src="assets/js/colorcube.js" ></script>
     <script>
