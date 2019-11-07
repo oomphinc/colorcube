@@ -1,29 +1,5 @@
 $swatch-border-width: 5px;
-
-//<div id="results-output">
-//  <div class="results__row results__row__header">
-//    <div class="results__col ratios__original">Original</div>
-//    <div class="results__col ratios__on-white">White white</div>
-//    <div class="results__col ratios__on-black">White black</div>
-//    <div class="results__col ratios__most-legible">Most readable from available</div>
-//  </div>
-//  <div class="results__row">
-//    <div class="results__col ratios__original">
-//      <div class="original__label">#d62901 </div>
-//      <div class="original__swatch" style="background-color: "></div>
-//    </div>
-//    <div class="results__col ratios__on-white">
-//      <div class="color-ratio__wrapper normal fail">
-//        <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
-//        <span class="fa fa-times-circle"></span>
-//        <span class="color-ratio__passfail"><b>fail</b> 5</span>
-//      </div>
-//      <div class="color-ratio__wrapper large pass">
-//        <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
-//        <span class="fa fa-check-circle"></span>
-//        <span class="color-ratio__passfail"><b>pass</b> 5</span>
-//      </div>
-//    </div>
+$swatch-size: rem(120);
 
 .results {
   
@@ -38,7 +14,13 @@ $swatch-border-width: 5px;
 
   &__col {
     padding-bottom: 1rem;
-    flex: 1 0 22%;
+    flex: 1 0 auto;
+  }
+  
+  &__row &__row {
+    border: 0;
+    flex: 1 0 50%;
+    padding-top: 0;
   }
 }
 
@@ -46,49 +28,96 @@ $swatch-border-width: 5px;
 .ratios {
 
   &__original {
-    flex: 1 0 34%;
+    flex: 0 0 ($swatch-size * 1.5);
   }
 
-  &__on-white {}
+  &__on-light {}
 
-  &__on-black {}
+  &__on-dark {}
   
-  &__most-legible {}
+  &__custom {
+    input {
+      padding: 0.25rem 0.5rem;
+      width: 6em;
+    }
+  }
 }
 
 
 // Original color
 .original {
   
-  &__label {}
+  &__label {
+    padding-bottom: 0.5rem;
+  }
+
+  &__hsl {
+    float: left;
+    
+    p {
+      padding: 0.375rem 0 0.375rem;
+    }
+  }
 
   &__swatch {
-    height: rem(120);
-    width: rem(120);
+    float: right;
+    height: $swatch-size;
+    width: ($swatch-size * 0.75);
   }
 }
 
-//  <div class="color-ratio__wrapper large pass">
-//    <div class="color-ratio__swatch" style="color: ; border-color: ; background-color:#fff;">Aa</div>
-//    <span class="fa fa-check-circle"></span>
-//    <span class="color-ratio__passfail"><b>pass</b> 5</span>
-//  </div>
+// Modifications column
+.mod {
+  &__label {
+    padding-bottom: 0.5rem;
+  }
+  
+  &__swatch {
+    float: left;
+    margin-right: 0.5rem;
+    height: $swatch-size;
+    width: ($swatch-size * 0.75);
+  }
+  
+  &__controls {
+    label {
+      display: inline-block;
+      font-weight: $font-sans-weight-bold;
+      width: 1em;
+    }
+    
+    input {
+      margin: 0 0 -1px;
+      padding: 0.375rem 0 0.375rem 0.5rem;
+      
+      &::-webkit-inner-spin-button {
+        opacity: 1; // always show (negate autohide for Chrome)
+      }
+    }
+  }
+}
+
 .color-ratio {
   
   &__wrapper {
     .icon {
-      color:  palette(white);
       display: inline-block;
       font-size: rem(24);
       text-align: center;
       width: 0.875em;
     }
 
-    &.pass b { color: $pass; }
+    &.pass .icon { color: $pass; }
 
-    &.edge b { color: $edge; }
+    &.edge .icon { color: $edge; }
 
-    &.fail b { color: $fail; }
+    &.fail .icon { color: $fail; }
+  }
+
+  &__passfail {
+    b {
+      @include sr-only;
+    }
   }
 
   &__wrapper + &__wrapper {
@@ -106,12 +135,18 @@ $swatch-border-width: 5px;
     .target-3 & {
       @include hide;
     }
+    
+    .ratios__on-light &,
+    .ratios__on-dark & {
+      padding: 0.5rem 0 0.75rem;
+    }
   }
 
   &__swatch {
     border-style: solid;
     border-width: $swatch-border-width;
     display: inline-block;
+    font-weight: $font-sans-weight-semi;
     line-height: $project-lineheight-tight;
     overflow: hidden;
     padding: 0.625rem 0.5rem;

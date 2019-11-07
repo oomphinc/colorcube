@@ -4,7 +4,7 @@
 // ## Hosted Google fonts
 // Drop the @import tag here and define the font families
 
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Source+Sans+Pro:300,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Source+Sans+Pro:300,500,700&display=swap');
 
 $font-serif-family: 'Playfair Display';
 $font-serif-weight-normal: 400;
@@ -12,6 +12,7 @@ $font-serif-style-italic: 400i;
 
 $font-sans-family: 'Source Sans Pro';
 $font-sans-weight-normal: 300;
+$font-sans-weight-semi: 500;
 $font-sans-weight-bold: 700;
 
 $project-lineheight-base: 1.5;
