@@ -6,7 +6,6 @@ $swatch-size: rem(120);
   &__row {
     display: flex;
     flex-flow: row nowrap;
-    border-bottom: 1px solid rgba($white, 0.15);
     padding-top: 1rem;
 
     &__header {}
@@ -106,12 +105,6 @@ $swatch-size: rem(120);
       text-align: center;
       width: 0.875em;
     }
-
-    &.pass .icon { color: $pass; }
-
-    &.edge .icon { color: $edge; }
-
-    &.fail .icon { color: $fail; }
   }
 
   &__passfail {
@@ -126,10 +119,6 @@ $swatch-size: rem(120);
 
   &__label {
     padding-bottom: 0.5rem;
-    
-    strong {
-      color: palette(white);
-    }
     
     .target-45 &,
     .target-3 & {

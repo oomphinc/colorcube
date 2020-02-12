@@ -1,0 +1,228 @@
+// All color applications stored here
+
+// Default colors and scheme: "dark mode"
+pre {
+  background-color: rgba($code-color__dark, 0.1);
+  border-top: 3px solid rgba($code-color__dark, 0.5);
+  border-bottom: 3px solid rgba($code-color__dark, 0.5);
+}
+
+hr {
+  background-color: transparent;
+  border-top: 1px solid $border-color__dark;
+}
+
+.text-light {
+  color: palette(grey-100);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  color: palette(grey-100);
+}
+
+details {
+  border-bottom: 1px solid $border-color__dark;
+}
+
+summary {
+  &::-webkit-details-marker {
+    color: palette(white);
+  }
+}
+
+.cc {
+  &__brand {
+    &__title {
+      a {
+        color: palette(grey-100);
+      }
+    }
+  }
+  
+  &__form {
+    
+    &__label {
+      color: palette(grey-100);
+    }
+    
+    &__input {
+      color: palette(grey-300);
+      background-color: $project-color-body-bg__dark;
+      border: 1px solid $border-color__dark;
+    }
+    
+    &__button {
+      background-color: palette(teal);
+      color: palette(blackest);
+      
+      &:hover,
+      &:focus {
+        background-color: palette(blue);
+        color: palette(white);
+      }
+      
+      &:active {
+        background-color: palette(red);
+        color: palette(white);
+      }
+    }
+  }
+}
+
+.results {
+  &__row {
+    border-bottom: 1px solid $border-color__dark;
+  }
+}
+
+.color-ratio {
+  
+  &__wrapper {
+    &.pass .icon { color: $pass__dark; }
+
+    &.edge .icon { color: $edge__dark; }
+
+    &.fail .icon { color: $fail__dark; }
+  }
+  
+  &__label {
+    strong {
+      color: palette(white);
+    }
+  }
+}
+
+
+// Alternate theme: "light mode"
+@media (prefers-color-scheme: light) {
+  body {
+    color: $project-color-body-fg__light;
+    background-color: $project-color-body-bg__light;
+  }
+  
+  a {
+    color: $link-color__light;
+    
+    &:hover,
+    &:focus {
+      color: $link-hover-color__light;
+    }
+  }
+  
+  .p {
+    &__header {
+      background-color: $project-color-body-bg__light;
+    }
+    
+    &__main {
+      background-color: $project-color-main-bg__light;
+    }
+    
+    &__footer {
+      background-color: $project-color-body-bg__light;
+      
+      small {
+        color: palette(grey-700);
+      }
+    }
+  }
+  
+  .text-light {
+    color: palette(grey-700);
+  }
+  
+  hr {
+    border-top: 1px solid $border-color__light;
+  }
+  
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    color: palette(grey-700);
+  }
+  
+  details {
+    border-bottom: 1px solid $border-color__light;
+  }
+  
+  summary {
+    &::-webkit-details-marker {
+      color: palette(black);
+    }
+  }
+  
+  .cc {
+    &__brand {
+      &__title {
+        a {
+          color: palette(grey-800);
+        }
+      }
+    }
+
+    &__form {
+      &__label {
+        color: palette(grey-700);
+      }
+      
+      &__input {
+        color: palette(grey-700);
+        background-color: $project-color-body-bg__light;
+        border: 1px solid $border-color__light;
+      }
+      
+      &__button {
+        background-color: palette(blue);
+        color: palette(white);
+        
+        &:hover,
+        &:focus {
+          background-color: palette(teal);
+          color: palette(black);
+        }
+      }
+    }
+  }
+  
+  .results {
+    &__row {
+      border-bottom: 1px solid $border-color__light;
+    }
+  }
+  
+  .color-ratio {
+    &__wrapper {
+      &.pass .icon { color: $pass__light; }
+  
+      &.edge .icon { color: $edge__light; }
+  
+      &.fail .icon { color: $fail__light; }
+    }
+    
+    &__label {
+      strong {
+        color: palette(black);
+      }
+    }
+  }
+}
