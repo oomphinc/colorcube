@@ -55,7 +55,6 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: palette(grey-100);
   font-family: $font-family-serif;
   font-weight: normal;
 }
@@ -139,7 +138,6 @@ li {
 }
 
 details {
-  border-bottom: 1px solid rgba($white, 0.15);
   padding-bottom: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -151,7 +149,6 @@ summary {
   }
   
   &::-webkit-details-marker {
-    color: palette(white);
     font-size: 1.75em;
   }
 }

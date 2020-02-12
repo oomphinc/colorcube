@@ -8,7 +8,6 @@
     &__title {
       
       a {
-        color: palette(grey-100);
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
@@ -27,19 +26,12 @@
   
   &__form {
     
-    &__label {
-      color: palette(grey-100);
-    }
-    
     &__textarea {
       height: 10.5em;
       width: 100%;
     }
     
     &__input {
-      color: palette(grey-300);
-      background-color: $project-color-body-bg;
-      border: 1px solid rgba($white, 0.15);
       padding: 0.75rem;
     }
     
@@ -54,9 +46,7 @@
     }
     
     &__button {
-      background-color: palette(teal);
       border: 0;
-      color: palette(blackest);
       cursor: pointer;
       display: inline-block;
       font-weight: $font-sans-weight-bold;
@@ -64,17 +54,6 @@
       text-transform: uppercase;
       transition: $transition;
       -webkit-appearance: none;
-      
-      &:hover,
-      &:focus {
-        background-color: palette(blue);
-        color: palette(white);
-      }
-      
-      &:active {
-        background-color: palette(red);
-        color: palette(white);
-      }
     }
   }
   

@@ -1,15 +1,15 @@
 
 .p {
   &__header {
-    background-color: $project-color-body-bg;
+    background-color: $project-color-body-bg__dark;
   }
   
   &__main {
-    background-color: $project-color-main-bg;
+    background-color: $project-color-main-bg__dark;
   }
   
   &__footer {
-    background-color: $project-color-body-bg;
+    background-color: $project-color-body-bg__dark;
     
     small {
       color: palette(grey-300);

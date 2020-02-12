@@ -36,9 +36,9 @@ body {
   font-size: 100%;
   font-weight: $font-weight-base;
   line-height: $project-lineheight-base;
-  color: $project-color-body-fg;
+  color: $project-color-body-fg__dark;
   text-align: left;
-  background-color: $project-color-body-bg;
+  background-color: $project-color-body-bg__dark;
   
   @media (max-width: bp(small)) {
     text-rendering: optimizeLegibility;
@@ -80,14 +80,14 @@ select {
 }
 
 a {
-  color: $link-color;
+  color: $link-color__dark;
   text-decoration: $link-decoration;
   -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+
   transition: $transition;
 
   &:hover,
   &:focus {
-    color: $link-hover-color;
+    color: $link-hover-color__dark;
     text-decoration: $link-hover-decoration;
   }
 }
