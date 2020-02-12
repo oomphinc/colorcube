@@ -127,7 +127,7 @@ function outputRatio(color, ratio, bg, target, editable, iterator) {
     var output =
       `<div class="color-ratio__wrapper ${targetclass} ${passfail}" title="Criteria needed minimum ${target}">
         <p class="color-ratio__label"><strong>${ratio}</strong>: with ${bghex}</p>
-        <div class="color-ratio__swatch" style="color: ${hex}; border-color: ${hex}; background-color: ${bghex};">${swatchcontent}</div>
+        <div class="color-ratio__swatch" style="color: ${bghex}; border-color: ${bghex}; background-color: ${hex};">${swatchcontent}</div>
         <p class="color-ratio__results">
           <span class="icon">${icontent}</span>
           <span class="color-ratio__passfail">
