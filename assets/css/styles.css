@@ -58,7 +58,7 @@ a {
   -webkit-text-decoration-skip: objects;
   transition: all 250ms ease; }
   a:hover, a:focus {
-    color: #f0e4e4;
+    color: #f8f2f2;
     text-decoration: none; }
 
 a:not([href]):not([tabindex]) {
@@ -79,17 +79,12 @@ a:not([href]):not([tabindex]) {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important; } }
 pre {
-  background-color: rgba(0, 138, 101, 0.1);
-  border-top: 3px solid rgba(0, 138, 101, 0.5);
-  border-bottom: 3px solid rgba(0, 138, 101, 0.5);
   line-height: 1.8;
   padding: 1.5rem 1rem;
   margin-bottom: 1.375rem; }
 
 hr {
-  background-color: transparent;
   border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
   color: transparent;
   height: 0px;
   margin: 0;
@@ -175,7 +170,6 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: #f0e4e4;
   font-family: "Playfair Display", serif;
   font-weight: normal; }
 
@@ -282,14 +276,12 @@ li {
   padding-bottom: 0.125rem; }
 
 details {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding-bottom: 1rem;
   margin-bottom: 0.5rem; }
 
 summary > * {
   display: inline-block; }
 summary::-webkit-details-marker {
-  color: #fff;
   font-size: 1.75em; }
 
 small,
@@ -373,9 +365,6 @@ abbr,
     .u__space__vertical--bottom {
       padding-bottom: 4.5rem; } }
 
-.text-light {
-  color: #f0e4e4; }
-
 .text-align-left {
   text-align: left; }
 
@@ -431,7 +420,6 @@ abbr,
   align-items: center;
   justify-content: space-between; }
   .cc__brand__title a {
-    color: #f0e4e4;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -440,15 +428,10 @@ abbr,
     text-decoration: none; }
     .cc__brand__title a img {
       margin: 0 1rem -0.625rem 0; }
-.cc__form__label {
-  color: #f0e4e4; }
 .cc__form__textarea {
   height: 10.5em;
   width: 100%; }
 .cc__form__input {
-  color: #b8aeae;
-  background-color: #0f0e0e;
-  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.75rem; }
 .cc__form__row .cc__form__label {
   display: inline-block;
@@ -457,9 +440,7 @@ abbr,
 .cc__form__row .cc__form__input {
   width: 6em; }
 .cc__form__button {
-  background-color: #70BDC1;
   border: 0;
-  color: #0f0e0e;
   cursor: pointer;
   display: inline-block;
   font-weight: 700;
@@ -467,12 +448,6 @@ abbr,
   text-transform: uppercase;
   transition: all 250ms ease;
   -webkit-appearance: none; }
-  .cc__form__button:hover, .cc__form__button:focus {
-    background-color: #4a7090;
-    color: #fff; }
-  .cc__form__button:active {
-    background-color: #d62901;
-    color: #fff; }
 .cc__results {
   display: none;
   visibility: hidden; }
@@ -480,7 +455,6 @@ abbr,
 .results__row {
   display: flex;
   flex-flow: row nowrap;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 1rem; }
 .results__col {
   padding-bottom: 1rem;
@@ -529,12 +503,6 @@ abbr,
   font-size: 1.5rem;
   text-align: center;
   width: 0.875em; }
-.color-ratio__wrapper.pass .icon {
-  color: #14cc45; }
-.color-ratio__wrapper.edge .icon {
-  color: #fe6; }
-.color-ratio__wrapper.fail .icon {
-  color: #f23900; }
 .color-ratio__passfail b {
   position: absolute;
   width: 1px;
@@ -549,8 +517,6 @@ abbr,
   margin-top: -5px; }
 .color-ratio__label {
   padding-bottom: 0.5rem; }
-  .color-ratio__label strong {
-    color: #fff; }
   .target-45 .color-ratio__label, .target-3 .color-ratio__label {
     display: none;
     visibility: hidden; }
@@ -585,5 +551,139 @@ abbr,
 
 .level--AAplus, .level--AAAplus {
   font-size: 1.5rem; }
+
+pre {
+  background-color: rgba(0, 138, 101, 0.1);
+  border-top: 3px solid rgba(0, 138, 101, 0.5);
+  border-bottom: 3px solid rgba(0, 138, 101, 0.5); }
+
+hr {
+  background-color: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+.text-light {
+  color: #f8f2f2; }
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  color: #f8f2f2; }
+
+details {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+
+summary::-webkit-details-marker {
+  color: #fff; }
+
+.cc__brand__title a {
+  color: #f8f2f2; }
+.cc__form__label {
+  color: #f8f2f2; }
+.cc__form__input {
+  color: #b8aeae;
+  background-color: #0f0e0e;
+  border: 1px solid rgba(255, 255, 255, 0.15); }
+.cc__form__button {
+  background-color: #70BDC1;
+  color: #0f0e0e; }
+  .cc__form__button:hover, .cc__form__button:focus {
+    background-color: #4a7090;
+    color: #fff; }
+  .cc__form__button:active {
+    background-color: #d62901;
+    color: #fff; }
+
+.results__row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+
+.color-ratio__wrapper.pass .icon {
+  color: #14cc45; }
+.color-ratio__wrapper.edge .icon {
+  color: #fe6; }
+.color-ratio__wrapper.fail .icon {
+  color: #f23900; }
+.color-ratio__label strong {
+  color: #fff; }
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #333030;
+    background-color: #fff; }
+
+  a {
+    color: #4a7090; }
+    a:hover, a:focus {
+      color: #333030; }
+
+  .p__header {
+    background-color: #fff; }
+  .p__main {
+    background-color: #f8f2f2; }
+  .p__footer {
+    background-color: #fff; }
+    .p__footer small {
+      color: #474444; }
+
+  .text-light {
+    color: #474444; }
+
+  hr {
+    border-top: 1px solid rgba(26, 24, 24, 0.15); }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    color: #474444; }
+
+  details {
+    border-bottom: 1px solid rgba(26, 24, 24, 0.15); }
+
+  summary::-webkit-details-marker {
+    color: #1a1818; }
+
+  .cc__brand__title a {
+    color: #333030; }
+  .cc__form__label {
+    color: #474444; }
+  .cc__form__input {
+    color: #474444;
+    background-color: #fff;
+    border: 1px solid rgba(26, 24, 24, 0.15); }
+  .cc__form__button {
+    background-color: #4a7090;
+    color: #fff; }
+    .cc__form__button:hover, .cc__form__button:focus {
+      background-color: #70BDC1;
+      color: #1a1818; }
+
+  .results__row {
+    border-bottom: 1px solid rgba(26, 24, 24, 0.15); }
+
+  .color-ratio__wrapper.pass .icon {
+    color: #0b8428; }
+  .color-ratio__wrapper.edge .icon {
+    color: #b45e09; }
+  .color-ratio__wrapper.fail .icon {
+    color: #c63606; }
+  .color-ratio__label strong {
+    color: #1a1818; } }
 
 /*# sourceMappingURL=styles.css.map */
