@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>ColorCube: A color A11y Tool for Designers &amp; Developers</title>
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
-    
+
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@oomphinc">
     <meta name="og:title" content="ColorCube: Evaluate Accessible Color Palettes">
@@ -28,10 +28,10 @@
         <p class="cc__brand__subtitle text-italic text-light">Color Accessibility Checker built by <a title="Go to Oomph website, link opens in a new window." target="_blank" href="//oomphinc.com">Oomph</a></p>
       </div>
     </header>
-    
+
     <main class="l__main p__main">
       <article class="l__max u__space__outer">
-        
+
         <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
           <div class="g__row">
             <div class="g__col g--three rhythm">
@@ -40,10 +40,10 @@
             </div>
             <div class="g__col g--three">
               <label class="cc__form__label" for="brand-color-field">Enter a color or list (required):</label>
-              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901 
-#2d5070 
+              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
+#2d5070
 rgb(112,189,193)
-rgb(232,138,46) 
+rgb(232,138,46)
 #008a65
 #373737</textarea>
             </div>
@@ -57,15 +57,17 @@ rgb(232,138,46)
                 <input class="cc__form__input" type="text" id="black-value" name="black-value" value="#101010" required />
               </div>
             </div>
-            
+
             <!-- Submit Button -->
             <div class="cc__form__submit g--wide text-align-center">
               <input id="brand-color-button" name="brand-color-button" type="submit" class="cc__form__button" value="Get Ratios">
             </div>
-            
+
           </div>
         </form>
-
+        <div id="input-history" class="input-history">
+          <h3>Palette History <span id="clear-history" style="font-size:x-small;cursor:pointer;">[Clear]</span></h3>
+        </div>
         <div id="results-content" class="u__space__vertical--bottom cc__results">
           <div class="u__space__outer cc__results__description">
             <h2 class="cc__results__title u__space__vertical--bottom">Step 2: Review colors!</h2>
@@ -81,23 +83,23 @@ rgb(232,138,46)
               </div>
               <div class="g__col g--two rhythm">
                 <p>For more details about success criteria, see the <a title="Go to w3 website in a new window" target="_blank" href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 minimum contrast ratios</a> page.</p>
-                
+
                 <h3>Modify with HSL</h3>
                 <p><strong>Why HSL?</strong> By modifying primarily the saturation and/or lightness, the original intention of the color is intact. To modify the Hue would be to start to modify the color from a blue to a blue-green, or from a red to an orange. Of course, modify the Hue as you wish as well, but our intention is to show how small movements to the saturation and lightness can increase accessibility while retaining the intention of the brand color. <a href="https://www.nixsensor.com/what-is-hsl-color/" target="_blank">More about how HSL works</a>.</p>
               </div>
             </div>
           </div>
-          
+
           <div id="results-output" class="u__space__vertical--top cc__results__content"></div>
-          
+
           <div class="l__max--text u__space__outer u__space__vertical--top rhythm cc__results__description">
             <h3>Edge values</h3>
             <p>Be careful with <strong class="text-light">EDGE</strong> values &mdash; the color passes validation, but is within 0.5. It may still present a legibility issue even though it gets a passing grade. </p>
-            
+
             <h3>Most legible Pair</h3>
             <p>From the given list of colors, which color combination is the <em>most legible</em>? This does not mean that the color pair will pass minimum requirements, but it has the best chance of passing. </p>
             <p><strong class="text-light">Custom:</strong> Use the text input to change the color pairing.</p>
-            
+
             <h3>Check your hover text color vs. your body text color</h3>
             <p>If <a title="Go to Webaim.org, link opens in a new window." target="_blank" href="http://webaim.org/techniques/hypertext/link_text#appearance">links are not underlined</a>, there must be 3:1 contrast between link text and body text and also an additional change (e.g., underlining) on mouse hover and keyboard focus. Use the tool to compare your link color against your body text color to see how they pair in the Most Legible column.</p>
           </div>
@@ -123,11 +125,12 @@ rgb(232,138,46)
         </div>
       </div>
     </footer>
-    
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/localstorage.js"></script>
     <script type="text/javascript" src="assets/js/tinycolor.js"></script>
     <script type="text/javascript" src="assets/js/colorcube.js" ></script>
     <script>
@@ -135,7 +138,7 @@ rgb(232,138,46)
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
+
       ga('create', 'UA-43388256-3', 'auto');
       ga('send', 'pageview');
     </script>
