@@ -3,7 +3,7 @@ loadHistory();
 
 const actionButton = document.getElementById('brand-color-button');
 console.log(actionButton);
-actionButton.addEventListener('click', function() {
+actionButton.addEventListener('click', () => {
     // add contents of the text entry to local storage
     let userInput = document.getElementById('brand-color-field').value;
     // todo: check if local storage available
@@ -84,13 +84,29 @@ function createPaletteFromValues(items) {
         swatch.className = 'swatch';
         swatch.style.backgroundColor = items[i];
         swatch.title = items[i];
-        swatch.style.height = '10px';
-        swatch.style.width = '10px';
-        swatch.style.display = 'inline-block';
         element.appendChild(swatch);
-        // todo: add copy-to-clipboard-link
+
     }
-    console.log(element);
+    // todo: add copy-to-clipboard-link
+    // add button to populate textarea
+    const popButton = document.createElement('button');
+    popButton.value = items;
+    popButton.innerHTML = 'use this palette';
+    // popButton.onclick = loadPalette;
+    popButton.addEventListener('click', (e) => {
+        const target = document.getElementById('brand-color-field');
+        target.value = onePerLine(e.target.value);
+    });
+    element.appendChild(popButton);
+
+    // Trash button for single element
+    const trashButton = document.createElement('span');
+    trashButton.className = 'swatch__delete';
+    trashButton.title = 'delete this swatch';
+    trashButton.dataset.swatch = items;
+    trashButton.innerHTML = '&#128465;';
+    element.appendChild(trashButton);
+
     return element;
 }
 
@@ -98,11 +114,27 @@ function createPaletteFromValues(items) {
 function clearHistory () {
     localStorage.removeItem('palettes');
     // remove the palettes from the page
-    let palettes = document.getElementsByClassName('swatch');
+    let palettes = document.getElementsByClassName('palette-set');
     while (palettes[0]) {
         palettes[0].parentNode.removeChild(palettes[0]);
     }
+}
 
+/**
+ * Take comma separated color values and make one per line.
+ *
+ * @param list
+ * A comma separated string containing rgb or hex color values.
+ *
+ * @return string
+ */
+function onePerLine(list) {
+    // First split hex values
+    let string = list.replace(/(,#)/g, '\n#');
+    // next split off rgb values
+    string = string.replace(/(,r)/g, "\nr");
+
+    return string;
 }
 
 /**
