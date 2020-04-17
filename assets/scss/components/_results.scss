@@ -2,7 +2,7 @@ $swatch-border-width: 5px;
 $swatch-size: rem(120);
 
 .results {
-  
+
   &__row {
     display: flex;
     flex-flow: row nowrap;
@@ -15,7 +15,7 @@ $swatch-size: rem(120);
     padding-bottom: 1rem;
     flex: 1 0 auto;
   }
-  
+
   &__row &__row {
     border: 0;
     flex: 1 0 50%;
@@ -33,7 +33,7 @@ $swatch-size: rem(120);
   &__on-light {}
 
   &__on-dark {}
-  
+
   &__custom {
     input {
       padding: 0.25rem 0.5rem;
@@ -45,14 +45,14 @@ $swatch-size: rem(120);
 
 // Original color
 .original {
-  
+
   &__label {
     padding-bottom: 0.5rem;
   }
 
   &__hsl {
     float: left;
-    
+
     p {
       padding: 0.375rem 0 0.375rem;
     }
@@ -70,25 +70,25 @@ $swatch-size: rem(120);
   &__label {
     padding-bottom: 0.5rem;
   }
-  
+
   &__swatch {
     float: left;
     margin-right: 0.5rem;
     height: $swatch-size;
     width: ($swatch-size * 0.75);
   }
-  
+
   &__controls {
     label {
       display: inline-block;
       font-weight: $font-sans-weight-bold;
       width: 1em;
     }
-    
+
     input {
       margin: 0 0 -1px;
       padding: 0.375rem 0 0.375rem 0.5rem;
-      
+
       &::-webkit-inner-spin-button {
         opacity: 1; // always show (negate autohide for Chrome)
       }
@@ -97,7 +97,7 @@ $swatch-size: rem(120);
 }
 
 .color-ratio {
-  
+
   &__wrapper {
     .icon {
       display: inline-block;
@@ -119,12 +119,12 @@ $swatch-size: rem(120);
 
   &__label {
     padding-bottom: 0.5rem;
-    
+
     .target-45 &,
     .target-3 & {
       @include hide;
     }
-    
+
     .ratios__on-light &,
     .ratios__on-dark & {
       padding: 0.5rem 0 0.75rem;
@@ -144,7 +144,7 @@ $swatch-size: rem(120);
     vertical-align: middle;
     width: 7rem;
   }
-  
+
   .fail &__swatch::before {
     border: 2px solid currentColor;
     content: '';
@@ -158,13 +158,13 @@ $swatch-size: rem(120);
   .target-7 &__swatch {}
 
   .target-45 &__swatch {}
-  
+
   .target-3 &__swatch {}
 
   &__passfail {
     text-transform: uppercase;
   }
-  
+
   &__results {
     display: inline-block;
     padding-left: 0.5rem;
@@ -173,7 +173,7 @@ $swatch-size: rem(120);
 }
 
 .level {
-  
+
   &--AAplus,
   &--AAAplus {
     font-size: rem(24);

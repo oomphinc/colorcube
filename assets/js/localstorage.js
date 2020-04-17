@@ -2,7 +2,7 @@
 loadHistory();
 
 const actionButton = document.getElementById('brand-color-button');
-console.log(actionButton);
+
 actionButton.addEventListener('click', () => {
     // add contents of the text entry to local storage
     let userInput = document.getElementById('brand-color-field').value;
@@ -18,14 +18,13 @@ actionButton.addEventListener('click', () => {
         storage = [userInput];
     }
 
-    console.log(storage);
     // add our item to it and store back to local storage
     localStorage.setItem('palettes', JSON.stringify(storage));
 
     // Update our history section
     let itemsAsArray = extractValues(userInput);
     let markup = createPaletteFromValues(itemsAsArray);
-    console.log(itemsAsArray);
+
     updateHistory(markup);
 });
 
@@ -55,13 +54,7 @@ function loadHistory() {
 // Update the input history content
 function updateHistory(markup) {
     const historySection = document.getElementById('input-history');
-    // let palette = document.createElement('div');
-    // let paletteHistory = localStorage.getItem('items');
-    // let newContent = document.createTextNode(paletteHistory);
-    // palette.appendChild(newContent);
     historySection.appendChild(markup);
-
-    // historySection.appendChild(palette);
 }
 
 /**
