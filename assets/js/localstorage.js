@@ -1,6 +1,7 @@
 // populate history right away
 loadHistory();
 
+// todo this should be wrapped in a method/class/constructor and not floating out here
 const actionButton = document.getElementById('brand-color-button');
 
 actionButton.addEventListener('click', () => {
@@ -9,9 +10,11 @@ actionButton.addEventListener('click', () => {
     // todo: check if local storage available
     // todo: add logic to prevent adding empty values to storage
 
+    // todo: abstract this out to it's own method for re-use
     // Retrieve local storage or default to empty array
     let storage = JSON.parse(localStorage.getItem('palettes'));
     if (storage) {
+        // todo: prevent adding duplicate items
         storage.push(userInput);
     }
     else {
@@ -41,6 +44,8 @@ document.getElementById('clear-history').addEventListener('click', () => {
 function loadHistory() {
     // todo: hide the palette history if local storage is not available
     const storedPalettes = JSON.parse(localStorage.getItem('palettes'));
+    // clear out any existing palettes (to support delete and update)
+    historyMarkupDelete();
     if (storedPalettes && storedPalettes.length > 0) {
         let markup = '';
         storedPalettes.map(palette => {
@@ -51,15 +56,20 @@ function loadHistory() {
     }
 }
 
-// Update the input history content
+/**
+ * Update the input history content.
+ *
+ * @param {String} markup
+ */
 function updateHistory(markup) {
     const historySection = document.getElementById('input-history');
     historySection.appendChild(markup);
 }
 
 /**
- * Creates markup for a single palette.
- * @param items
+ * Create markup for a single palette.
+ *
+ * @param {array} items
  */
 function createPaletteFromValues(items) {
     if (Array.isArray(items) === false) {
@@ -97,29 +107,61 @@ function createPaletteFromValues(items) {
     trashButton.className = 'swatch__delete';
     trashButton.title = 'delete this swatch';
     trashButton.dataset.swatch = items;
-    trashButton.innerHTML = '&#128465;';
+    // todo: make this text, change with css
+    trashButton.innerHTML = '&#128465;'; // trash can icon
+    trashButton.addEventListener('click', (e) => {
+      deletePalette(items);
+    });
+
     element.appendChild(trashButton);
 
     return element;
 }
 
-// todo: This should be triggered by a button/link to clear out local storage
+/**
+ * Deletes stored palettes and refreshes interface.
+ */
 function clearHistory () {
     localStorage.removeItem('palettes');
     // remove the palettes from the page
-    let palettes = document.getElementsByClassName('palette-set');
-    while (palettes[0]) {
-        palettes[0].parentNode.removeChild(palettes[0]);
-    }
+    historyMarkupDelete();
+}
+
+/**
+ * Removes palette set elements from DOM.
+ */
+function historyMarkupDelete() {
+  let palettes = document.getElementsByClassName('palette-set');
+  while (palettes[0]) {
+    palettes[0].parentNode.removeChild(palettes[0]);
+  }
+}
+/**
+ * Delete a single item from the palette history
+ *
+ * @param {Array} paletteArray The palette to delete from local storage.
+ *
+ */
+function deletePalette(paletteArray) {
+  // stored values are \n separated strings so we change to that format
+  const paletteString = onePerLine(paletteArray.toString());
+
+  // Load storage and filter it to remove the palette
+  const storage = JSON.parse(localStorage.getItem('palettes'));
+  const updatedStorage = storage.filter((value, index, arr) => value != paletteString);
+
+  // update local storage with remaining values and reload the interface
+  localStorage.setItem('palettes', JSON.stringify(updatedStorage));
+  loadHistory();
 }
 
 /**
  * Take comma separated color values and make one per line.
  *
- * @param list
+ * @param {String} list
  * A comma separated string containing rgb or hex color values.
  *
- * @return string
+ * @return {String}
  */
 function onePerLine(list) {
     // First split hex values
@@ -133,9 +175,9 @@ function onePerLine(list) {
 /**
  * Extract separate color values from input.
  *
- * @param stringInput
+ * @param {String} stringInput
  *
- * @return
+ * @return {Array}
  */
 function extractValues(stringInput) {
     // todo: validation and error handling
