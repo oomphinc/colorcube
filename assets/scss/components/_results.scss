@@ -118,7 +118,7 @@ $swatch-size: rem(120);
     input {
       margin: 0 0 -1px;
       padding: 0.375rem 0 0.375rem 0.5rem;
-      width: 2em;
+      width: 3em;
 
       &::-webkit-inner-spin-button {
         opacity: 1; // always show (negate autohide for Chrome)
