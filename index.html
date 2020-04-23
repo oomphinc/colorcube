@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="/assets/img/ColorCube-logo-512.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'classic' theme -->
     <meta name="theme-color" content="#1A1814">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="twitter:card" content="summary">
@@ -33,13 +34,13 @@
     </header>
 
     <main class="l__main p__main">
-      <article class="l__max u__space__outer">
+      <article class="l__max">
 
         <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
+          <h2 class=" u__space__vertical--bottom">Step 1: Paste or enter colors!</h2>
           <div class="g__row">
             <div class="g__col g--three rhythm">
-              <h2>Step 1:</h2>
-              <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Submit our default list to see what happens. Click the button and Go!</p>
+              <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Submit our default list to see what happens. Click the Get Ratios button to submit.</p>
             </div>
             <div class="g__col g--three">
               <label class="cc__form__label" for="brand-color-field">Enter a color or list (required):</label>
@@ -53,11 +54,11 @@ rgb(232,138,46)
             <div class="g__col g--three">
               <div class="cc__form__row">
                 <label class="cc__form__label" for="white-value">Light</label>
-                <input class="cc__form__input" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
+                <input class="cc__form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
               </div>
               <div class="cc__form__row">
                 <label class="cc__form__label" for="black-value">Dark</label>
-                <input class="cc__form__input" type="text" id="black-value" name="black-value" value="#101010" required />
+                <input class="cc__form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
               </div>
             </div>
 
@@ -68,15 +69,13 @@ rgb(232,138,46)
 
           </div>
         </form>
-
-
+        
         <div class="image-upload">
-          <input type="file" accept="image/*">
-          <div class="image-preview"></div>
-          <div class="derived-palette"></div>
+            <input type="file" accept="image/*">
+            <div class="image-preview"></div>
+            <div class="derived-palette"></div>
         </div>
-
-        <div id="input-history" class="input-history">
+        <div id="input-history" class="input-history u__space__outer">
           <h3>Palette History <span id="clear-history">[Clear]</span></h3>
         </div>
         <div id="results-content" class="u__space__vertical--bottom cc__results">
@@ -155,6 +154,99 @@ rgb(232,138,46)
 
       ga('create', 'UA-43388256-3', 'auto');
       ga('send', 'pageview');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script>
+      // For the light color
+      const inputElement = document.querySelector('.pickrlt');
+
+      const pickrlt = new Pickr({
+        el: inputElement,
+        useAsButton: true,
+        default: '#FFFFFF',
+        theme: 'nano',
+        defaultRepresentation: 'HEX',
+
+        swatches: [
+          '#EBE9E9',
+          '#D3BABA',
+          '#F1C8D6',
+          '#B092B5',
+          '#9AA1C9',
+          '#A7D7ED',
+          '#9DE9E2',
+          '#B6F5B9',
+          '#D9F3BC',
+          '#E8EDBB',
+          '#F5EC9D',
+          '#F1D686',
+          '#FFFFFF'
+        ],
+
+        components: {
+          preview: true,
+          opacity: false,
+          hue: false,
+
+          interaction: {
+            hex: false,
+            rgba: false,
+            input: true,
+            save: true
+          }
+        }
+      }).on('init', pickrlt => {
+        inputElement.value = pickrlt.getSelectedColor().toHEXA().toString(0);
+      }).on('save', color => {
+        inputElement.value = color.toHEXA().toString(0);
+        pickrlt.hide();
+      })
+    </script>
+    <script>
+      // For the dark color
+      const inputElement2 = document.querySelector('.pickrdk');
+
+      const pickrdk = new Pickr({
+        el: inputElement2,
+        useAsButton: true,
+        default: '#101010',
+        theme: 'nano',
+        defaultRepresentation: 'HEX',
+
+        swatches: [
+          '#000000',
+          '#CA1F1F',
+          '#E91E63',
+          '#9C27B0',
+          '#3F51B5',
+          '#03A9F4',
+          '#009688',
+          '#4CAF50',
+          '#8BC34A',
+          '#CDDC39',
+          '#FFEB3B',
+          '#FFC107',
+          '#6F6E6E'
+        ],
+
+        components: {
+          preview: true,
+          opacity: false,
+          hue: false,
+
+          interaction: {
+            hex: false,
+            rgba: false,
+            input: true,
+            save: true
+          }
+        }
+      }).on('init', pickrdk => {
+        inputElement2.value = pickrdk.getSelectedColor().toHEXA().toString(0);
+      }).on('save', color => {
+        inputElement2.value = color.toHEXA().toString(0);
+        pickrdk.hide();
+      })
     </script>
   </body>
 </html>

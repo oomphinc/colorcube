@@ -5,17 +5,20 @@
 .l {
   &__max {
     margin: 0 auto;
-    max-width: $maxwidth-container;
-    
+
+    @media (min-width: bp(large)) {
+      max-width: $maxwidth-container;
+    }
+
     &--text {
       margin: 0 auto;
       max-width: $maxwidth-text;
     }
   }
-  
+
   &__header {}
-  
+
   &__main {}
-  
+
   &__foot {}
 }

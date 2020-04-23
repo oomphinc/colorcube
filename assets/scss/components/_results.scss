@@ -5,8 +5,12 @@ $swatch-size: rem(120);
 
   &__row {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     padding-top: 1rem;
+
+    @media (min-width: bp(large)) {
+      flex-flow: row nowrap;
+    }
 
     &__header {}
   }
@@ -27,7 +31,27 @@ $swatch-size: rem(120);
 .ratios {
 
   &__original {
-    flex: 0 0 ($swatch-size * 1.5);
+    flex: 1 1 50%;
+
+    @media (min-width: bp(small)) {
+      flex: 1 0 25%;
+    }
+
+    @media (min-width: bp(large)) {
+      flex: 0 0 ($swatch-size * 1.5);
+    }
+  }
+
+  &__mod {
+    flex: 1 1 50%;
+
+    @media (min-width: bp(small)) {
+      flex: 1 0 75%;
+    }
+
+    @media (min-width: bp(large)) {
+      flex: 0 0 ($swatch-size * 1.5);
+    }
   }
 
   &__on-light {}
@@ -35,9 +59,15 @@ $swatch-size: rem(120);
   &__on-dark {}
 
   &__custom {
+    @include hide;
+
     input {
       padding: 0.25rem 0.5rem;
       width: 6em;
+    }
+
+    @media (min-width: bp(large)) {
+      @include show;
     }
   }
 }
@@ -88,6 +118,7 @@ $swatch-size: rem(120);
     input {
       margin: 0 0 -1px;
       padding: 0.375rem 0 0.375rem 0.5rem;
+      width: 3em;
 
       &::-webkit-inner-spin-button {
         opacity: 1; // always show (negate autohide for Chrome)
