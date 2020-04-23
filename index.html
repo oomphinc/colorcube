@@ -7,7 +7,7 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="/assets/img/ColorCube-logo-512.png">
     <meta name="theme-color" content="#1A1814">
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@oomphinc">
     <meta name="og:title" content="ColorCube: Evaluate Accessible Color Palettes">
@@ -68,6 +68,14 @@ rgb(232,138,46)
 
           </div>
         </form>
+
+
+        <div class="image-upload">
+          <input type="file" accept="image/*">
+          <div class="image-preview"></div>
+          <div class="derived-palette"></div>
+        </div>
+
         <div id="input-history" class="input-history">
           <h3>Palette History <span id="clear-history">[Clear]</span></h3>
         </div>
@@ -137,6 +145,8 @@ rgb(232,138,46)
     <script src="assets/js/localstorage.js"></script>
     <script src="assets/js/tinycolor.js"></script>
     <script src="assets/js/colorcube.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="assets/js/palette-from-image.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
