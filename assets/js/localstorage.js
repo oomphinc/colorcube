@@ -6,15 +6,23 @@ const actionButton = document.getElementById('brand-color-button');
 
 actionButton.addEventListener('click', () => {
     // add contents of the text entry to local storage
-    let userInput = document.getElementById('brand-color-field').value;
+    const userInput = document.getElementById('brand-color-field').value.trim();
+
     // todo: check if local storage available
-    // todo: add logic to prevent adding empty values to storage
+
+    // prevent empty item
+    if (userInput === '') {
+      return;
+    }
 
     // todo: abstract this out to it's own method for re-use
     // Retrieve local storage or default to empty array
     let storage = JSON.parse(localStorage.getItem('palettes'));
     if (storage) {
-        // todo: prevent adding duplicate items
+        // Prevent duplicate items in history/storage
+        if (storage.indexOf(userInput) !== -1) {
+          return;
+        }
         storage.push(userInput);
     }
     else {
@@ -22,11 +30,10 @@ actionButton.addEventListener('click', () => {
     }
 
     // add our item to it and store back to local storage
+    const itemsAsArray = extractValues(userInput);
     localStorage.setItem('palettes', JSON.stringify(storage));
-
     // Update our history section
-    let itemsAsArray = extractValues(userInput);
-    let markup = createPaletteFromValues(itemsAsArray);
+    const markup = createPaletteFromValues(itemsAsArray);
 
     updateHistory(markup);
 });
@@ -175,15 +182,16 @@ function onePerLine(list) {
 /**
  * Extract separate color values from input.
  *
+ * Safely removes empty lines within the input
+ *
  * @param {String} stringInput
  *
  * @return {Array}
  */
 function extractValues(stringInput) {
-    // todo: validation and error handling
-    let itemArray = stringInput.split('\n');
-
-    return itemArray;
+  return stringInput
+      .split('\n')
+      .filter(value => value !== '')
 }
 
 /**
