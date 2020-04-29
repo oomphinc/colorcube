@@ -618,72 +618,72 @@ abbr,
 .level--AAplus, .level--AAAplus {
   font-size: 1.5rem; }
 
-pre {
+[data-theme="dark"] pre {
   background-color: rgba(0, 138, 101, 0.1);
   border-top: 3px solid rgba(0, 138, 101, 0.5);
   border-bottom: 3px solid rgba(0, 138, 101, 0.5); }
 
-hr {
+[data-theme="dark"] hr {
   background-color: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.15); }
 
-.text-light {
+[data-theme="dark"] .text-light {
   color: #f8f2f2; }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+[data-theme="dark"] h1,
+[data-theme="dark"] .h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] .h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] .h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] .h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] .h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] .h6 {
   color: #f8f2f2; }
 
-details {
+[data-theme="dark"] details {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
 
-summary::-webkit-details-marker {
+[data-theme="dark"] summary::-webkit-details-marker {
   color: #fff; }
 
-.cc__brand__title a {
+[data-theme="dark"] .cc__brand__title a {
   color: #f8f2f2; }
 
-.cc__form__label {
+[data-theme="dark"] .cc__form__label {
   color: #f8f2f2; }
 
-.cc__form__input {
+[data-theme="dark"] .cc__form__input {
   color: #b8aeae;
   background-color: #0f0e0e;
   border: 1px solid rgba(255, 255, 255, 0.15); }
 
-.cc__form__button {
+[data-theme="dark"] .cc__form__button {
   background-color: #70BDC1;
   color: #0f0e0e; }
-  .cc__form__button:hover, .cc__form__button:focus {
+  [data-theme="dark"] .cc__form__button:hover, [data-theme="dark"] .cc__form__button:focus {
     background-color: #4a7090;
     color: #fff; }
-  .cc__form__button:active {
+  [data-theme="dark"] .cc__form__button:active {
     background-color: #d62901;
     color: #fff; }
 
-.results__row {
+[data-theme="dark"] .results__row {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
 
-.color-ratio__wrapper.pass .icon {
+[data-theme="dark"] .color-ratio__wrapper.pass .icon {
   color: #14cc45; }
 
-.color-ratio__wrapper.edge .icon {
+[data-theme="dark"] .color-ratio__wrapper.edge .icon {
   color: #fe6; }
 
-.color-ratio__wrapper.fail .icon {
+[data-theme="dark"] .color-ratio__wrapper.fail .icon {
   color: #f23900; }
 
-.color-ratio__label strong {
+[data-theme="dark"] .color-ratio__label strong {
   color: #fff; }
 
 [data-theme="light"] body {
