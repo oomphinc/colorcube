@@ -6,16 +6,20 @@ const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme
 if (currentTheme) { // If local storage theme exists, use that
     document.documentElement.setAttribute('data-theme', currentTheme);
 
+    if (currentTheme === 'light') {
+        toggleSwitch.checked = false;
+    }
     if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
+      toggleSwitch.checked = true;
     }
 }
-else { // If no local storage settings exist
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { // Check OS preferences
-    toggleSwitch.checked = true; // Let's just set the toggle switch.  We don't need to store anything until the user has made a change
+// If we found a current theme of "light" or "dark", we're using that.  Otherwise...
+else { //  ...we'll look to the OS
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) { // Check for "light"
+    toggleSwitch.checked = false; // Let's just set the toggle switch.  We don't need to store anything until the user has made a change
   }
   else {
-    toggleSwitch.checked = false; // this may not be necessary
+    toggleSwitch.checked = true; // may not be necessary, just showing that the default would be "true" which gives us dark mode
   }
 }
 
