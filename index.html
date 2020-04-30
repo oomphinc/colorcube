@@ -45,19 +45,19 @@
           </div>
         </div>
         <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
-          <h2 class=" u__space__vertical--bottom">Step 1: Paste or enter colors!</h2>
+          <h2 class=" u__space__vertical--bottom">Step 1: Paste/enter colors -OR- upload an image with your color scheme!</h2>
           <div class="g__row">
-            <div class="g__col g--three rhythm">
-              <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Submit our default list to see what happens. Click the Get Ratios button to submit.</p>
-            </div>
+            <p class="rhythm">Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Submit our default list to see what happens. Click the Get Ratios button to submit.</p>
             <div class="g__col g--three">
               <label class="cc__form__label" for="brand-color-field">Enter a color or list (required):</label>
-              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
-#2d5070
-rgb(112,189,193)
-rgb(232,138,46)
-#008a65
-#373737</textarea>
+              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>
+                #d62901
+                #2d5070
+                rgb(112,189,193)
+                rgb(232,138,46)
+                #008a65
+                #373737
+              </textarea>
             </div>
             <div class="g__col g--three">
               <div class="cc__form__row">
@@ -69,6 +69,13 @@ rgb(232,138,46)
                 <input class="cc__form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
               </div>
             </div>
+            <div class="g__col g--three">
+              <div class="image-upload u__space__outer">
+                <input type="file" accept="image/*">
+                <div class="image-preview"></div>
+                <div class="derived-palette"></div>
+              </div>
+            </div>
 
             <!-- Submit Button -->
             <div class="cc__form__submit g--wide text-align-center">
@@ -78,11 +85,7 @@ rgb(232,138,46)
           </div>
         </form>
 
-        <div class="image-upload u__space__outer">
-            <input type="file" accept="image/*">
-            <div class="image-preview"></div>
-            <div class="derived-palette"></div>
-        </div>
+
         <div id="input-history" class="input-history u__space__outer">
           <h3>Palette History <span id="clear-history">[Clear]</span></h3>
         </div>
