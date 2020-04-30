@@ -17,9 +17,11 @@ if (currentTheme) { // If local storage theme exists, use that
 else { //  ...we'll look to the OS
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) { // Check for "light"
     toggleSwitch.checked = false; // Let's just set the toggle switch.  We don't need to store anything until the user has made a change
+    document.documentElement.setAttribute('data-theme', 'light'); // but perhaps still set the data theme
   }
   else {
     toggleSwitch.checked = true; // may not be necessary, just showing that the default would be "true" which gives us dark mode
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
 }
 
