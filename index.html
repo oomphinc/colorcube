@@ -35,7 +35,15 @@
 
     <main class="l__main p__main">
       <article class="l__max">
-
+        <div class="theme-switch">
+          <div class="theme-switch__wrapper">
+            <label class="theme-switch__label" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="theme-switch__slider round"></div>
+            </label>
+            <span class="theme-switch__status">Change Theme</span>
+          </div>
+        </div>
         <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
           <h2 class=" u__space__vertical--bottom">Step 1: Paste or enter colors!</h2>
           <div class="g__row">
@@ -146,6 +154,7 @@ rgb(232,138,46)
     <script src="assets/js/colorcube.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script src="assets/js/palette-from-image.js"></script>
+    <script src="assets/js/toggle-switch.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
