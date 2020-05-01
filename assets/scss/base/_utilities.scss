@@ -55,6 +55,28 @@
   );
 }
 
+.u__space__vertical--bottom--less {
+  @include fluid-units (
+    'padding-bottom',
+    $vertical-min,
+    $vertical-max,
+    $min-vw,
+    $max-vw,
+    0.3rem
+  );
+}
+
+.u__space__vertical--top--less {
+  @include fluid-units (
+    'padding-top',
+    $vertical-min,
+    $vertical-max,
+    $min-vw,
+    $max-vw,
+    0.3rem
+  );
+}
+
 .text-align-left {
   text-align: left;
 }
