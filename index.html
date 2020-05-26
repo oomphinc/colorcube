@@ -35,15 +35,6 @@
 
     <main class="l__main p__main">
       <article class="l__max">
-        <div class="theme-switch">
-          <div class="theme-switch__wrapper">
-            <label class="theme-switch__label" for="checkbox">
-              <input type="checkbox" id="checkbox" />
-              <div class="theme-switch__slider round"></div>
-            </label>
-            <span class="theme-switch__status">Change Theme</span>
-          </div>
-        </div>
         <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
           <h2 class=" u__space__vertical--bottom">Step 1: Paste or enter colors!</h2>
           <div class="g__row">
@@ -78,14 +69,23 @@ rgb(232,138,46)
           </div>
         </form>
 
-        <div class="image-upload u__space__outer">
-            <input type="file" accept="image/*">
-            <div class="image-preview"></div>
-            <div class="derived-palette"></div>
+        <div class="g__row">
+          <div class="image-upload u__space__outer g--two">
+            <h3>Palette from image</h3>
+            <form>
+              <label>
+                <input type="file" accept="image/*" aria-label="Upload image">
+                <span class="file-custom"></span>
+              </label>
+              <div class="image-preview"></div>
+              <div class="derived-palette"></div>
+            </form>
+          </div>
+          <div id="input-history" class="input-history u__space__outer g--two">
+            <h3>Palette History <span id="clear-history">[Clear]</span></h3>
+          </div>
         </div>
-        <div id="input-history" class="input-history u__space__outer">
-          <h3>Palette History <span id="clear-history">[Clear]</span></h3>
-        </div>
+
         <div id="results-content" class="u__space__vertical--bottom cc__results">
           <div class="u__space__outer cc__results__description">
             <h2 class="cc__results__title u__space__vertical--bottom">Step 2: Review colors!</h2>
@@ -140,6 +140,15 @@ rgb(232,138,46)
           </a>
           <p><small>Made with <span aria-title="love">&#10084</span> in 2017 at Oomph, Inc. Last update October, 2019. Open source project with MIT license. <a title="Go to GitHub in a new window." target="_blank"  href="https://github.com/oomphinc/colorcube">Contribute to the GitHub repo</a>.</small></p>
           <p><small><strong class="text-uppercase">Disclaimer:</strong> The algorithm used in this tool and subsequent results are based on the luminosity algorithm recommended in the WCAG 2.0 guidelines to test for contrast. This tool is for general assessment purposes only and not a guarantee of compliance. This open-source visual tool is not optimized for screen readers. </small></p>
+        </div>
+      </div>
+      <div class="theme-switch u__space__vertical--top">
+        <div class="theme-switch__wrapper">
+          <label class="theme-switch__label" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="theme-switch__slider round"></div>
+          </label>
+          <span class="theme-switch__status">Change Theme</span>
         </div>
       </div>
     </footer>

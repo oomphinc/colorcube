@@ -103,6 +103,25 @@
       }
     }
   }
+
+  .image-upload {
+
+    .file-custom {
+      background-color: palette(grey-700);
+      border-color: $border-color__dark;
+
+      &:before {
+        background-color: palette(grey-800);
+        color: $white;
+        border-color: $border-color__dark;
+      }
+
+      &:after {
+        background-color: palette(grey-700);
+        color: $white;
+      }
+    }
+  }
 }
 
 // Alternate theme: "light mode"

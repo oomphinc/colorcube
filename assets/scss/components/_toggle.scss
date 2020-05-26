@@ -11,9 +11,13 @@
 </div>
 */
 .theme-switch {
+  display: flex;
+  flex-direction: row-reverse;
+
   &__wrapper {
     display: flex;
     align-items: center;
+    width:200px;
 
     span {
       margin-left: 10px;
