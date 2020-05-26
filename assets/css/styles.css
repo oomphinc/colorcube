@@ -448,6 +448,11 @@ abbr,
   width: 4em; }
 .cc__form__row .cc__form__input {
   width: 6em; }
+.cc__form__submit {
+  padding-top: .75rem; }
+  @media (max-width: 47.5em) {
+    .cc__form__submit {
+      padding-top: 1.5rem; } }
 .cc__form__button {
   border: 0;
   cursor: pointer;
@@ -457,6 +462,9 @@ abbr,
   text-transform: uppercase;
   transition: all 250ms ease;
   -webkit-appearance: none; }
+  @media (max-width: 60em) {
+    .cc__form__button {
+      padding: 0.5rem 3.5rem; } }
 @media (max-width: 60em) {
   .cc__form .g__col {
     padding: 1rem 0; } }
@@ -717,23 +725,25 @@ abbr,
 [data-theme="light"] .color-ratio__label strong {
   color: #1a1818; }
 
-.input-history h3 span {
-  color: #70BDC1;
-  font-size: x-small;
-  cursor: pointer; }
-.input-history .palette-set {
-  margin: 1.5rem 0; }
-  .input-history .palette-set .swatch {
-    height: 15px;
-    width: 15px;
-    display: inline-block;
-    margin: 0; }
-    .input-history .palette-set .swatch__delete {
-      cursor: pointer;
-      margin-left: 1rem; }
-  .input-history .palette-set button {
-    margin-left: 1rem;
-    font-size: small; }
+.input-history {
+  padding-bottom: 1rem; }
+  .input-history h3 span {
+    color: #70BDC1;
+    font-size: x-small;
+    cursor: pointer; }
+  .input-history .palette-set {
+    margin: 1.5rem 0; }
+    .input-history .palette-set .swatch {
+      height: 15px;
+      width: 15px;
+      display: inline-block;
+      margin: 0; }
+      .input-history .palette-set .swatch__delete {
+        cursor: pointer;
+        margin-left: 1rem; }
+    .input-history .palette-set button {
+      margin-left: 1rem;
+      font-size: small; }
 
 /*Simple css to style it like a toggle switch*/
 /*
