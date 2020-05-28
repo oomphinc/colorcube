@@ -35,23 +35,43 @@
 
     <main class="l__main p__main">
       <article class="l__max">
-        <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
-          <h2 class=" u__space__vertical--bottom">Step 1: Paste or enter colors!</h2>
+        <div class="theme-switch u__space__outer u__space__vertical--bottom--less">
+          <div class="theme-switch__wrapper">
+            <label class="theme-switch__label" for="checkbox">
+              <input type="checkbox" id="checkbox" />
+              <div class="theme-switch__slider round"></div>
+            </label>
+            <span class="theme-switch__status">Change Theme</span>
+          </div>
+        </div>
+        <form action="/" class="u__space__outer cc__form" method="post">
+          <h2 class=" u__space__vertical--bottom--less">Step 1: Upload an image with your color scheme -OR- type/paste your colors!</h2>
           <div class="g__row">
-            <div class="g__col g--three rhythm">
-              <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Submit our default list to see what happens. Click the Get Ratios button to submit.</p>
+            <p>Upload an image with your desired color scheme to automatically populate the color values.  Alternatively, paste or enter color values (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted.  Click the Get Ratios button to submit.</p>
+            <div class="g__col g--three">
+              <div class="image-upload">
+                <h3 class="u__space__vertical--top--less">Upload your image</h3>
+                <input type="file" accept="image/*">
+                <div class="image-preview"></div>
+                <div class="derived-palette"></div>
+              </div>
             </div>
             <div class="g__col g--three">
+              <h3 class="u__space__vertical--top--less">Paste or enter colors</h3>
               <label class="cc__form__label" for="brand-color-field">Enter a color or list (required):</label>
-              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
-#2d5070
-rgb(112,189,193)
-rgb(232,138,46)
-#008a65
-#373737</textarea>
+              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>
+                #d62901
+                #2d5070
+                rgb(112,189,193)
+                rgb(232,138,46)
+                #008a65
+                #373737
+              </textarea>
             </div>
             <div class="g__col g--three">
               <div class="cc__form__row">
+                <h3 class="u__space__vertical--top--less">Choose light/dark text</h3>
+                <p>Choose light and dark text colors, or use the defaults.</p>
                 <label class="cc__form__label" for="white-value">Light</label>
                 <input class="cc__form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
               </div>
@@ -62,28 +82,15 @@ rgb(232,138,46)
             </div>
 
             <!-- Submit Button -->
-            <div class="cc__form__submit g--wide text-align-center">
+            <div class="cc__form__submit g--wide text-align-center u__space__vertical--bottom--less">
               <input id="brand-color-button" name="brand-color-button" type="submit" class="cc__form__button" value="Get Ratios">
             </div>
 
           </div>
         </form>
-
-        <div class="g__row">
-          <div class="image-upload u__space__outer g--two">
-            <h3>Palette from image</h3>
-            <form>
-              <label>
-                <input type="file" accept="image/*" aria-label="Upload image">
-                <span class="file-custom"></span>
-              </label>
-              <div class="image-preview"></div>
-              <div class="derived-palette"></div>
-            </form>
-          </div>
-          <div id="input-history" class="input-history u__space__outer g--two">
-            <h3>Palette History <span id="clear-history">[Clear]</span></h3>
-          </div>
+        <hr>
+        <div id="input-history" class="input-history u__space__outer">
+          <h3>Palette History <span id="clear-history">[Clear]</span></h3>
         </div>
 
         <div id="results-content" class="u__space__vertical--bottom cc__results">
