@@ -25,7 +25,12 @@
       }
     }
 
-    &__subtitle {}
+    &__subtitle {
+      @media (max-width: bp(medium)) {
+        padding-top: $vertical-min;
+        padding-bottom: $vertical-min;
+      }
+    }
   }
 
   &__form {
@@ -49,6 +54,15 @@
       width: 6em;
     }
 
+    &__submit {
+
+      padding-top: .75rem;
+
+      @media (max-width: bp(medium)) {
+        padding-top: 1.5rem;
+      }
+    }
+
     &__button {
       border: 0;
       cursor: pointer;
@@ -58,6 +72,17 @@
       text-transform: uppercase;
       transition: $transition;
       -webkit-appearance: none;
+
+      @media (max-width: bp(large)) {
+        padding: 0.5rem 3.5rem
+      }
+    }
+
+    .g__col {
+      @media (max-width: bp(large)) {
+        padding: 1rem 0;
+      }
+
     }
   }
 
