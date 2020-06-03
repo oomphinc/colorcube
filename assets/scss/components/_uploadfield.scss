@@ -63,4 +63,14 @@
   .image-preview {
     padding: 1rem 0;
   }
+
+  .derived-palette {
+    padding-bottom: 1rem;
+
+    .swatch {
+      display: inline-block;
+      width:25px;
+      height:25px;
+    }
+  }
 }

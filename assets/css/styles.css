@@ -740,7 +740,7 @@ abbr,
       margin: 0; }
       .input-history .palette-set .swatch__delete {
         cursor: pointer;
-        margin-left: 1rem; }
+        margin-left: .5rem; }
     .input-history .palette-set button {
       margin-left: 1rem;
       font-size: small; }
@@ -850,5 +850,11 @@ abbr,
     content: "Choose file..."; }
 .image-upload .image-preview {
   padding: 1rem 0; }
+.image-upload .derived-palette {
+  padding-bottom: 1rem; }
+  .image-upload .derived-palette .swatch {
+    display: inline-block;
+    width: 25px;
+    height: 25px; }
 
 /*# sourceMappingURL=styles.css.map */
