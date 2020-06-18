@@ -474,6 +474,9 @@ abbr,
   .cc__results__content {
     padding-left: 1rem;
     padding-right: 1rem; }
+  @media (max-width: 38.75em) {
+    .cc__results__description p:nth-of-type(2), .cc__results__description h3 {
+      display: none; } }
 
 .results__row {
   display: flex;
@@ -482,6 +485,9 @@ abbr,
   @media (min-width: 60em) {
     .results__row {
       flex-flow: row nowrap; } }
+  @media (max-width: 60em) {
+    .results__row__header {
+      display: none; } }
 .results__col {
   padding-bottom: 1rem;
   flex: 1 0 auto; }
@@ -491,7 +497,7 @@ abbr,
   padding-top: 0; }
 
 .ratios__original {
-  flex: 1 1 50%; }
+  flex: 0 1 51%; }
   @media (min-width: 38.75em) {
     .ratios__original {
       flex: 1 0 25%; } }
@@ -506,6 +512,9 @@ abbr,
   @media (min-width: 60em) {
     .ratios__mod {
       flex: 0 0 11.25rem; } }
+  @media (max-width: 38.75em) {
+    .ratios__mod {
+      display: none; } }
 .ratios__custom {
   display: none;
   visibility: hidden; }

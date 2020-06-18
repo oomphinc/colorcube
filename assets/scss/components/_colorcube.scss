@@ -95,5 +95,16 @@
       padding-left: 1rem;
       padding-right: 1rem;
     }
+
+    &__description {
+
+      // Hide Modify with HSL instructions because it is flaky on mobile
+      @media (max-width: bp(small)) {
+        p:nth-of-type(2), h3 {
+          display: none;
+        }
+
+      }
+    }
   }
 }

@@ -12,7 +12,12 @@ $swatch-size: rem(120);
       flex-flow: row nowrap;
     }
 
-    &__header {}
+    &__header {
+
+      @media (max-width: bp(large)) {
+        display: none;
+      }
+    }
   }
 
   &__col {
@@ -31,7 +36,7 @@ $swatch-size: rem(120);
 .ratios {
 
   &__original {
-    flex: 1 1 50%;
+    flex: 0 1 51%;
 
     @media (min-width: bp(small)) {
       flex: 1 0 25%;
@@ -51,6 +56,11 @@ $swatch-size: rem(120);
 
     @media (min-width: bp(large)) {
       flex: 0 0 ($swatch-size * 1.5);
+    }
+
+    // On mobile, the mod column is flaky so hide it
+    @media (max-width: bp(small)) {
+      display: none;
     }
   }
 
