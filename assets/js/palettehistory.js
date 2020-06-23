@@ -46,15 +46,14 @@
     const storedPalettes = JSON.parse(localStorage.getItem('palettes'));
     // clear out any existing palettes (to support delete and update)
     historyMarkupDelete();
-    // hide default message for empty history
+    // We will toggle default placeholder text based on stored palettes
     const emptyText = document.querySelector("#input-history .empty-text");
-console.log("empty", emptyText);
+
     if (storedPalettes && storedPalettes.length > 0) {
-      let markup = '';
       emptyText.style.display = "none";
       storedPalettes.map(palette => {
         let values = extractValues(palette);
-        markup = createPaletteFromValues(values);
+        let markup = createPaletteFromValues(values);
         updateHistory(markup);
       });
     }
