@@ -3,20 +3,17 @@
   // populate history right away
   loadHistory();
 
+  // Bind history updates to the ratio submit button
   const actionButton = document.getElementById('brand-color-button');
-
   actionButton.addEventListener('click', () => {
     // add contents of the text entry to local storage
     const userInput = document.getElementById('brand-color-field').value.trim();
-
-    // todo: check if local storage available
 
     // prevent empty item
     if (userInput === '') {
       return;
     }
 
-    // todo: abstract this out to it's own method for re-use
     // Retrieve local storage or default to empty array
     let storage = JSON.parse(localStorage.getItem('palettes'));
     if (storage) {
@@ -30,13 +27,9 @@
       storage = [userInput];
     }
 
-    // add our item to it and store back to local storage
-    const itemsAsArray = extractValues(userInput);
     localStorage.setItem('palettes', JSON.stringify(storage));
-    // Update our history section
-    const markup = createPaletteFromValues(itemsAsArray);
 
-    updateHistory(markup);
+    loadHistory();
   });
 
   /**
@@ -138,7 +131,8 @@ console.log("empty", emptyText);
   function clearHistory () {
     localStorage.removeItem('palettes');
     // remove the palettes from the page
-    historyMarkupDelete();
+    // historyMarkupDelete();
+    loadHistory();
   }
 
   /**
