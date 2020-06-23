@@ -8,7 +8,9 @@
   const input = document.querySelector('.image-upload input');
 
   input.addEventListener('change', (evt) => {
-    console.log(evt);
+    // remove any existing previews
+    clearImagePreview();
+
     const preview = document.createElement('img');
     // prevent fatal if there hasn't been an upload.
     // This can happen if the file selection dialog is dismissed
@@ -78,6 +80,21 @@
     input.value = colors.join("\n");
 
     document.getElementById('brand-color-button').click();
+  }
+
+  /**
+   * Removes any preview images and their preview palettes.
+   */
+  function clearImagePreview() {
+    const imagePreview = document.querySelector('.image-upload .image-preview');
+    if (imagePreview) {
+      imagePreview.innerHTML = '';
+    }
+    
+    const palettePreview = document.querySelector(".image-upload .derived-palette");
+    if (palettePreview) {
+      palettePreview.innerHTML = '';
+    }
   }
 
 // function rgbToHex(r, g, b) = {
