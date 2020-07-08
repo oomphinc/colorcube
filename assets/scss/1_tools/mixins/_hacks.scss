@@ -1,0 +1,6 @@
+/* Target ANY Firefox browser */
+@mixin for-any-firefox() {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}

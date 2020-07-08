@@ -1,0 +1,27 @@
+input,
+textarea,
+button {
+  cursor: pointer;
+  transition: var(--transition-base__sm);
+
+  &:disabled,
+  &[disabled],
+  &[disabled="disabled"] {
+    cursor: default;
+  }
+}
+
+/* Rip a ton of form stuff out of layout.css (BS4) before proceeding with more styles */
+
+form {
+  label {
+    font-family: var(--ff__serif);
+    font-weight: var(--fw__light);
+  }
+
+  input,
+  textarea {
+    padding: 20px 24px;
+    margin-top: 15px;
+  }
+}

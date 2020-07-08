@@ -1,0 +1,36 @@
+@import url('https://use.typekit.net/brc4xco.css');
+
+:root {
+  // Font family
+  --ff__sans-serif: 'poppins', arial, sans-serif;
+  --ff__serif: 'matrix-ii', Georgia, serif;
+  --ff__monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  // Font size
+  // Individual elements resets these two variables in 4_elements/_typography.scss
+  --fs__min: 0.875;
+  --fs__max: 1;
+
+  // Font weight
+  --fw__xlight: 200; /* Poppins only */
+  --fw__light: 300;
+  --fw__normal: 400;
+  --fw__bold: 700;
+
+  // Line height
+  --lh__loose: 1.75;
+  --lh__base: 1.625;
+  --lh__tight: 1.25;
+  --v-spacer: 1.5em;
+
+  // Letter spacing
+  --ls__loose: 0.0625em;
+  --ls__base: 0.03125em;
+
+  // Max-width
+  --mw__optimal-line-length: 72ch;
+
+  // Fluid Type sizes
+  --vp__min: #{$min-vw};
+  --vp__max: #{$max-vw};
+}

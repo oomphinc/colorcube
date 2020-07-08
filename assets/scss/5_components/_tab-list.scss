@@ -1,0 +1,79 @@
+// <nav class="tabs__nav u__px" role="tablist" aria-label="Primary">
+//  <button class="tabs__nav--new u__btn-reset" role="tab" aria-selected="true" aria-controls="pane-new" id="new">
+//    <span class="tabs__nav--new__button" aria-hidden="true">+</span>
+//    <span class="u__sr-only">New</span>
+//  </button>
+//   <button class="u__btn-reset" role="tab" aria-selected="true" aria-controls="pane-ratio" id="ratio">Ratios</button>
+//   <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-history" id="history">History</button>
+//   <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-settings" id="settings">Settings</button>
+//   <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-howto" id="howto">How To</button>
+// </nav>
+
+.tabs {
+  position: relative;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+
+  &__nav {
+    background-color: var(--theme__bg--navs);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+
+    button {
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      color: var(--theme__fg);
+      line-height: 1;
+      padding: 1.25em 0;
+
+      &[aria-selected="true"] {
+        border-top-color: var(--theme__fg--accent);
+        color: var(--theme__link--accent);
+      }
+    }
+
+    &--new {
+      &__icon {
+        background-color: var(--theme__link);
+        border-top-color: var(--theme__bg--navs);
+        border-bottom-color: var(--theme__bg--navs);
+        color: var(--theme__bg);
+        font-size: 125%;
+        padding: 0.5em 0.75em;
+        margin: 0 0.25em;
+      }
+
+      &[aria-selected="true"] {
+        border-top-color: var(--theme__bg--navs) !important;
+
+        span {
+          background-color: var(--theme__fg);
+          color: var(--theme__bg);
+        }
+      }
+    }
+  }
+
+  &__pane {
+
+    &__title {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+  }
+}
+
+.oomph-logo {
+  float: left;
+  margin-right: 0.75em;
+
+  @include breakpoint-down(medium) {
+    width: em(42);
+  }
+}

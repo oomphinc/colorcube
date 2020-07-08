@@ -1,0 +1,21 @@
+// Anchors without a class get default styles
+a {
+  color: var(--theme__link);
+  text-decoration: underline;
+  text-decoration-color: var(--theme__link--accent);
+  transition: var(--transition-base__sm);
+
+  &:hover,
+  &:focus {
+    color: var(--theme__link--hover);
+    text-decoration: none;
+  }
+
+  // Invalid links look like text
+  &:not([href]) {
+    color: var(--theme__fg);
+    text-decoration: none !important;
+    // Highlight these when debugging
+    outline: var(--o__debug);
+  }
+}
