@@ -46,7 +46,8 @@
   --theme__link: #70BDC1;
   --theme__link--hover: #f8f2f2;
   --theme__link--accent: #f8f2f2;
-  --theme__link--accent--hover: #fff; }
+  --theme__link--accent--hover: #fff;
+  --theme__border: rgba(255,255,255,0.15); }
 
 html[data-theme="light"] {
   --theme__bg--navs: #f8f2f2;
@@ -56,7 +57,8 @@ html[data-theme="light"] {
   --theme__link: #2d5070;
   --theme__link--hover: #474444;
   --theme__link--accent: #333030;
-  --theme__link--accent--hover: #1a1818; }
+  --theme__link--accent--hover: #1a1818;
+  --theme__border: rgba(26,24,24,0.15); }
 
 :root {
   --ff__sans-serif: 'poppins', arial, sans-serif;
@@ -166,16 +168,43 @@ a {
     text-decoration: none !important;
     outline: var(--o__debug); }
 
-button {
-  color: var(--theme__link);
-  transition: var(--transition-base__sm); }
+input[type="file"]::-webkit-file-upload-button,
+.btn {
+  border: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  font-family: var(--ff__sans);
+  font-weight: var(--fw__bold);
+  line-height: 1;
+  padding: 0.75em 1em 0.625em;
+  letter-spacing: var(--ls__base);
+  text-transform: uppercase;
+  white-space: nowrap;
+  background-color: var(--theme__fg);
+  color: var(--theme__bg); }
+  input[type="file"]::-webkit-file-upload-button:hover, input[type="file"]::-webkit-file-upload-button:focus,
+  .btn:hover,
+  .btn:focus {
+    background-color: var(--theme__link);
+    color: var(--theme__bg); }
+
+.btn--primary {
+  background-color: var(--theme__link);
+  color: var(--theme__bg); }
+  .btn--primary:hover, .btn--primary:focus {
+    background-color: var(--theme__fg--accent);
+    color: var(--theme__bg); }
 
 input,
+input[type="file"]::-webkit-file-upload-button,
 textarea,
 button {
   cursor: pointer;
   transition: var(--transition-base__sm); }
   input:disabled, input[disabled], input[disabled="disabled"],
+  input[type="file"]::-webkit-file-upload-button:disabled,
+  input[type="file"]::-webkit-file-upload-button[disabled],
+  input[type="file"]::-webkit-file-upload-button[disabled="disabled"],
   textarea:disabled,
   textarea[disabled],
   textarea[disabled="disabled"],
@@ -184,14 +213,23 @@ button {
   button[disabled="disabled"] {
     cursor: default; }
 
-/* Rip a ton of form stuff out of layout.css (BS4) before proceeding with more styles */
-form label {
-  font-family: var(--ff__serif);
-  font-weight: var(--fw__light); }
-form input,
-form textarea {
-  padding: 20px 24px;
-  margin-top: 15px; }
+.form__label {
+  color: var(--theme__fg--accent);
+  display: inline-block;
+  font-family: var(--ff__sans);
+  font-weight: var(--fw__bold);
+  letter-spacing: var(--ls__loose);
+  padding-bottom: 0.5em; }
+.form__group {
+  padding-bottom: var(--v-spacer); }
+.form__input {
+  background-color: var(--theme__bg--navs);
+  border: 1px solid var(--theme__border);
+  color: var(--theme__fg);
+  margin: 0;
+  padding: 0.5em 0.75em; }
+  .form__input:hover, .form__input:focus {
+    border-color: var(--theme__link); }
 
 h1,
 .h1,
@@ -297,6 +335,19 @@ b,
 strong {
   font-weight: var(--fw__bold); }
 
+.clr-f-img__preview img {
+  height: auto;
+  width: 100%; }
+.clr-f-img__swatches {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-flow: row nowrap; }
+  .clr-f-img__swatches .swatch {
+    display: block;
+    flex: 1 1 auto;
+    height: 2em; }
+
 .cc__header {
   background-color: var(--theme__bg--navs);
   display: flex;
@@ -339,6 +390,8 @@ strong {
       .tabs__nav button[aria-selected="true"] {
         border-top-color: var(--theme__fg--accent);
         color: var(--theme__link--accent); }
+      .tabs__nav button:hover {
+        color: var(--theme__link--accent); }
     .tabs__nav--new__icon {
       background-color: var(--theme__link);
       border-top-color: var(--theme__bg--navs);
@@ -352,9 +405,11 @@ strong {
       .tabs__nav--new[aria-selected="true"] span {
         background-color: var(--theme__fg);
         color: var(--theme__bg); }
-  .tabs__pane__title {
-    margin: 1.5rem 0;
-    text-align: center; }
+  .tabs__pane {
+    overflow: hidden; }
+    .tabs__pane__title {
+      margin: 1.5rem 0;
+      text-align: center; }
 
 .oomph-logo {
   float: left;
@@ -362,6 +417,40 @@ strong {
   @media (max-width: 47.4375em) {
     .oomph-logo {
       width: 2.625em; } }
+
+.theme-switch {
+  display: flex;
+  justify-content: center;
+  flex-flow: row-reverse nowrap; }
+  .theme-switch__wrapper {
+    display: flex;
+    align-items: center; }
+  .theme-switch__option {
+    margin: 0 1em; }
+  .theme-switch__label {
+    display: inline-block;
+    position: relative;
+    width: 5em; }
+  .theme-switch__toggle {
+    background-color: var(--theme__fg--accent);
+    border-radius: 2.5em;
+    cursor: pointer;
+    height: 2.5em;
+    transition: all 400ms ease; }
+    .theme-switch__toggle:before {
+      background-color: var(--theme__bg--navs);
+      border-radius: 2.5em;
+      border: 3px solid var(--theme__fg--accent);
+      content: '';
+      height: 2.5em;
+      width: 2.5em;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transition: transform 400ms ease;
+      transform: translate(0, -50%); }
+  input:checked + .theme-switch__toggle::before {
+    transform: translate(100%, -50%); }
 
 .u__btn-reset {
   background-color: transparent;

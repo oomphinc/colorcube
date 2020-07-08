@@ -1,0 +1,48 @@
+$toggle-size: 2.5em;
+
+.theme-switch {
+  display: flex;
+  justify-content: center;
+  flex-flow: row-reverse nowrap;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__option {
+    margin: 0 1em;
+  }
+
+  &__label {
+    display: inline-block;
+    position: relative;
+    width: ($toggle-size * 2);
+  }
+
+  &__toggle {
+    background-color: var(--theme__fg--accent);
+    border-radius: $toggle-size;
+    cursor: pointer;
+    height: $toggle-size;
+    transition: all 400ms ease;
+
+    &:before {
+      background-color: var(--theme__bg--navs);
+      border-radius: $toggle-size;
+      border: 3px solid var(--theme__fg--accent);
+      content: '';
+      height: $toggle-size;
+      width: $toggle-size;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transition: transform 400ms ease;
+      transform: translate(0, -50%);
+    }
+  }
+
+  input:checked + &__toggle::before {
+    transform: translate(100%, -50%);
+  }
+}

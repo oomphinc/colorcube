@@ -54,6 +54,7 @@
           <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-howto" id="howto">How To</button>
         </nav>
 
+        <!-- Add new palette -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew">
           <h2 class="tabs__pane__title h1">Create new palette</h2>
 
@@ -86,6 +87,7 @@ rgb(232,138,46)
           </form>
         </div><!-- end #pane-new -->
 
+        <!-- Palette Ratios -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-ratio" aria-labelledby="ratio" hidden>
           <h2 class="tabs__pane__title h1">Palette results</h2>
           <div id="results-output">
@@ -93,6 +95,7 @@ rgb(232,138,46)
           </div>
         </div><!-- end #pane-ratio -->
 
+        <!-- History -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-history" aria-labelledby="history" hidden>
           <h2 class="tabs__pane__title h1">History</h2>
 
@@ -103,33 +106,38 @@ rgb(232,138,46)
           </div>
         </div><!-- end #pane-history -->
 
+        <!-- Settings -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-settings" aria-labelledby="settings" hidden>
           <h2 class="tabs__pane__title h1">Default Values</h2>
           <form action="/" class="form" method="post">
-            <div class="cc__form__group">
-              <div class="cc__form__row">
-                <label class="cc__form__label" for="white-value">Light</label>
-                <input class="cc__form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
+            <div class="form__group">
+              <div class="form__row">
+                <label class="form__label" for="white-value">Light</label>
+                <input class="form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
               </div>
-              <div class="cc__form__row">
-                <label class="cc__form__label" for="black-value">Dark</label>
-                <input class="cc__form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
+              <div class="form__row">
+                <label class="form__label" for="black-value">Dark</label>
+                <input class="form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
               </div>
             </div>
 
             <h2 class="tabs__pane__title h1">Interface Theme</h2>
-            <div class="cc__form__group theme-switch">
+            <div id="js-theme-toggle" class="form__group theme-switch">
               <div class="theme-switch__wrapper">
-                <label class="theme-switch__label" for="checkbox">
-                  <input type="checkbox" id="checkbox" />
-                  <div class="theme-switch__slider round"></div>
+                <span class="theme-switch__option" aria-hidden="true">Light</span>
+                <label class="theme-switch__label" for="dark-mode">
+                  <input class="u__sr-only" type="checkbox" id="dark-mode" name="dark-mode" />
+                  <div class="theme-switch__toggle">
+                    <span class="u__sr-only">Dark Interface Theme</span>
+                  </div>
                 </label>
-                <span class="theme-switch__status">Change Theme</span>
+                <span class="theme-switch__option" aria-hidden="true">Dark</span>
               </div>
             </div>
           </form>
         </div><!-- end #pane-settings -->
 
+        <!-- How to Use and Credits -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-howto" aria-labelledby="howto" hidden>
           <h2 class="tabs__pane__title h1">How to Use</h2>
           <article class="rhythm">

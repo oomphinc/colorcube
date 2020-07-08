@@ -1,6 +1,6 @@
 // Collect and store user color preferences but allow the user to change it with a toggle switch
 
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]'); // Set the toggle switch
+const toggleSwitch = document.querySelector('#js-theme-toggle input[type="checkbox"]'); // Set the toggle switch
 const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null; // Check for local storage theme
 
 if (currentTheme) { // If local storage theme exists, use that
@@ -37,4 +37,3 @@ function switchTheme(e) { // Let user switch the theme themselves regardless of 
 }
 
 toggleSwitch.addEventListener('change', switchTheme, false); // Watch for user changes to the toggle switch
-
