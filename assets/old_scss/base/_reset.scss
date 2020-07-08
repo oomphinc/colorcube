@@ -30,7 +30,7 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  
+
   // Since we replaced BS4 Reboot, need to declare some things:
   font-family: $font-family-base;
   font-size: 100%;
@@ -39,7 +39,7 @@ body {
   color: $project-color-body-fg__dark;
   text-align: left;
   background-color: $project-color-body-bg__dark;
-  
+
   @media (max-width: bp(small)) {
     text-rendering: optimizeLegibility;
   }
@@ -67,7 +67,7 @@ img {
 }
 
 // Natural flow and rhythm in articles by default
-.rhythm > * + * {
+* + * {
   margin-top: $project-vertical-rhythm;
 }
 
