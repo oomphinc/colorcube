@@ -338,15 +338,6 @@ strong {
 .clr-f-img__preview img {
   height: auto;
   width: 100%; }
-.clr-f-img__swatches {
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-  flex-flow: row nowrap; }
-  .clr-f-img__swatches .swatch {
-    display: block;
-    flex: 1 1 auto;
-    height: 2em; }
 
 .cc__header {
   background-color: var(--theme__bg--navs);
@@ -367,6 +358,18 @@ strong {
   width: 2.625em; }
 .cc__brand__subtitle {
   flex: 0 1 auto; }
+
+.palette__swatches {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  min-height: 2em; }
+  .palette__swatches .swatch {
+    display: block;
+    flex: 1 1 auto; }
+  .palette__swatches .btn {
+    margin-left: 0.25em; }
 
 .tabs {
   position: relative;

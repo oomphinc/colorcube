@@ -1,0 +1,18 @@
+.palette {
+  &__swatches {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    min-height: 2em;
+
+    .swatch {
+      display: block;
+      flex: 1 1 auto;
+    }
+
+    .btn {
+      margin-left: 0.25em;
+    }
+  }
+}

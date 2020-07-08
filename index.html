@@ -77,7 +77,7 @@ rgb(232,138,46)
                 <span class="file-custom"></span>
               </label>
               <div id="js-clr-f-img-preview" class="clr-f-img__preview"></div>
-              <div id="js-clr-f-img-derived" class="clr-f-img__swatches"></div>
+              <div id="js-clr-f-img-derived" class="palette__swatches"></div>
             </div>
 
             <div class="form__group form__submit">
@@ -98,10 +98,10 @@ rgb(232,138,46)
         <!-- History -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-history" aria-labelledby="history" hidden>
           <h2 class="tabs__pane__title h1">History</h2>
-
-          <!-- Old CSS classes here -->
-          <div id="input-history" class="input-history form__group">
-            <h3>Palette History <span id="clear-history">[Clear]</span></h3>
+          <div class="form__group">
+            <button id="js-clear-history" class="btn btn--primary">Clear All</button>
+          </div>
+          <div id="js-input-history" class="form__group">
             <p class="empty-text">No saved palettes</p>
           </div>
         </div><!-- end #pane-history -->

@@ -35,7 +35,7 @@
   /**
    * Event listener to clear local storage.
    */
-  document.getElementById('clear-history').addEventListener('click', () => {
+  document.getElementById('js-clear-history').addEventListener('click', () => {
     clearHistory();
   });
 
@@ -47,7 +47,7 @@
     // clear out any existing palettes (to support delete and update)
     historyMarkupDelete();
     // We will toggle default placeholder text based on stored palettes
-    const emptyText = document.querySelector("#input-history .empty-text");
+    const emptyText = document.querySelector("#js-input-history .empty-text");
 
     if (storedPalettes && storedPalettes.length > 0) {
       emptyText.style.display = "none";
@@ -68,7 +68,7 @@
    * @param {String} markup
    */
   function updateHistory(markup) {
-    const historySection = document.getElementById('input-history');
+    const historySection = document.getElementById('js-input-history');
     historySection.appendChild(markup);
   }
 
@@ -84,7 +84,7 @@
 
     // create wrapper for this set
     let element = document.createElement('div');
-    element.className = 'palette-set';
+    element.className = 'js-palette__history palette__swatches form__group';
 
     // create each color swatch and add to the set
     // todo: replace this for with a different loop structure
@@ -100,7 +100,8 @@
     // add button to populate textarea
     const popButton = document.createElement('button');
     popButton.value = items;
-    popButton.innerHTML = 'use this palette';
+    popButton.className = 'btn';
+    popButton.innerHTML = 'Use';
     // popButton.onclick = loadPalette;
     popButton.addEventListener('click', (e) => {
       const target = document.getElementById('brand-color-field');
@@ -110,8 +111,8 @@
 
     // Trash button for single element
     const trashButton = document.createElement('span');
-    trashButton.className = 'swatch__delete';
-    trashButton.title = 'delete this swatch';
+    trashButton.className = 'btn swatch__delete';
+    trashButton.title = 'Delete this palette';
     trashButton.dataset.swatch = items;
     // todo: make this text, change with css
     trashButton.innerHTML = '&#128465;'; // trash can icon
@@ -130,7 +131,7 @@
   function clearHistory () {
     localStorage.removeItem('palettes');
     // remove the palettes from the page
-    // historyMarkupDelete();
+    historyMarkupDelete();
     loadHistory();
   }
 
@@ -138,7 +139,7 @@
    * Removes palette set elements from DOM.
    */
   function historyMarkupDelete() {
-    let palettes = document.getElementsByClassName('palette-set');
+    let palettes = document.getElementsByClassName('js-palette__history');
     while (palettes[0]) {
       palettes[0].parentNode.removeChild(palettes[0]);
     }
