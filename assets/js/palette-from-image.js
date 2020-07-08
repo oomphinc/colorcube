@@ -5,7 +5,7 @@
   /**
    * Listen for a file upload and create a preview for it
    */
-  const input = document.querySelector('.image-upload input');
+  const input = document.querySelector('#js-clr-f-img input');
 
   input.addEventListener('change', (evt) => {
     // remove any existing previews
@@ -22,7 +22,7 @@
     preview.src = window.URL.createObjectURL(evt.target.files[0]);
     preview.width = 250;
 
-    const container = document.querySelector('.image-preview');
+    const container = document.querySelector('#js-clr-f-img-preview');
     // generate palette from image
     const colorThief = new ColorThief();
     let colors = [];
@@ -55,7 +55,7 @@
    *
    */
   function displayPalette(colors) {
-    const container = document.querySelector('.image-upload .derived-palette');
+    const container = document.querySelector('#js-clr-f-img-derived');
 
     console.table(colors);
 
@@ -86,12 +86,12 @@
    * Removes any preview images and their preview palettes.
    */
   function clearImagePreview() {
-    const imagePreview = document.querySelector('.image-upload .image-preview');
+    const imagePreview = document.querySelector('#js-clr-f-img-preview');
     if (imagePreview) {
       imagePreview.innerHTML = '';
     }
-    
-    const palettePreview = document.querySelector(".image-upload .derived-palette");
+
+    const palettePreview = document.querySelector("#js-clr-f-img-derived");
     if (palettePreview) {
       palettePreview.innerHTML = '';
     }

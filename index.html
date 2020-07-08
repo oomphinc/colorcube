@@ -57,10 +57,10 @@
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew">
           <h2 class="tabs__pane__title h1">Create new palette</h2>
 
-          <form action="/" class="cc__form" method="post">
-            <div class="cc__form__group">
-              <label class="cc__form__label" for="brand-color-field">Enter a color or list (required):</label>
-              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
+          <form action="/" class="form" method="post">
+            <div class="form__group">
+              <label class="form__label" for="brand-color-field">Enter a color or list (required):</label>
+              <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
 #2d5070
 rgb(112,189,193)
 rgb(232,138,46)
@@ -68,22 +68,19 @@ rgb(232,138,46)
 #373737</textarea>
             </div>
 
-            <!-- Old CSS classes here -->
-            <div class="image-upload cc__form__group">
-              <h3>Palette from image</h3>
-              <form>
-                <label class="cc__form__label" for="palette-from-image">
-                  <input type="file" accept="image/*" id="palette-from-image" name="palette-from-image" aria-label="Upload image">
-                  <span class="file-custom"></span>
-                </label>
-                <div class="image-preview"></div>
-                <div class="derived-palette"></div>
-              </form>
+            <div id="js-clr-f-img" class="form__group clr-f-img">
+              <!-- Wondering if this is a better markup pattern to follow https://codepen.io/accessabilly/pen/qNpZJg -->
+              <p class="form__label">Palette from image</p>
+              <label class="form__label" for="image-picker">
+                <input type="file" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
+                <span class="file-custom"></span>
+              </label>
+              <div id="js-clr-f-img-preview" class="clr-f-img__preview"></div>
+              <div id="js-clr-f-img-derived" class="clr-f-img__swatches"></div>
             </div>
 
-            <!-- Submit Button -->
-            <div class="cc__form__submit">
-              <input id="brand-color-button" name="brand-color-button" type="submit" class="cc__form__button" value="Get Ratios">
+            <div class="form__group form__submit">
+              <input id="brand-color-button" name="brand-color-button" type="submit" class="btn btn--primary" value="Get Ratios">
             </div>
 
           </form>
@@ -91,7 +88,7 @@ rgb(232,138,46)
 
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-ratio" aria-labelledby="ratio" hidden>
           <h2 class="tabs__pane__title h1">Palette results</h2>
-          <div id="results-content">
+          <div id="results-output">
 
           </div>
         </div><!-- end #pane-ratio -->
@@ -100,7 +97,7 @@ rgb(232,138,46)
           <h2 class="tabs__pane__title h1">History</h2>
 
           <!-- Old CSS classes here -->
-          <div id="input-history" class="input-history u__space__outer g--two">
+          <div id="input-history" class="input-history form__group">
             <h3>Palette History <span id="clear-history">[Clear]</span></h3>
             <p class="empty-text">No saved palettes</p>
           </div>
@@ -108,27 +105,29 @@ rgb(232,138,46)
 
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-settings" aria-labelledby="settings" hidden>
           <h2 class="tabs__pane__title h1">Default Values</h2>
-          <div class="cc__form__group">
-            <div class="cc__form__row">
-              <label class="cc__form__label" for="white-value">Light</label>
-              <input class="cc__form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
+          <form action="/" class="form" method="post">
+            <div class="cc__form__group">
+              <div class="cc__form__row">
+                <label class="cc__form__label" for="white-value">Light</label>
+                <input class="cc__form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
+              </div>
+              <div class="cc__form__row">
+                <label class="cc__form__label" for="black-value">Dark</label>
+                <input class="cc__form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
+              </div>
             </div>
-            <div class="cc__form__row">
-              <label class="cc__form__label" for="black-value">Dark</label>
-              <input class="cc__form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
-            </div>
-          </div>
 
-          <h2 class="tabs__pane__title h1">Interface Theme</h2>
-          <div class="cc__form__group theme-switch">
-            <div class="theme-switch__wrapper">
-              <label class="theme-switch__label" for="checkbox">
-                <input type="checkbox" id="checkbox" />
-                <div class="theme-switch__slider round"></div>
-              </label>
-              <span class="theme-switch__status">Change Theme</span>
+            <h2 class="tabs__pane__title h1">Interface Theme</h2>
+            <div class="cc__form__group theme-switch">
+              <div class="theme-switch__wrapper">
+                <label class="theme-switch__label" for="checkbox">
+                  <input type="checkbox" id="checkbox" />
+                  <div class="theme-switch__slider round"></div>
+                </label>
+                <span class="theme-switch__status">Change Theme</span>
+              </div>
             </div>
-          </div>
+          </form>
         </div><!-- end #pane-settings -->
 
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-howto" aria-labelledby="howto" hidden>

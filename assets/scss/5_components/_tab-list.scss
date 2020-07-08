@@ -36,6 +36,10 @@
         border-top-color: var(--theme__fg--accent);
         color: var(--theme__link--accent);
       }
+
+      &:hover {
+        color: var(--theme__link--accent);
+      }
     }
 
     &--new {
@@ -61,6 +65,7 @@
   }
 
   &__pane {
+    overflow: hidden;
 
     &__title {
       margin: 1.5rem 0;

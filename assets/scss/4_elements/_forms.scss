@@ -1,4 +1,5 @@
 input,
+input[type="file"]::-webkit-file-upload-button,
 textarea,
 button {
   cursor: pointer;
@@ -11,17 +12,31 @@ button {
   }
 }
 
-/* Rip a ton of form stuff out of layout.css (BS4) before proceeding with more styles */
+.form {
 
-form {
-  label {
-    font-family: var(--ff__serif);
-    font-weight: var(--fw__light);
+  &__label {
+    color: var(--theme__fg--accent);
+    display: inline-block;
+    font-family: var(--ff__sans);
+    font-weight: var(--fw__bold);
+    letter-spacing: var(--ls__loose);
+    padding-bottom: 0.5em;
   }
 
-  input,
-  textarea {
-    padding: 20px 24px;
-    margin-top: 15px;
+  &__group {
+    padding-bottom: var(--v-spacer);
+  }
+
+  &__input {
+    background-color: var(--theme__bg--navs);
+    border: 1px solid var(--theme__border);
+    color: var(--theme__fg);
+    margin: 0;
+    padding: 0.5em 0.75em;
+
+    &:hover,
+    &:focus {
+      border-color: var(--theme__link);
+    }
   }
 }

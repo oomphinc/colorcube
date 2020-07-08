@@ -1,4 +1,35 @@
-button {
-  color: var(--theme__link);
-  transition: var(--transition-base__sm);
+input[type="file"]::-webkit-file-upload-button,
+.btn {
+  @include button-reset(false);
+  font-family: var(--ff__sans);
+  font-weight: var(--fw__bold);
+  line-height: 1;
+  padding: 0.75em 1em 0.625em;
+  letter-spacing: var(--ls__base);
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  // Default theme, medium gray
+  background-color: var(--theme__fg);
+  color: var(--theme__bg);
+
+  &:hover,
+  &:focus {
+    background-color: var(--theme__link);
+    color: var(--theme__bg);
+  }
+}
+
+// Now the variations, without the input filetype
+.btn {
+  &--primary {
+    background-color: var(--theme__link);
+    color: var(--theme__bg);
+
+    &:hover,
+    &:focus {
+      background-color: var(--theme__fg--accent);
+      color: var(--theme__bg);
+    }
+  }
 }
