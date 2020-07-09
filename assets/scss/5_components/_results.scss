@@ -1,0 +1,139 @@
+.results {
+
+  &__title {
+    color: var(--theme__fg--accent);
+    font-family: var(--ff__sans);
+    font-weight: var(--fw__light);
+    letter-spacing: var(--ls__base);
+    padding-bottom: 0.75em;
+  }
+
+  &__list {}
+
+  &__item {}
+
+  &__row {
+    padding-bottom: 1em;
+  }
+
+  &__col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+  }
+
+  &__details {
+    margin-left: var(--spacer__y--fluid);
+
+    a {
+      color: var(--theme__fg);
+    }
+
+    dl {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-flow: row wrap;
+
+      dt {
+        flex: 1 0 2em;
+
+        svg {
+          width: 1em;
+          height: 1em;
+        }
+      }
+
+      dd {
+        color: var(--theme__fg--accent);
+        flex: 1 0 calc(100% - 2em);
+      }
+    }
+
+    input {
+      width: 75%;
+    }
+  }
+}
+
+.swatch {
+  $swatch-size-sm: 96px;
+
+  flex: 0 0 em($swatch-size-sm);
+  height: em($swatch-size-sm);
+  min-width: em($swatch-size-sm);
+  overflow: hidden;
+  position: relative;
+
+  &--half {
+    height: em($swatch-size-sm/2);
+  }
+
+  &__ratio {
+    font-size: 2em;
+    font-weight: var(--fw__light);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &--total-fail::before {
+    border-top: 3px solid var(--theme__bg);
+    content: '';
+    position: absolute;
+    left: 1px;
+    bottom: -2px;
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+    width: 145%;
+    z-index: 2;
+  }
+}
+
+.conformance {
+  &__fail {
+    color: var(--theme__ratio-fail);
+  }
+
+  &__pass {
+    color: var(--theme__ratio-pass);
+  }
+}
+
+.hsl {
+
+  &__original,
+  &__mod {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+
+    p {
+      margin-left: var(--spacer__y--fluid);
+    }
+  }
+
+  // Uneditable display of the original HSL values
+  &__original {
+    //display: none;
+
+    a {
+      color: var(--theme__fg--accent);
+    }
+  }
+
+  // Editable display of the HSL values
+  &__mod {
+    //display: none;
+  }
+
+  &__controls {
+    input {
+      width: 4em;
+    }
+  }
+}

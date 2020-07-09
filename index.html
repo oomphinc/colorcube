@@ -88,15 +88,101 @@ rgb(232,138,46)
         </div><!-- end #pane-new -->
 
         <!-- Palette Ratios -->
-        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-ratio" aria-labelledby="ratio" hidden>
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-ratio" aria-labelledby="ratio" aria-hidden="true">
           <h2 class="tabs__pane__title h1">Palette results</h2>
-          <div id="results-output">
 
-          </div>
+          <!-- Temporary -->
+<ul class="results__list">
+
+  <!-- One color -->
+  <li class="results__item" id="row-0">
+    <h3 id="js-mod-label-0" class="results__title">#d62901</h3>
+    <div class="results__row hsl">
+      <div class="hsl__original">
+        <div class="swatch swatch--half" style="background-color: #d62901"></div>
+        <p><b><a href="#modify" class="js-jump-tab">HSL</a></b> 11, 99, 42</p>
+      </div>
+      <div class="hsl__mod">
+        <div class="swatch swatch--half" style="background-color: #d62901"></div>
+        <p class="hsl__controls">
+          <span class="hsl__hue">
+            <label class="u__sr-only" for="adjust-hue-0">H</label>
+            <input type="number" class="form__input adjust-hue" data-target="0" data-color="d62901" id="adjust-hue-0" name="adjust-hue-0" value="11" min="0" max="360">
+          </span>
+          <span class="hsl__saturation">
+            <label class="u__sr-only" for="adjust-sat-0">S</label>
+            <input type="number" class="form__input adjust-sat" data-target="0" data-color="d62901" id="adjust-sat-0" name="adjust-sat-0" value="99" min="0" max="100">
+          </span>
+          <span class="hsl__lightness">
+            <label class="u__sr-only" for="adjust-lig-0">L</label>
+            <input type="number" class="form__input adjust-lig" data-target="0" data-color="d62901" id="adjust-lig-0" name="adjust-lig-0" value="42" min="0" max="100">
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="results__row">
+      <div class="results__col results--wlight">
+        <div class="swatch swatch--wlight" style="background-color: #d62901">
+          <span class="swatch__ratio" style="color: #ffffff">5.03</span>
+        </div>
+        <div class="results__details">
+          <p>With <a href="#adjust-defaults" class="js-jump-tab">#ffffff</a></p>
+          <dl>
+            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
+            <dd role="text">7.0 <span class="u__sr-only">is required for WCAG Level</span> AAA</dt>
+            <dt><svg class="conformance__pass"><use xlink:href="#success" /></svg><span class="u__sr-only">Conforms</span></dt>
+            <dd role="text">4.5 <span class="u__sr-only">is required for WCAG Level AA for small text and Level AAA for large text</span><span aria-hidden="true"> AA/AAA lg</span></dt>
+            <dt><svg class="conformance__pass"><use xlink:href="#success" /></svg><span class="u__sr-only">Conforms</span></dt>
+            <dd role="text">3.0 <span class="u__sr-only">is required for WCAG Level AA for large text</span><span aria-hidden="true"> AA lg</span></dt>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="results__row">
+      <div class="results__col results--wlight">
+        <div class="swatch swatch--wdark" style="background-color: #d62901">
+          <span class="swatch__ratio" style="color: #101010">3.78</span>
+        </div>
+        <div class="results__details">
+          <p>With <a href="#adjust-defaults" class="js-jump-tab">#101010</a></p>
+          <dl>
+            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
+            <dd role="text">7.0 <span class="u__sr-only">is required for WCAG Level</span> AAA</dt>
+            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conforms</span></dt>
+            <dd role="text">4.5 <span class="u__sr-only">is required for WCAG Level AA for small text and Level AAA for large text</span><span aria-hidden="true"> AA/AAA lg</span></dt>
+            <dt><svg class="conformance__pass"><use xlink:href="#success" /></svg><span class="u__sr-only">Conforms</span></dt>
+            <dd role="text">3.0 <span class="u__sr-only">is required for WCAG Level AA for large text</span><span aria-hidden="true"> AA lg</span></dt>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="results__row">
+      <div class="results__col results--wlight">
+        <div class="swatch swatch--wcustom swatch--total-fail" style="background-color: #d62901">
+          <span class="swatch__ratio" style="color: #373737">3.78</span>
+        </div>
+        <div class="results__details">
+          <p>With <input class="form__input adjust-custom" id="test-color-0" name="test-color-0" type="text" value="#373737" data-target="0" data-color="#d62901"></p>
+          <dl>
+            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
+            <dd role="text">7.0 <span class="u__sr-only">is required for WCAG Level</span> AAA</dt>
+            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
+            <dd role="text">4.5 <span class="u__sr-only">is required for WCAG Level AA for small text and Level AAA for large text</span><span aria-hidden="true"> AA/AAA lg</span></dt>
+            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
+            <dd role="text">3.0 <span class="u__sr-only">is required for WCAG Level AA for large text</span><span aria-hidden="true"> AA lg</span></dt>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </li><!-- End one color -->
+
+</ul>
+
+          <div id="js-results-output" class="results"></div>
         </div><!-- end #pane-ratio -->
 
         <!-- History -->
-        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-history" aria-labelledby="history" hidden>
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-history" aria-labelledby="history" aria-hidden="true">
           <h2 class="tabs__pane__title h1">History</h2>
           <div class="form__group">
             <button id="js-clear-history" class="btn btn--primary">Clear All</button>
@@ -107,10 +193,10 @@ rgb(232,138,46)
         </div><!-- end #pane-history -->
 
         <!-- Settings -->
-        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-settings" aria-labelledby="settings" hidden>
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-settings" aria-labelledby="settings" aria-hidden="true">
           <h2 class="tabs__pane__title h1">Default Values</h2>
           <form action="/" class="form" method="post">
-            <div class="form__group">
+            <div id="adjust-defaults" class="form__group">
               <div class="form__row">
                 <label class="form__label" for="white-value">Light</label>
                 <input class="form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
@@ -138,7 +224,7 @@ rgb(232,138,46)
         </div><!-- end #pane-settings -->
 
         <!-- How to Use and Credits -->
-        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-howto" aria-labelledby="howto" hidden>
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-howto" aria-labelledby="howto" aria-hidden="true">
           <h2 class="tabs__pane__title h1">How to Use</h2>
           <article class="rhythm">
             <h3>Check new palette</h3>
@@ -162,7 +248,7 @@ rgb(232,138,46)
             <p>From the given list of colors, which color combination is the most accessible? This does not mean that the color pair will pass minimum requirements, but it has the best chance of passing. </p>
             <p><b>Custom:</b> Use the text input to change the color pairing.</p>
 
-            <h3>Modify with HSL</h3>
+            <h3 id="modify">Modify with HSL</h3>
             <p><b>Why HSL?</b> By modifying primarily the saturation and/or lightness, the original intention of the color is intact. To modify the Hue would be to start to modify the color from a blue to a blue-green, or from a red to an orange. Of course, modify the Hue as you wish as well, but our intention is to show how small movements to the saturation and lightness can increase accessibility while retaining the intention of the brand color. <a href="//oomphinc.com/insights/evaluate-brand-colors-for-accessibility" target="_blank" title="Opens a new window">More about how HSL works</a>.</p>
 
             <h3>Hover color vs. default text</h3>
@@ -185,6 +271,18 @@ rgb(232,138,46)
       </article>
     </main>
 
+    <div hidden>
+      <svg role="img" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="failure" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+        </symbol>
+      </svg>
+      <svg role="img" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="success" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+        </symbol>
+      </svg>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
