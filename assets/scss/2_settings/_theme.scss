@@ -56,6 +56,9 @@ $edge__light: #b45e09;
   --theme__link--accent--hover: #{$white};
 
   --theme__border: rgba(255,255,255,0.15);
+
+  --theme__ratio-pass: #{$pass__dark};
+  --theme__ratio-fail: #{$fail__dark};
 }
 
 html[data-theme="light"] {
@@ -72,4 +75,7 @@ html[data-theme="light"] {
   --theme__link--accent--hover: #{$black};
 
   --theme__border: rgba(26,24,24,0.15);
+
+  --theme__ratio-pass: #{$pass__light};
+  --theme__ratio-fail: #{$fail__light};
 }

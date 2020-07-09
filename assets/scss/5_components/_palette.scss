@@ -4,7 +4,10 @@
     align-items: stretch;
     justify-content: flex-start;
     flex-flow: row nowrap;
-    min-height: 2em;
+
+    &:not(:empty) {
+      min-height: 2em;
+    }
 
     .swatch {
       display: block;

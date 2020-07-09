@@ -2,26 +2,26 @@
   // Spacing variables are fluid. All units are REM unitless
   --spacer__x--min: 0.5;
   --spacer__x--max: 1;
-  --spacer__x--fluid: calc(var(--spacer__x--min) * 1rem);
+  --spacer__x--fluid: calc(var(--spacer__x--min) * 1em);
 
   --spacer__y--min: 1;
   --spacer__y--max: 2;
-  --spacer__y--fluid: calc(var(--spacer__y--min) * 1rem);
+  --spacer__y--fluid: calc(var(--spacer__y--min) * 1em);
 }
 
 @media (min-width: ($min-vw * 1rem)) {
   :root {
     --spacer__x--fluid: calc(
-      (var(--spacer__x--min) * 1rem) + (var(--spacer__x--max) - var(--spacer__x--min)) * ((100vw - var(--vp__min) * 1rem) / (var(--vp__max) - var(--vp__min)))
+      (var(--spacer__x--min) * 1em) + (var(--spacer__x--max) - var(--spacer__x--min)) * ((100vw - var(--vp__min) * 1em) / (var(--vp__max) - var(--vp__min)))
     );
     --spacer__y--fluid: calc(
-      (var(--spacer__y--min) * 1rem) + (var(--spacer__y--max) - var(--spacer__y--min)) * ((100vw - var(--vp__min) * 1rem) / (var(--vp__max) - var(--vp__min)))
+      (var(--spacer__y--min) * 1em) + (var(--spacer__y--max) - var(--spacer__y--min)) * ((100vw - var(--vp__min) * 1em) / (var(--vp__max) - var(--vp__min)))
     );
   }
 }
 @media (min-width: ($max-vw * 1rem)) {
   :root {
-    --spacer__x--fluid: calc(var(--spacer__x--max) * 1rem);
-    --spacer__y--fluid: calc(var(--spacer__y--max) * 1rem);
+    --spacer__x--fluid: calc(var(--spacer__x--max) * 1em);
+    --spacer__y--fluid: calc(var(--spacer__y--max) * 1em);
   }
 }

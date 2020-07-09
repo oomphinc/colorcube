@@ -67,6 +67,13 @@
   &__pane {
     overflow: hidden;
 
+    &[aria-hidden="true"] {
+      // Visually hide element, leave accessible to JS
+      // In this instance, though we are using the sr-only mixin,
+      // the intent is to also hide from screen readers
+      @include sr-only;
+    }
+
     &__title {
       margin: 1.5rem 0;
       text-align: center;
