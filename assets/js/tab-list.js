@@ -1,6 +1,11 @@
 /*
 *   This content is licensed according to the W3C Software License at
 *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+*
+*   Modified!
+*   Where the previous implmentation used the HTML5 "hidden" attribute, we
+*   needed to keep the elements accessible to JS. We use aria-hidden="true" instead
+*   and hook CSS onto that as well to visually hide the tab pane
 */
 (function () {
   var tablist = document.querySelectorAll('[role="tablist"]')[0];
@@ -160,7 +165,7 @@
     var controls = tab.getAttribute('aria-controls');
 
     // Remove hidden attribute from tab panel to make it visible
-    document.getElementById(controls).removeAttribute('hidden');
+    document.getElementById(controls).removeAttribute('aria-hidden');
 
     // Set focus when required
     if (setFocus) {
@@ -177,7 +182,7 @@
     };
 
     for (p = 0; p < panels.length; p++) {
-      panels[p].setAttribute('hidden', 'hidden');
+      panels[p].setAttribute('aria-hidden', 'true');
     };
   };
 
