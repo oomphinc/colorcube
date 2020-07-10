@@ -55,7 +55,7 @@
         </nav>
 
         <!-- Add new palette -->
-        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew">
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew" aria-hidden="false">
           <h2 class="tabs__pane__title h1">Create new palette</h2>
 
           <form action="/" class="form" method="post">
@@ -90,95 +90,7 @@ rgb(232,138,46)
         <!-- Palette Ratios -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-ratio" aria-labelledby="ratio" aria-hidden="true">
           <h2 class="tabs__pane__title h1">Palette results</h2>
-
-          <!-- Temporary -->
-<ul class="results__list">
-
-  <!-- One color -->
-  <li class="results__item" id="row-0">
-    <h3 id="js-mod-label-0" class="results__title">#d62901</h3>
-    <div class="results__row hsl">
-      <div class="hsl__original">
-        <div class="swatch swatch--half" style="background-color: #d62901"></div>
-        <p><b><a href="#modify" class="js-jump-tab">HSL</a></b> 11, 99, 42</p>
-      </div>
-      <div class="hsl__mod">
-        <div class="swatch swatch--half" style="background-color: #d62901"></div>
-        <p class="hsl__controls">
-          <span class="hsl__hue">
-            <label class="u__sr-only" for="adjust-hue-0">H</label>
-            <input type="number" class="form__input adjust-hue" data-target="0" data-color="d62901" id="adjust-hue-0" name="adjust-hue-0" value="11" min="0" max="360">
-          </span>
-          <span class="hsl__saturation">
-            <label class="u__sr-only" for="adjust-sat-0">S</label>
-            <input type="number" class="form__input adjust-sat" data-target="0" data-color="d62901" id="adjust-sat-0" name="adjust-sat-0" value="99" min="0" max="100">
-          </span>
-          <span class="hsl__lightness">
-            <label class="u__sr-only" for="adjust-lig-0">L</label>
-            <input type="number" class="form__input adjust-lig" data-target="0" data-color="d62901" id="adjust-lig-0" name="adjust-lig-0" value="42" min="0" max="100">
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="results__row">
-      <div class="results__col results--wlight">
-        <div class="swatch swatch--wlight" style="background-color: #d62901">
-          <span class="swatch__ratio" style="color: #ffffff">5.03</span>
-        </div>
-        <div class="results__details">
-          <p>With <a href="#adjust-defaults" class="js-jump-tab">#ffffff</a></p>
-          <dl>
-            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
-            <dd role="text">7.0 <span class="u__sr-only">is required for WCAG Level</span> AAA</dt>
-            <dt><svg class="conformance__pass"><use xlink:href="#success" /></svg><span class="u__sr-only">Conforms</span></dt>
-            <dd role="text">4.5 <span class="u__sr-only">is required for WCAG Level AA for small text and Level AAA for large text</span><span aria-hidden="true"> AA/AAA lg</span></dt>
-            <dt><svg class="conformance__pass"><use xlink:href="#success" /></svg><span class="u__sr-only">Conforms</span></dt>
-            <dd role="text">3.0 <span class="u__sr-only">is required for WCAG Level AA for large text</span><span aria-hidden="true"> AA lg</span></dt>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="results__row">
-      <div class="results__col results--wlight">
-        <div class="swatch swatch--wdark" style="background-color: #d62901">
-          <span class="swatch__ratio" style="color: #101010">3.78</span>
-        </div>
-        <div class="results__details">
-          <p>With <a href="#adjust-defaults" class="js-jump-tab">#101010</a></p>
-          <dl>
-            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
-            <dd role="text">7.0 <span class="u__sr-only">is required for WCAG Level</span> AAA</dt>
-            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conforms</span></dt>
-            <dd role="text">4.5 <span class="u__sr-only">is required for WCAG Level AA for small text and Level AAA for large text</span><span aria-hidden="true"> AA/AAA lg</span></dt>
-            <dt><svg class="conformance__pass"><use xlink:href="#success" /></svg><span class="u__sr-only">Conforms</span></dt>
-            <dd role="text">3.0 <span class="u__sr-only">is required for WCAG Level AA for large text</span><span aria-hidden="true"> AA lg</span></dt>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <div class="results__row">
-      <div class="results__col results--wlight">
-        <div class="swatch swatch--wcustom swatch--total-fail" style="background-color: #d62901">
-          <span class="swatch__ratio" style="color: #373737">3.78</span>
-        </div>
-        <div class="results__details">
-          <p>With <input class="form__input adjust-custom" id="test-color-0" name="test-color-0" type="text" value="#373737" data-target="0" data-color="#d62901"></p>
-          <dl>
-            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
-            <dd role="text">7.0 <span class="u__sr-only">is required for WCAG Level</span> AAA</dt>
-            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
-            <dd role="text">4.5 <span class="u__sr-only">is required for WCAG Level AA for small text and Level AAA for large text</span><span aria-hidden="true"> AA/AAA lg</span></dt>
-            <dt><svg class="conformance__fail"><use xlink:href="#failure" /></svg><span class="u__sr-only">Does not Conform</span></dt>
-            <dd role="text">3.0 <span class="u__sr-only">is required for WCAG Level AA for large text</span><span aria-hidden="true"> AA lg</span></dt>
-          </dl>
-        </div>
-      </div>
-    </div>
-  </li><!-- End one color -->
-
-</ul>
-
-          <div id="js-results-output" class="results"></div>
+          <ul id="js-results-output" class="results__list"></ul>
         </div><!-- end #pane-ratio -->
 
         <!-- History -->
