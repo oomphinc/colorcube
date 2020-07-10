@@ -6,14 +6,32 @@
     font-weight: var(--fw__light);
     letter-spacing: var(--ls__base);
     padding-bottom: 0.75em;
+
+    span {
+      transition: var(--transition-base__sm);
+    }
+
+    span:nth-child(2) {
+      // Has content when a user chasnges the HSL values
+      margin-left: 0.5em;
+    }
+
+    span.--modified {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
   }
 
   &__list {}
 
-  &__item {}
+  &__item {
+    border-bottom: 1px solid var(--theme__border);
+    margin-bottom: 2em;
+    padding-bottom: 0.5em;
+  }
 
   &__row {
-    padding-bottom: 1em;
+    padding-bottom: 1.5em;
   }
 
   &__col {
@@ -52,53 +70,18 @@
     }
 
     input {
+      margin-top: -0.5em;
       width: 75%;
     }
   }
 }
 
-.swatch {
-  $swatch-size-sm: 96px;
-
-  flex: 0 0 em($swatch-size-sm);
-  height: em($swatch-size-sm);
-  min-width: em($swatch-size-sm);
-  overflow: hidden;
-  position: relative;
-
-  &--half {
-    height: em($swatch-size-sm/2);
-  }
-
-  &__ratio {
-    font-size: 2em;
-    font-weight: var(--fw__light);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
-
-  &--total-fail::before {
-    border-top: 3px solid var(--theme__bg);
-    content: '';
-    position: absolute;
-    left: 1px;
-    bottom: -2px;
-    transform: rotate(-45deg);
-    transform-origin: left bottom;
-    width: 145%;
-    z-index: 2;
-  }
-}
-
 .conformance {
-  &__fail {
+  &__failure {
     color: var(--theme__ratio-fail);
   }
 
-  &__pass {
+  &__success {
     color: var(--theme__ratio-pass);
   }
 }
@@ -133,6 +116,7 @@
 
   &__controls {
     input {
+      padding: 0.5em 0.25em;
       width: 4em;
     }
   }
