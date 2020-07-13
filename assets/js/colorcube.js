@@ -228,11 +228,9 @@ button.onclick = function(e) {
   </li>`;
   }
 
-  // make the results content visible
-  //resultsBlock.style.visibility = 'visible';
-
-  // jump to the results
-  //window.location.href = '#results-content';
+  // jump to the results tab to display the ratios
+  const resultsTab = document.getElementById('ratio');
+  resultsTab.click();
 }
 
 // Adjust Hue, Saturation, or Lightness

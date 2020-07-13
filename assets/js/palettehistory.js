@@ -96,16 +96,20 @@
       element.appendChild(swatch);
 
     }
-    // todo: add copy-to-clipboard-link
+
     // add button to populate textarea
     const popButton = document.createElement('button');
     popButton.value = items;
     popButton.className = 'btn';
     popButton.innerHTML = 'Use';
-    // popButton.onclick = loadPalette;
+
     popButton.addEventListener('click', (e) => {
+      // when clicked, push selected history item into the app's palette form and submit it.
       const target = document.getElementById('brand-color-field');
       target.value = onePerLine(e.target.value);
+      const submit = document.getElementById('brand-color-button');
+      // submitting the form will generate the ratios and activate the ratio results tab
+      submit.click();
     });
     element.appendChild(popButton);
 

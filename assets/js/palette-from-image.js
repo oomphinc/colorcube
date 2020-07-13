@@ -20,7 +20,6 @@
     }
 
     preview.src = window.URL.createObjectURL(evt.target.files[0]);
-    preview.width = 250;
 
     const container = document.querySelector('#js-clr-f-img-preview');
     // generate palette from image
@@ -29,7 +28,6 @@
     preview.onload = (evt) => {
       colors = colorThief.getPalette(evt.target);
 
-      console.log('colors from onload:', colors);
       // display thumbnail of uploaded image
       container.appendChild(preview);
 
@@ -56,8 +54,6 @@
    */
   function displayPalette(colors) {
     const container = document.querySelector('#js-clr-f-img-derived');
-
-    console.table(colors);
 
     // iterate on color list and create swatch elements
     for (let i=0;i<colors.length;i++) {
