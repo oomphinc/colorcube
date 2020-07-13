@@ -496,6 +496,8 @@ strong {
         color: var(--theme__link--accent); }
       .tabs__nav button:hover {
         color: var(--theme__link--accent); }
+      .tabs__nav button > * {
+        pointer-events: none; }
     .tabs__nav--new__icon {
       background-color: var(--theme__link);
       border-top-color: var(--theme__bg--navs);
@@ -565,9 +567,6 @@ strong {
       transform: translate(0, -50%); }
   input:checked + .theme-switch__toggle::before {
     transform: translate(100%, -50%); }
-
-main {
-  padding-bottom: 5.75em; }
 
 .u__btn-reset {
   background-color: transparent;

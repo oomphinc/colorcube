@@ -41,6 +41,11 @@
       &:hover {
         color: var(--theme__link--accent);
       }
+
+      // Prevent click handlers from being captured by nested elements
+      > * {
+        pointer-events: none;
+      }
     }
 
     &--new {
