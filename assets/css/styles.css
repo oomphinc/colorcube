@@ -474,7 +474,8 @@ strong {
 .tabs {
   position: relative;
   min-height: 100vh;
-  min-height: -webkit-fill-available; }
+  min-height: -webkit-fill-available;
+  margin-bottom: 7em; }
   .tabs__nav {
     background-color: var(--theme__bg--navs);
     display: flex;
