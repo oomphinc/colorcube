@@ -2,3 +2,63 @@
 // Print
 //
 
+@media print {
+  .cc__form,
+  .cc__results__title,
+  .mod__controls {
+    display: none;
+  }
+  
+  body,
+  .cc__brand__title a,
+  .text-light,
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
+  .cc__form__input,
+  .p__footer small {
+    color: #000000 !important;
+  }
+  
+  .p__header,
+  .p__main,
+  .p__footer,
+  .cc__form__input {
+    background-color: #ffffff !important;
+  }
+  
+  .p__main {
+    padding-top: 4.5rem;
+  }
+  
+  .results__row {
+    border-color: #000000 !important;
+  }
+  
+  .color-ratio__passfail {
+    display: block;
+    font-size: 14px;
+  }
+  
+  .results__col.ratios__custom {
+    flex-grow: 0;
+  }
+  
+  .results__col.ratios__on-light {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: 0;
+      bottom: 1rem;
+      width: 112px;
+      border: 1px solid #000000;
+    }
+    
+    .results__row__header & {
+      &::after {
+        content: none;
+      }
+    }
+  }
+}
