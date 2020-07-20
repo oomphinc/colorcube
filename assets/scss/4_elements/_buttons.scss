@@ -32,4 +32,15 @@ input[type="file"]::-webkit-file-upload-button,
       color: var(--theme__bg);
     }
   }
+
+  &--transparent {
+    background-color: transparent;
+    color: var(--theme__fg);
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: var(--theme__link);
+    }
+  }
 }

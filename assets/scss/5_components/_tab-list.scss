@@ -9,11 +9,20 @@
 //   <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-howto" id="howto">How To</button>
 // </nav>
 
+// Specific Tab panes
+// Using the IDs that we need to use for accessibility
+#pane-addnew,
+#pane-history,
+#pane-settings,
+#pane-howto {
+  margin: 0 auto;
+  max-width: $maxwidth-text;
+}
+
 .tabs {
   position: relative;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  margin-bottom: 7em;
 
   &__nav {
     background-color: var(--theme__bg--navs);
@@ -21,11 +30,26 @@
     align-items: center;
     justify-content: space-between;
     flex-flow: row nowrap;
+    padding: 0 var(--spacer__y--fluid);
 
-    position: fixed;
-    bottom: 0;
-    z-index: 99;
-    width: 100vw;
+    @include breakpoint-down(medium) {
+      position: fixed;
+      bottom: 0;
+      z-index: 99;
+      width: 100vw;
+    }
+
+    @include breakpoint-up(base) {
+      justify-content: space-around;
+    }
+
+    @include breakpoint-up(medium) {
+      background-color: transparent;
+      margin-top: - em(60);
+      margin-left: auto;
+      padding: 0;
+      width: min-content;
+    }
 
     button {
       border-top: 3px solid transparent;
@@ -34,9 +58,19 @@
       line-height: 1;
       padding: 1.25em 0;
 
+      @include breakpoint-up(medium) {
+        padding: 1.25em var(--spacer__y--fluid);
+        white-space: nowrap;
+      }
+
       &[aria-selected="true"] {
         border-top-color: var(--theme__fg--accent);
         color: var(--theme__link--accent);
+
+        @include breakpoint-up(medium) {
+          background-color: var(--theme__bg);
+          border-bottom: none;
+        }
       }
 
       &:hover {
@@ -46,6 +80,7 @@
       // Prevent click handlers from being captured by nested elements
       > * {
         pointer-events: none;
+        vertical-align: middle;
       }
     }
 
@@ -58,12 +93,23 @@
         font-size: 125%;
         padding: 0.5em 0.75em;
         margin: 0 0.25em;
+
+        @include breakpoint-up(medium) {
+          border-radius: 3px;
+          padding: 0.25em 0.5em 0.1875em ;
+        }
+      }
+
+      &__text {
+        @include breakpoint-down(base) {
+          display: none;
+        }
       }
 
       &[aria-selected="true"] {
         border-top-color: var(--theme__bg--navs) !important;
 
-        span {
+        .tabs__nav--new__icon {
           background-color: var(--theme__fg);
           color: var(--theme__bg);
         }
@@ -74,6 +120,12 @@
   &__pane {
     overflow: hidden;
 
+    @media (hover: hover) {
+      &:focus {
+        outline: none;
+      }
+    }
+
     &[aria-hidden="true"] {
       // Visually hide element, leave accessible to JS
       // In this instance, though we are using the sr-only mixin,
@@ -82,7 +134,7 @@
     }
 
     &__title {
-      margin: 1.5rem 0;
+      margin: 1.5rem 0 1.5em;
       text-align: center;
     }
   }

@@ -1,9 +1,12 @@
 :root {
   // Spacing variables are fluid. All units are REM unitless
+
+  // Vertical
   --spacer__x--min: 0.5;
-  --spacer__x--max: 1;
+  --spacer__x--max: 1.5;
   --spacer__x--fluid: calc(var(--spacer__x--min) * 1em);
 
+  // Horizontal
   --spacer__y--min: 1;
   --spacer__y--max: 2;
   --spacer__y--fluid: calc(var(--spacer__y--min) * 1em);

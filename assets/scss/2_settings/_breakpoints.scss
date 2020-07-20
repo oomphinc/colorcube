@@ -13,22 +13,22 @@
 //
 $project-breakpoints: (
   // List as unitless pixels
-  base: 440,  // 620-440= 180
-  small: 620,  // 760-620= 140
-  medium: 760,  // 980-760= 220
-  large: 980,  // 1380-980= 400
-  x-large: 1380, // 1880-1380 = 500
-  xx-large: 1880
+  base: 440,      // 440  + 180 = 620
+  small: 620,     // 620  + 160 = 780
+  medium: 780,    // 780  + 200 = 980
+  large: 980,     // 980  + 220 = 1200
+  x-large: 1200,  // 1200 + 240 = 1440
+  xx-large: 1440
 );
 
 $project-maxwidths: (
-  base: 1380,
-  text: 800
+  base: 1160,
+  text: 780
 );
 
 // For responsive typography
 // Declare a minimum and maximum viewport size for fluidity to happen within
-$min-vw: strip-unit(bp(small));
+$min-vw: strip-unit(bp(base));
 $max-vw: strip-unit(bp(x-large));
 
 $maxwidth-container: em(map-get($project-maxwidths, base));

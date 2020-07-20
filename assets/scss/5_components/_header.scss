@@ -16,6 +16,10 @@
     align-items: center;
     justify-content: space-between;
     flex-flow: row nowrap;
+
+    @include breakpoint-up(medium) {
+      align-items: flex-start;
+    }
   }
 
   &__brand {
@@ -35,8 +39,29 @@
       width: em(42);
     }
 
+    &__text {
+      span {
+        display: none;
+      }
+
+      @include breakpoint-up(small) {
+        span {
+          display: inline;
+        }
+        sup {
+          display: none;
+        }
+      }
+    }
+
     &__subtitle {
       flex: 0 1 auto;
+
+      @include breakpoint-down(small) {
+        span {
+          display: none;
+        }
+      }
     }
   }
 }

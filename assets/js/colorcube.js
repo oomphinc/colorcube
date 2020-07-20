@@ -125,7 +125,7 @@ function outputColorRow(color, bg, editable, iterator) {
           <span class="swatch__ratio" style="color: ${bghex}">${ratio}</span>
         </div>
         <div class="results__details">
-          <p>With <input class="form__input adjust-custom" id="custom-color-${iterator}" name="custom-color-${iterator}" type="text" value="${bghex}" data-target="${iterator}" data-color="${hex}"></p>
+          <p><span>With </span><input class="form__input adjust-custom" id="custom-color-${iterator}" name="custom-color-${iterator}" type="text" value="${bghex}" data-target="${iterator}" data-color="${hex}"></p>
           <dl>
             ${outputLevelTest(ratio, AAANORMALRATIO)}
             ${outputLevelTest(ratio, AANORMALRATIO)}
@@ -161,7 +161,7 @@ button.onclick = function(e) {
       black = tinycolor(document.querySelector('#black-value').value);
 
   // if there are already results displayed, clear them
-  if ( results && results.children.length > 1 ) {
+  if ( results && results.children.length > 0 ) {
     results.innerHTML = '';
   }
 
@@ -214,7 +214,7 @@ button.onclick = function(e) {
         </p>
       </div>
     </div>
-    <div id="results-${i}">
+    <div id="results-${i}" class="results__row__wrapper">
       <div class="results__row results--w-light">
         ${outputColorRow(colorArray[i], white)}
       </div>
@@ -294,9 +294,6 @@ $(document).on("blur", ".adjust-custom", function() {
 
   // Change the contents of the Custom column
   customContainer.html('');
-  var newResults =
-    `<div class="results__row results--w-custom" id="custom-pair-${target}">
-        ${outputColorRow(color, newColor, true, target)}
-      </div>`;
+  var newResults = `${outputColorRow(color, newColor, true, target)}`;
   customContainer.html(newResults);
 });

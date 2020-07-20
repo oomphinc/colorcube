@@ -5,7 +5,7 @@
     font-family: var(--ff__sans);
     font-weight: var(--fw__light);
     letter-spacing: var(--ls__base);
-    padding-bottom: 0.75em;
+    padding: 1em 0 0.75em;
 
     span {
       transition: var(--transition-base__sm);
@@ -24,10 +24,68 @@
 
   &__list {}
 
+  // At small screen sizes, max-width and center all elements
+  @include breakpoint-down(small) {
+    &__title,
+    &__row {
+      width: rem(288);
+      margin: 0 auto;
+    }
+  }
+
   &__item {
     border-bottom: 1px solid var(--theme__border);
     margin-bottom: 2em;
     padding-bottom: 0.5em;
+    width: 100%;
+
+    @include breakpoint-up(small) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-flow: row wrap;
+
+      max-width: rem(704);
+      margin: 0 auto;
+
+      > h3 {
+        flex: 1 0 100%;
+      }
+
+      > div {
+        flex: 1 0 50%;
+      }
+    }
+
+    @include breakpoint-up(x-large) {
+      max-width: unset;
+
+      > div:nth-of-type(1) {
+        flex: 1 0 26%;
+      }
+
+      > div:nth-of-type(2) {
+        flex: 1 0 74%;
+      }
+    }
+  }
+
+  &__row__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+  }
+
+  &__row__wrapper &__row {
+    @include breakpoint-up(small) {
+      padding-left: var(--spacer__y--fluid);
+      flex: 1 0 100%;
+    }
+
+    @include breakpoint-up(x-large) {
+      flex: 1 0 33%;
+    }
   }
 
   &__row {
@@ -42,7 +100,7 @@
   }
 
   &__details {
-    margin-left: var(--spacer__y--fluid);
+    margin-left: calc(var(--spacer__y--min) * 1em);
 
     a {
       color: var(--theme__fg);
@@ -55,7 +113,7 @@
       flex-flow: row wrap;
 
       dt {
-        flex: 1 0 2em;
+        flex: 1 0 1.5em;
 
         svg {
           width: 1em;
@@ -65,13 +123,22 @@
 
       dd {
         color: var(--theme__fg--accent);
-        flex: 1 0 calc(100% - 2em);
+        flex: 1 0 calc(100% - 1.5em);
       }
     }
 
     input {
       margin-top: -0.5em;
       width: 75%;
+    }
+  }
+
+  // Modifiers
+  &--w-custom &__details {
+    @include breakpoint-up(large) {
+      p span {
+        display: none;
+      }
     }
   }
 }
@@ -96,13 +163,12 @@
     flex-flow: row nowrap;
 
     p {
-      margin-left: var(--spacer__y--fluid);
+      margin-left: calc(var(--spacer__y--min) * 1rem);
     }
   }
 
   // Uneditable display of the original HSL values
   &__original {
-    //display: none;
 
     a {
       color: var(--theme__fg--accent);
@@ -117,7 +183,7 @@
   &__controls {
     input {
       padding: 0.5em 0.25em;
-      width: 4em;
+      width: 3.5em;
     }
   }
 }

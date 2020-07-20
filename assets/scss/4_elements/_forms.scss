@@ -40,4 +40,10 @@ button {
       border-color: var(--theme__link);
     }
   }
+
+  &__submit {
+    @include breakpoint-up(medium) {
+      text-align: center;
+    }
+  }
 }
