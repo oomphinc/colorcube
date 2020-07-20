@@ -1,9 +1,19 @@
 .clr-f-img {
 
+  .form__label {
+    display: block;
+  }
+
   &__preview {
+
+    &:not(:empty) {
+      padding: var(--spacer__x--fluid) 0;
+    }
+
     img {
       height: auto;
-      width: 100%;
+      max-height: em(288);
+      max-width: 100%;
     }
   }
 }

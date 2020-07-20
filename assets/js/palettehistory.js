@@ -86,22 +86,11 @@
     let element = document.createElement('div');
     element.className = 'js-palette__history palette__swatches form__group';
 
-    // create each color swatch and add to the set
-    // todo: replace this for with a different loop structure
-    for (let i=0;i<items.length;i++) {
-      let swatch = document.createElement('span');
-      swatch.className = 'swatch';
-      swatch.style.backgroundColor = items[i];
-      swatch.title = items[i];
-      element.appendChild(swatch);
-
-    }
-
     // add button to populate textarea
     const popButton = document.createElement('button');
     popButton.value = items;
     popButton.className = 'btn';
-    popButton.innerHTML = 'Use';
+    popButton.innerHTML = 'Ratios';
 
     popButton.addEventListener('click', (e) => {
       // when clicked, push selected history item into the app's palette form and submit it.
@@ -113,13 +102,22 @@
     });
     element.appendChild(popButton);
 
+    // create each color swatch and add to the set
+    // todo: replace this for with a different loop structure
+    for (let i=0;i<items.length;i++) {
+      let swatch = document.createElement('span');
+      swatch.className = 'swatch';
+      swatch.style.backgroundColor = items[i];
+      swatch.title = items[i];
+      element.appendChild(swatch);
+    }
+
     // Trash button for single element
-    const trashButton = document.createElement('span');
-    trashButton.className = 'btn swatch__delete';
+    const trashButton = document.createElement('button');
+    trashButton.className = 'btn btn--transparent palette__delete';
     trashButton.title = 'Delete this palette';
     trashButton.dataset.swatch = items;
-    // todo: make this text, change with css
-    trashButton.innerHTML = '&#128465;'; // trash can icon
+    trashButton.innerHTML = '<svg class="palette__trash-icon"><use xlink:href="#trash" /></svg>';
     trashButton.addEventListener('click', (e) => {
       deletePalette(items);
     });
