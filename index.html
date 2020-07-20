@@ -59,25 +59,27 @@
           <h2 class="tabs__pane__title h1">Create new palette</h2>
 
           <form action="/" class="form" method="post">
-            <div class="form__group">
-              <label class="form__label" for="brand-color-field">Enter a color or list (required):</label>
-              <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
+            <div class="l__row">
+              <div class="l__col form__group">
+                <label class="form__label" for="brand-color-field">Enter a color or list (required):</label>
+                <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
 #2d5070
 rgb(112,189,193)
 rgb(232,138,46)
 #008a65
 #373737</textarea>
-            </div>
+              </div>
 
-            <div id="js-clr-f-img" class="form__group clr-f-img">
-              <!-- Wondering if this is a better markup pattern to follow https://codepen.io/accessabilly/pen/qNpZJg -->
-              <p class="form__label">Palette from image</p>
-              <label class="form__label" for="image-picker">
-                <input type="file" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
-                <span class="file-custom"></span>
-              </label>
-              <div id="js-clr-f-img-preview" class="clr-f-img__preview"></div>
-              <div id="js-clr-f-img-derived" class="palette__swatches"></div>
+              <div id="js-clr-f-img" class="l__col form__group clr-f-img">
+                <!-- Wondering if this is a better markup pattern to follow https://codepen.io/accessabilly/pen/qNpZJg -->
+                <p class="form__label">Palette from image</p>
+                <label class="form__label" for="image-picker">
+                  <input type="file" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
+                  <span class="file-custom"></span>
+                </label>
+                <div id="js-clr-f-img-preview" class="clr-f-img__preview"></div>
+                <div id="js-clr-f-img-derived" class="palette__swatches"></div>
+              </div>
             </div>
 
             <div class="form__group form__submit">
@@ -108,12 +110,12 @@ rgb(232,138,46)
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-settings" aria-labelledby="settings" aria-hidden="true">
           <h2 class="tabs__pane__title h1">Default Values</h2>
           <form action="/" class="form" method="post">
-            <div id="adjust-defaults" class="form__group">
-              <div class="form__row">
+            <div id="adjust-defaults" class="l__row">
+              <div class="l__col form__group">
                 <label class="form__label" for="white-value">Light</label>
                 <input class="form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
               </div>
-              <div class="form__row">
+              <div class="l__col form__group">
                 <label class="form__label" for="black-value">Dark</label>
                 <input class="form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
               </div>

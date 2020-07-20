@@ -1,0 +1,25 @@
+main {
+  // There should be only one!
+
+  // Spacing at the bottom to account for the fixed nav bar in mobile
+  // Height of nav bar plus a little more for visual space
+  padding-bottom: em(60 + 32);
+}
+
+.l {
+  &__row {
+    @include breakpoint-up(medium) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__col {
+    @include breakpoint-up(medium) {
+      flex: 1 0 48%;
+      max-width: 48%; // Needed because of the file upload form element!
+    }
+  }
+}
