@@ -553,6 +553,10 @@ strong {
   margin: 0 auto;
   max-width: 48.75em; }
 
+#pane-ratio {
+  margin: 0 auto;
+  max-width: 86.25em; }
+
 .tabs {
   position: relative;
   min-height: 100vh;

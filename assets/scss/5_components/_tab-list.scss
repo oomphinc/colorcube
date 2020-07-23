@@ -19,6 +19,11 @@
   max-width: $maxwidth-text;
 }
 
+#pane-ratio {
+  margin: 0 auto;
+  max-width: $maxwidth-container;
+}
+
 .tabs {
   position: relative;
   min-height: 100vh;

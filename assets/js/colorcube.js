@@ -152,8 +152,8 @@ function outputColorRow(color, bg, editable, iterator) {
   return output;
 }
 
-var button = document.querySelector('#brand-color-button');
-button.onclick = function(e) {
+$('.js-get-ratios').click( function(e) {
+  console.log('Get Ratios clicked');
   e.preventDefault();
 
   var results = document.getElementById('js-results-output'),
@@ -169,6 +169,7 @@ button.onclick = function(e) {
   var stringInput = document.querySelector('#brand-color-field').value;
   // if there's no input, get outta here
   if ( stringInput == '' ) {
+    // TODO: Add a message about the textarea being empty
     return;
   }
   // turn it into an array
@@ -228,10 +229,10 @@ button.onclick = function(e) {
   </li>`;
   }
 
-  // jump to the results tab to display the ratios
-  const resultsTab = document.getElementById('ratio');
-  resultsTab.click();
-}
+  // Trigger a results tab click to switch to the ratios pane
+  const resultsButton = $('#ratio');
+  resultsButton.click();
+});
 
 // Adjust Hue, Saturation, or Lightness
 $(document).on("change paste keyup blur", ".adjust-hue, .adjust-sat, .adjust-lig", function() {

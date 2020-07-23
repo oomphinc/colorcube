@@ -58,7 +58,7 @@
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew" aria-hidden="false">
           <h2 class="tabs__pane__title h1">Create new palette</h2>
 
-          <form action="/" class="form" method="post">
+          <form action="" class="form" method="post">
             <div class="l__row">
               <div class="l__col form__group">
                 <label class="form__label" for="brand-color-field">Enter a color or list (required):</label>
@@ -83,7 +83,7 @@ rgb(232,138,46)
             </div>
 
             <div class="form__group form__submit">
-              <input id="brand-color-button" name="brand-color-button" type="submit" class="btn btn--primary" value="Get Ratios">
+              <input id="brand-color-button" name="brand-color-button" type="submit" class="js-get-ratios btn btn--primary" value="Get Ratios">
             </div>
 
           </form>
@@ -113,7 +113,7 @@ rgb(232,138,46)
         <!-- Settings -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-settings" aria-labelledby="settings" aria-hidden="true">
           <h2 class="tabs__pane__title h1">Default Values</h2>
-          <form action="/" class="form" method="post">
+          <form action="" class="form" method="post">
             <div id="adjust-defaults" class="l__row">
               <div class="l__col form__group">
                 <label class="form__label" for="white-value">Light</label>
@@ -123,6 +123,9 @@ rgb(232,138,46)
                 <label class="form__label" for="black-value">Dark</label>
                 <input class="form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
               </div>
+            </div>
+            <div class="form__group form__submit">
+              <input id="brand-color-button" name="brand-color-button" type="submit" class="js-get-ratios btn btn--primary" value="Get Ratios">
             </div>
 
             <h2 class="tabs__pane__title h1">Interface Theme</h2>
