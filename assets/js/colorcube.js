@@ -153,7 +153,7 @@ function outputColorRow(color, bg, editable, iterator) {
 }
 
 $('.js-get-ratios').click( function(e) {
-  console.log('Get Ratios clicked');
+  //console.log('Get Ratios clicked');
   e.preventDefault();
 
   var results = document.getElementById('js-results-output'),
