@@ -526,7 +526,7 @@ strong {
   .palette__swatches .swatch {
     flex: 1 1 auto;
     height: auto;
-    min-width: intrinsic; }
+    min-width: auto; }
   .swatch__ratio {
     font-size: 2em;
     font-weight: var(--fw__light);

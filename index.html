@@ -125,10 +125,14 @@ rgb(232,138,46)
               </div>
             </div>
             <div class="form__group form__submit">
-              <input id="brand-color-button" name="brand-color-button" type="submit" class="js-get-ratios btn btn--primary" value="Get Ratios">
+              <input id="brand-color-button" name="brand-color-button" type="submit" class="js-get-ratios btn btn--primary" value="Recalculate Ratios">
             </div>
 
             <h2 class="tabs__pane__title h1">Interface Theme</h2>
+            <!-- Should there be a third option for "Use System Preference"?
+              That is our default, but once a user selects an option manually, they can't go back to system default.
+              Maybe it a checkbox under the toggle?
+              The action would remove any cookie settings and rely on CSS's @media (prefers-color-scheme: dark) -->
             <div id="js-theme-toggle" class="form__group theme-switch">
               <div class="theme-switch__wrapper">
                 <span class="theme-switch__option" aria-hidden="true">Light</span>
