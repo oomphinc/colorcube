@@ -27,7 +27,7 @@ Very little! This project is vanilla HTML/JS and some SASS.
 Need SASS? Download the latest build from [the SASS Lang page](https://sass-lang.com/install). We prefer Brew, if it matters, and version 3.7.4 minimum. 
 
 ## Offline mode
-This project uses PWA features to provide an app-like experience and to function when your device is offline.
+This project uses [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) (Progressive Web App) features to provide an app-like experience and to function when your device is offline.
 
 If you are contributing to the project, you'll need to understand how to bypass this cache to see your changes and test
 your work with and without a network connection to ensure offline mode continues to provide a good experience.
