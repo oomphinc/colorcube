@@ -1,0 +1,49 @@
+input,
+input[type="file"]::-webkit-file-upload-button,
+textarea,
+button {
+  cursor: pointer;
+  transition: var(--transition-base__sm);
+
+  &:disabled,
+  &[disabled],
+  &[disabled="disabled"] {
+    cursor: default;
+  }
+}
+
+.form {
+
+  &__label {
+    color: var(--theme__fg--accent);
+    display: inline-block;
+    font-family: var(--ff__sans);
+    font-weight: var(--fw__bold);
+    letter-spacing: var(--ls__loose);
+    padding-bottom: 0.5em;
+  }
+
+  &__group {
+    padding-bottom: var(--v-spacer);
+  }
+
+  &__input {
+    background-color: var(--theme__bg--navs);
+    border: 1px solid var(--theme__border);
+    color: var(--theme__fg);
+    margin: 0;
+    padding: 0.5em 0.75em;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      border-color: var(--theme__link);
+    }
+  }
+
+  &__submit {
+    @include breakpoint-up(medium) {
+      text-align: center;
+    }
+  }
+}

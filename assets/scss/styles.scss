@@ -1,6 +1,9 @@
 // The files that compile
 
-@import 'abstracts/index';
-@import 'base/index';
-@import 'layout/index';
-@import 'components/index';
+@import '1_tools/index';
+@import '2_settings/index';
+@import '3_generic/index';
+@import '4_elements/index';
+@import '5_components/index';
+@import '6_layout/index';
+@import '7_utilities/index';

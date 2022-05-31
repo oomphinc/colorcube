@@ -1,0 +1,9 @@
+.u {
+  &__sr-only {
+    @include sr-only;
+
+    &--focusable {
+      @include sr-only-focusable;
+    }
+  }
+}

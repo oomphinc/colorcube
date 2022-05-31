@@ -1,0 +1,39 @@
+.palette {
+  &__swatches {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+
+    &:not(:empty) {
+      min-height: 2em;
+    }
+
+    .swatch {
+      display: block;
+      flex: 1 1 auto;
+    }
+
+    .btn:first-of-type {
+      margin-right: 0.25em;
+    }
+
+    .btn:last-of-type {
+      margin-left: 0.25em;
+    }
+  }
+
+  // Palette history
+  &__history {
+    &__clear {
+      text-align: right;
+    }
+  }
+
+  /*button*/&__delete {}
+
+  &__trash-icon {
+    height: 1.5em;
+    width: 1.5em;
+  }
+}

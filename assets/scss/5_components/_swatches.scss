@@ -1,0 +1,42 @@
+.swatch {
+  $swatch-size-sm: 96px;
+
+  flex: 0 0 em($swatch-size-sm);
+  height: em($swatch-size-sm);
+  min-width: em($swatch-size-sm);
+  overflow: hidden;
+  position: relative;
+
+  &--half {
+    height: em($swatch-size-sm/2);
+  }
+
+  .palette__swatches & {
+    flex: 1 1 auto;
+    height: auto;
+    min-width: auto;
+  }
+
+  // Big number in the Ratio Results
+  &__ratio {
+    font-size: 2em;
+    font-weight: var(--fw__light);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &--total-fail::before {
+    border-top: 3px solid var(--theme__bg);
+    content: '';
+    position: absolute;
+    left: 1px;
+    bottom: -2px;
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+    width: 145%;
+    z-index: 2;
+  }
+}

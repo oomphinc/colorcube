@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>ColorCube: A color A11y Tool for Designers &amp; Developers</title>
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
-    
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/assets/img/ColorCube-logo-512.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'classic' theme -->
+    <meta name="theme-color" content="#1A1814">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@oomphinc">
     <meta name="og:title" content="ColorCube: Evaluate Accessible Color Palettes">
@@ -14,130 +18,310 @@
     <meta name="og:image" content="assets/img/ColorCube-screenshot.png">
     <meta name="twitter:image" content="assets/img/ColorCube-screenshot.png">
     <meta name="twitter:image:alt" content="We are sorry, but this tool is not optimized for the visually impaired.">
-  </head>
-  <body>
 
-    <header class="l__header p__header">
-      <div class="l__max u__space__outer cc__brand">
-        <h1 class="cc__brand__title">
-          <a href="." title="Press to reload page and start over with default values">
-            <img class="cc__brand__logo" src="assets/img/ColorCube-logo.png" alt="" width="90">
-            ColorCube
-          </a>
-        </h1>
-        <p class="cc__brand__subtitle text-italic text-light">Color Accessibility Checker built by <a title="Go to Oomph website, link opens in a new window." target="_blank" href="//oomphinc.com">Oomph</a></p>
-      </div>
-    </header>
-    
-    <main class="l__main p__main">
-      <article class="l__max u__space__outer">
-        
-        <form action="/" class="u__space__outer u__space__vertical cc__form" method="post">
-          <div class="g__row">
-            <div class="g__col g--three rhythm">
-              <h2>Step 1:</h2>
-              <p>Paste or enter colors (each on its own line). HEX colors are easiest, but <code>rgb()</code> values are also accepted. Submit our default list to see what happens. Click the button and Go!</p>
-            </div>
-            <div class="g__col g--three">
-              <label class="cc__form__label" for="brand-color-field">Enter a color or list (required):</label>
-              <textarea class="cc__form__input cc__form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901 
-#2d5070 
-rgb(112,189,193)
-rgb(232,138,46) 
-#008a65
-#373737</textarea>
-            </div>
-            <div class="g__col g--three">
-              <div class="cc__form__row">
-                <label class="cc__form__label" for="white-value">Light</label>
-                <input class="cc__form__input" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
-              </div>
-              <div class="cc__form__row">
-                <label class="cc__form__label" for="black-value">Dark</label>
-                <input class="cc__form__input" type="text" id="black-value" name="black-value" value="#101010" required />
-              </div>
-            </div>
-            
-            <!-- Submit Button -->
-            <div class="cc__form__submit g--wide text-align-center">
-              <input id="brand-color-button" name="brand-color-button" type="submit" class="cc__form__button" value="Get Ratios">
-            </div>
-            
-          </div>
-        </form>
-
-        <div id="results-content" class="u__space__vertical--bottom cc__results">
-          <div class="u__space__outer cc__results__description">
-            <h2 class="cc__results__title u__space__vertical--bottom">Step 2: Review colors!</h2>
-            <div class="g__row">
-              <div class="g__col g--two rhythm">
-                <h3>Criteria</h3>
-                <p>This tool shows three different ratio targets and how your color performs with each — white, black, or other colors in your palette:</p>
-                <ul>
-                  <li><strong class="text-light">WCAG Level AAA:</strong> a contrast ratio equal or greater than <strong>7.0</strong>. For large-scale text, a ratio equal or greater than <strong>4.5</strong>.</li>
-                  <li><strong class="text-light">WCAG Level AA:</strong> a contrast ratio equal or greater than <strong>4.5</strong>. For large-scale text, a ratio equal or greater than <strong>3.0</strong>.</li>
-                  <li>Text that is considered “Large-scale” is <strong>18 points (24px)</strong> or larger or <strong>14 points (19px) and bold</strong> or larger.</li>
-                </ul>
-              </div>
-              <div class="g__col g--two rhythm">
-                <p>For more details about success criteria, see the <a title="Go to w3 website in a new window" target="_blank" href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 minimum contrast ratios</a> page.</p>
-                
-                <h3>Modify with HSL</h3>
-                <p><strong>Why HSL?</strong> By modifying primarily the saturation and/or lightness, the original intention of the color is intact. To modify the Hue would be to start to modify the color from a blue to a blue-green, or from a red to an orange. Of course, modify the Hue as you wish as well, but our intention is to show how small movements to the saturation and lightness can increase accessibility while retaining the intention of the brand color. <a href="https://www.nixsensor.com/what-is-hsl-color/" target="_blank">More about how HSL works</a>.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div id="results-output" class="u__space__vertical--top cc__results__content"></div>
-          
-          <div class="l__max--text u__space__outer u__space__vertical--top rhythm cc__results__description">
-            <h3>Edge values</h3>
-            <p>Be careful with <strong class="text-light">EDGE</strong> values &mdash; the color passes validation, but is within 0.5. It may still present a legibility issue even though it gets a passing grade. </p>
-            
-            <h3>Most legible Pair</h3>
-            <p>From the given list of colors, which color combination is the <em>most legible</em>? This does not mean that the color pair will pass minimum requirements, but it has the best chance of passing. </p>
-            <p><strong class="text-light">Custom:</strong> Use the text input to change the color pairing.</p>
-            
-            <h3>Check your hover text color vs. your body text color</h3>
-            <p>If <a title="Go to Webaim.org, link opens in a new window." target="_blank" href="http://webaim.org/techniques/hypertext/link_text#appearance">links are not underlined</a>, there must be 3:1 contrast between link text and body text and also an additional change (e.g., underlining) on mouse hover and keyboard focus. Use the tool to compare your link color against your body text color to see how they pair in the Most Legible column.</p>
-          </div>
-        </div>
-
-      </article>
-    </main>
-
-    <footer class="l__foot u__space__vertical p__footer">
-      <div class="l__max--text u__space__outer">
-        <details class="rhythm">
-          <summary><h2>What is this?</h2></summary>
-          <p>ColorCube is an accessibility (<abbr title="">a11y</abbr>) tool aimed at designers and developers. From a list of colors, we produce performance information with common color combinations. And then we give you the tools to adjust those colors until they pass the recommended color contrast ratios.</p>
-          <p><strong class="text-light">Why?</strong> At Oomph we believe a better web is an accessible web for all. We wanted a tool that could be used before a project starts &mdash; one that helps assess how an existing brand color palette performs. Starting early means that we can make adjustments early to avoid non-accessible color combinations later. </p>
-          <p>Corporate brand color palettes often do not take accessibility into account. And their colors are hard to change. By changing the saturation or brightness of a color <em>but not the hue</em> the color intention is preserved. Most users may not even notice that the color has been adjusted for readability.</p>
-        </details>
-        <div class="rhythm legal">
-          <a class="p__footer__logo" href="//oomphinc.com" title="Visit the Oomph website">
-            <img src="assets/img/oomph-square.png" width="90" alt="Oomph, Inc" />
-          </a>
-          <p><small>Made with <span aria-title="love">&#10084</span> in 2017 at Oomph, Inc. Last update October, 2019. Open source project with MIT license. <a title="Go to GitHub in a new window." target="_blank"  href="https://github.com/oomphinc/colorcube">Contribute to the GitHub repo</a>.</small></p>
-          <p><small><strong class="text-uppercase">Disclaimer:</strong> The algorithm used in this tool and subsequent results are based on the luminosity algorithm recommended in the WCAG 2.0 guidelines to test for contrast. This tool is for general assessment purposes only and not a guarantee of compliance. This open-source visual tool is not optimized for screen readers. </small></p>
-        </div>
-      </div>
-    </footer>
-    
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/js/tinycolor.js"></script>
-    <script type="text/javascript" src="assets/js/colorcube.js" ></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
+
       ga('create', 'UA-43388256-3', 'auto');
       ga('send', 'pageview');
+    </script>
+  </head>
+  <body class="cc__app">
+
+    <header class="cc__header u__px u__py">
+      <h1 class="cc__brand u__pr u__mr">
+        <a href="." class="cc__brand__title" title="Press to reload page and start over with default values">
+          <img class="cc__brand__logo" src="assets/img/ColorCube-logo.svg" alt="" width="90">
+          <span aria-hidden="true" aria-role="text" class="cc__brand__text">Color<span>Cube</span><sup>3</sup></span>
+          <span class="u__sr-only">Color Cube tool</span>
+        </a>
+      </h1>
+      <p class="cc__brand__subtitle" role="text"><span>Accessible</span> Color Contrast Checker</p>
+    </header>
+    <main>
+      <article class="tabs">
+        <nav class="tabs__nav" role="tablist" aria-label="Primary">
+          <button class="tabs__nav--new u__btn-reset" role="tab" aria-selected="true" aria-controls="pane-addnew" id="addnew">
+            <span class="tabs__nav--new__icon" aria-hidden="true">+</span>
+            <span class="tabs__nav--new__text">New</span>
+          </button>
+          <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-ratio" id="ratio">Ratios</button>
+          <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-history" id="history">History</button>
+          <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-settings" id="settings">Settings</button>
+          <button class="u__btn-reset" role="tab" aria-selected="false" aria-controls="pane-howto" id="howto">How To</button>
+        </nav>
+
+        <!-- Add new palette -->
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew" aria-hidden="false">
+          <h2 class="tabs__pane__title h1">Create new palette</h2>
+
+          <form action="" class="form" method="post">
+            <div class="l__row">
+              <div class="l__col form__group">
+                <label class="form__label" for="brand-color-field">Enter a color or list (required):</label>
+                <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
+#2d5070
+rgb(112,189,193)
+rgb(232,138,46)
+#008a65
+#373737</textarea>
+              </div>
+
+              <div id="js-clr-f-img" class="l__col form__group clr-f-img">
+                <!-- Wondering if this is a better markup pattern to follow https://codepen.io/accessabilly/pen/qNpZJg -->
+                <p class="form__label">Palette from image</p>
+                <label class="form__label" for="image-picker">
+                  <input type="file" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
+                  <span class="file-custom"></span>
+                </label>
+                <div id="js-clr-f-img-preview" class="clr-f-img__preview"></div>
+                <div id="js-clr-f-img-derived" class="palette__swatches"></div>
+              </div>
+            </div>
+
+            <div class="form__group form__submit">
+              <input id="brand-color-button" name="brand-color-button" type="submit" class="js-get-ratios btn btn--primary" value="Get Ratios">
+            </div>
+
+          </form>
+        </div><!-- end #pane-new -->
+
+        <!-- Palette Ratios -->
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-ratio" aria-labelledby="ratio" aria-hidden="true">
+          <h2 class="tabs__pane__title h1">Palette results</h2>
+          <ul id="js-results-output" class="results__list">
+            <li>
+              <h3 class="no-results">Supply some colors and press “Get Ratios” in the first pane.</h3>
+            </li>
+          </ul>
+        </div><!-- end #pane-ratio -->
+
+        <!-- History -->
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-history" aria-labelledby="history" aria-hidden="true">
+          <h2 class="tabs__pane__title h1">History</h2>
+          <div class="form__group palette__history__clear">
+            <button id="js-clear-history" class="btn btn--primary">Clear All</button>
+          </div>
+          <div id="js-input-history" class="form__group palette__history__swatches">
+            <p class="empty-text">No saved palettes</p>
+          </div>
+        </div><!-- end #pane-history -->
+
+        <!-- Settings -->
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-settings" aria-labelledby="settings" aria-hidden="true">
+          <h2 class="tabs__pane__title h1">Default Values</h2>
+          <form action="" class="form" method="post">
+            <div id="adjust-defaults" class="l__row">
+              <div class="l__col form__group">
+                <label class="form__label" for="white-value">Light</label>
+                <input class="form__input pickrlt" type="text" id="white-value" name="white-value" value="#FFFFFF" required />
+              </div>
+              <div class="l__col form__group">
+                <label class="form__label" for="black-value">Dark</label>
+                <input class="form__input pickrdk" type="text" id="black-value" name="black-value" value="#101010" required />
+              </div>
+            </div>
+            <div class="form__group form__submit">
+              <input id="brand-color-button" name="brand-color-button" type="submit" class="js-get-ratios btn btn--primary" value="Recalculate Ratios">
+            </div>
+
+            <h2 class="tabs__pane__title h1">Interface Theme</h2>
+            <!-- Should there be a third option for "Use System Preference"?
+              That is our default, but once a user selects an option manually, they can't go back to system default.
+              Maybe it a checkbox under the toggle?
+              The action would remove any cookie settings and rely on CSS's @media (prefers-color-scheme: dark) -->
+            <div id="js-theme-toggle" class="form__group theme-switch">
+              <div class="theme-switch__wrapper">
+                <span class="theme-switch__option" aria-hidden="true">Light</span>
+                <label class="theme-switch__label" for="dark-mode">
+                  <input class="u__sr-only" type="checkbox" id="dark-mode" name="dark-mode" />
+                  <div class="theme-switch__toggle">
+                    <span class="u__sr-only">Dark Interface Theme</span>
+                  </div>
+                </label>
+                <span class="theme-switch__option" aria-hidden="true">Dark</span>
+              </div>
+            </div>
+          </form>
+        </div><!-- end #pane-settings -->
+
+        <!-- How to Use and Credits -->
+        <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-howto" aria-labelledby="howto" aria-hidden="true">
+          <h2 class="tabs__pane__title h1">How to Use</h2>
+          <article class="rhythm">
+            <h3>Test a new palette</h3>
+            <p>Enter individual colors on their own line. Hex and rgb() values are accepted. Submit the default list to see what happens. Press “Get Ratios” to review results against light, dark, and the most accessible pair from the list provided. Light and dark default values can be changed in the “Settings” tab. </p>
+
+            <h3>WCAG 2.1 criteria</h3>
+            <p>This tool shows three different ratio targets and how each color performs with white (light), black (dark), or another color in the provided palette. The criteria are as follows: </p>
+
+            <h4>WCAG Level AAA:</h4>
+            <p>A contrast ratio equal or greater than 7.0. For “large-scale” text, a ratio equal or greater than 4.5. </p>
+            <h4>WCAG Level AA:</h4>
+            <p>A contrast ratio equal or greater than 4.5. For “large-scale” text, a ratio equal or greater than 3.0. </p>
+            <h4>“Large-scale” text:</h4>
+            <p>Greater than 18 points (24px) or greater than <b>14 points (19px) and bold</b>. </p>
+            <p>For more details about success criteria, see the <a title="Opens a new window" target="_blank" href="//www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 minimum contrast ratios page</a>.</p>
+
+            <h3>Most legible pair</h3>
+            <p>From the given list of colors, which color combination is the most accessible? This does not mean that the color pair will pass minimum requirements, but it has the best chance of passing. </p>
+            <p><b>Custom:</b> Use the text input to change the color pairing.</p>
+
+            <h3 id="modify">Modify with HSL</h3>
+            <p><b>Why HSL?</b> By modifying primarily the saturation and/or lightness, the original intention of the color is intact. To modify the Hue would be to start to modify the color from a blue to a blue-green, or from a red to an orange. Of course, modify the Hue as you wish as well, but our intention is to show how small movements to the saturation and lightness can increase accessibility while retaining the intention of the brand color. <a href="//oomphinc.com/insights/evaluate-brand-colors-for-accessibility" target="_blank" title="Opens a new window">More about how HSL works</a>.</p>
+
+            <h3>Other Notes</h3>
+
+            <h4>“Edge” values</h4>
+            <p>Be careful with “edge” values — a color passes validation within 0.5 of the recommended target. It may still present a legibility issue even though it gets a passing grade. </p>
+
+            <h4>Hover color vs. default text</h4>
+            <p>If <a title="Opens in a new window" target="_blank" href="//webaim.org/techniques/hypertext/link_text#appearance">links are not underlined</a>, there must be 3:1 contrast between link text and body text and also an additional change (e.g., underlining) on mouse hover and keyboard focus. Use the tool to compare your link color against your body text color to see how they perform.</p>
+
+            <h3>What is this?</h3>
+            <p>ColorCube is an accessibility (a11y) tool aimed at designers and developers. From a list of colors we produce contrast information along with tools to adjust colors until they pass the recommended accessible ratios.</p>
+            <p>Why? At <a title="Opens in a new window" target="_blank" href="//oomphinc.com">Oomph</a>, we believe the web should be inclusive for all. Our designers wanted a tool to assess how an existing brand color palette performs. Starting early means that we can educate a client and make adjustments to avoid non-accessible color combinations. </p>
+            <p>Corporate brand color palettes often do not take accessibility into account. And brand colors are difficult to change. By changing the saturation or brightness of a color but not the hue, the color intention is preserved. Most users may not even notice that the color has been adjusted for accessibility.</p>
+
+            <h3>Credits</h3>
+            <a class="oomph-logo" href="//oomphinc.com" title="Visit the Oomph website">
+              <img src="assets/img/oomph-square.png" width="90" alt="Oomph, Inc" />
+            </a>
+            <p>Made with <span aria-label="love">&#10084</span> at Oomph, Inc. Last update July, 2020. Open source project with MIT license. <a title="Opens a new window" target="_blank"  href="//github.com/oomphinc/colorcube">Contribute to the GitHub repo</a>.</p>
+            <p><b>Disclaimer:</b> The algorithm used in this tool and subsequent results are based on the luminosity algorithm recommended in the WCAG 2.1 guidelines to test for contrast. This tool is for general assessment purposes only and not a guarantee of compliance. This open-source visual tool is not optimized for use by screen readers.</p>
+          </article>
+        </div><!-- end #pane-howto -->
+
+      </article>
+    </main>
+
+    <div hidden>
+      <svg role="img" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="failure" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+        </symbol>
+      </svg>
+      <svg role="img" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="success" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
+        </symbol>
+      </svg>
+      <svg role="img" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="trash" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
+        </symbol>
+      </svg>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+
+    <script src="assets/js/serviceworker.js"></script>
+    <script src="assets/js/palettehistory.js"></script>
+    <script src="assets/js/tinycolor.js"></script>
+    <script src="assets/js/colorcube.js" ></script>
+    <script src="assets/js/tab-list.js"></script>
+    <script src="assets/js/palette-from-image.js"></script>
+    <script src="assets/js/toggle-switch.js"></script>
+
+    <script>
+      // For the light color
+      const inputElement = document.querySelector('.pickrlt');
+
+      const pickrlt = new Pickr({
+        el: inputElement,
+        useAsButton: true,
+        default: '#FFFFFF',
+        theme: 'nano',
+        defaultRepresentation: 'HEX',
+
+        swatches: [
+          '#EBE9E9',
+          '#D3BABA',
+          '#F1C8D6',
+          '#B092B5',
+          '#9AA1C9',
+          '#A7D7ED',
+          '#9DE9E2',
+          '#B6F5B9',
+          '#D9F3BC',
+          '#E8EDBB',
+          '#F5EC9D',
+          '#F1D686',
+          '#FFFFFF'
+        ],
+
+        components: {
+          preview: true,
+          opacity: false,
+          hue: false,
+
+          interaction: {
+            hex: false,
+            rgba: false,
+            input: true,
+            save: true
+          }
+        }
+      }).on('init', pickrlt => {
+        inputElement.value = pickrlt.getSelectedColor().toHEXA().toString(0);
+      }).on('save', color => {
+        inputElement.value = color.toHEXA().toString(0);
+        pickrlt.hide();
+      })
+    </script>
+    <script>
+      // For the dark color
+      const inputElement2 = document.querySelector('.pickrdk');
+
+      const pickrdk = new Pickr({
+        el: inputElement2,
+        useAsButton: true,
+        default: '#101010',
+        theme: 'nano',
+        defaultRepresentation: 'HEX',
+
+        swatches: [
+          '#000000',
+          '#CA1F1F',
+          '#E91E63',
+          '#9C27B0',
+          '#3F51B5',
+          '#03A9F4',
+          '#009688',
+          '#4CAF50',
+          '#8BC34A',
+          '#CDDC39',
+          '#FFEB3B',
+          '#FFC107',
+          '#6F6E6E'
+        ],
+
+        components: {
+          preview: true,
+          opacity: false,
+          hue: false,
+
+          interaction: {
+            hex: false,
+            rgba: false,
+            input: true,
+            save: true
+          }
+        }
+      }).on('init', pickrdk => {
+        inputElement2.value = pickrdk.getSelectedColor().toHEXA().toString(0);
+      }).on('save', color => {
+        inputElement2.value = color.toHEXA().toString(0);
+        pickrdk.hide();
+      })
     </script>
   </body>
 </html>

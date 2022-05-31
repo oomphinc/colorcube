@@ -6,6 +6,7 @@ Made possible by the excellent [TinyColor](https://bgrins.github.io/TinyColor/) 
 ## Table of Contents
 - [Why](#why)
 - [Local Setup](#local-setup)
+- [Offline Mode](#offline-mode)
 - [Contributing](#contributing)
 - [Alternatives](#alternatives)
 - [Team](#team)
@@ -24,6 +25,17 @@ Very little! This project is vanilla HTML/JS and some SASS.
 1. To compile SASS or make SCSS edits, use a local command from the project root: `$ sass --watch assets/scss:assets/css`
 
 Need SASS? Download the latest build from [the SASS Lang page](https://sass-lang.com/install). We prefer Brew, if it matters, and version 3.7.4 minimum. 
+
+## Offline mode
+This project uses [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) (Progressive Web App) features to provide an app-like experience and to function when your device is offline.
+
+If you are contributing to the project, you'll need to understand how to bypass this cache to see your changes and test
+your work with and without a network connection to ensure offline mode continues to provide a good experience.
+
+1. Be sure to *update the static cache version* `staticCacheName` in the service worker file (`sw.js`) to force client-side
+cache invalidation
+1. Add new files to the `assets` array where it makes sense so they are available offline to return visitors
+
 
 ## Contributing
 1. Take a look at our [issues list](https://github.com/oomphinc/colorcube/issues) or create an issue and describe your idea.

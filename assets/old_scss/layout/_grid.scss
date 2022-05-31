@@ -9,27 +9,27 @@
     align-items: flex-start;
     margin: 0 - $inside-min;
   }
-  
+
   &__col {
     flex: 1 0 100%;
     max-width: 100%;
     padding: 0 $inside-min;
   }
-  
+
   &--wide {
     flex: 1 1 100%;
     min-width: 100%;
   }
-  
+
   &--two {
-    @media (min-width: bp(small)) {
+    @media (min-width: bp(large)) {
       flex: 1 0 50%;
       max-width: 50%;
     }
   }
-  
+
   &--three {
-    @media (min-width: bp(medium)) {
+    @media (min-width: bp(large)) {
       flex: 1 0 33.3%;
       max-width: 33.3%;
     }

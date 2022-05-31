@@ -1,0 +1,93 @@
+// Box sizing rules
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 74px; // Fixed header height plus a little more
+  -webkit-text-size-adjust: 100%;
+}
+
+// Remove default margin
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core body defaults */
+body {
+  background-color: var(--theme__bg);
+  color: var(--theme__fg);
+  font-family: var(--ff__sans-serif);
+  font-size: 100%;
+  font-weight: var(--fw__normal);
+  line-height: var(--lh__base);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  scroll-behavior: smooth;
+  scroll-padding-top: 74px; // Fixed header height plus a little more
+  text-rendering: optimizeSpeed;
+
+  @media (--small-breakpoint-up) {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+// Make sure that elements that should not get focus look unfocused
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: 0 !important;
+}
+
+// Remove list styles on ul, ol elements with a class attribute
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+// Opinionated handling of media elements
+img,
+video,
+iframe,
+embed {
+  max-width: 100%;
+}
+
+img {
+  display: block;
+}
+
+// Inherit fonts for inputs and buttons
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Remove all animations and transitions for people that prefer not to see them
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

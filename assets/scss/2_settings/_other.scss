@@ -1,0 +1,9 @@
+:root {
+  --focus-style: 2px solid currentColor;
+
+  --transition-base__sm: all 250ms ease;
+  --transition-base__md: all 500ms ease;
+
+  // Debugging outline
+  --o__debug: 2px solid pink;
+}

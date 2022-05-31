@@ -1,0 +1,44 @@
+.u {
+
+  // Vertical margin or padding
+  &__px,
+  &__pt {
+    padding-top: var(--spacer__x--fluid);
+  }
+
+  &__px,
+  &__pb {
+    padding-bottom: var(--spacer__x--fluid);
+  }
+
+  &__mx,
+  &__mt {
+    margin-top: var(--spacer__x--fluid);
+  }
+
+  &__mx,
+  &__mb {
+    margin-bottom: var(--spacer__x--fluid);
+  }
+
+  // Horizontal margin or padding
+  &__py,
+  &__pl {
+    padding-left: var(--spacer__y--fluid);
+  }
+
+  &__py,
+  &__pr {
+    padding-right: var(--spacer__y--fluid);
+  }
+
+  &__my,
+  &__ml {
+    margin-left: var(--spacer__y--fluid);
+  }
+
+  &__my,
+  &__mr {
+    margin-right: var(--spacer__y--fluid);
+  }
+}

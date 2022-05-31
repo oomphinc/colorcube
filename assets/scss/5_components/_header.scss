@@ -1,0 +1,67 @@
+//<header class="cc__header u__px u__py">
+//  <h1 class="cc__brand u__pr">
+//    <a href="." class="cc__brand__title" title="Press to reload page and start over with default values">
+//      <img class="cc__brand__logo" src="assets/img/ColorCube-logo.svg" alt="" width="90">
+//      <span aria-hidden="true">Color<sup>3</sup></span>
+//      <span class="u__sr-only">Color Cube tool</span>
+//    </a>
+//  </h1>
+//  <p class="cc__brand__subtitle" role="text"><span class="u__sr-only">Accessible</span> Color Contrast Checker</p>
+//</header>
+
+.cc {
+  &__header {
+    background-color: var(--theme__bg--navs);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+
+    @include breakpoint-up(medium) {
+      align-items: flex-start;
+    }
+  }
+
+  &__brand {
+
+    &__title {
+      color: var(--theme__link--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-flow: row nowrap;
+    }
+
+    &__logo {
+      height: em(42);
+      margin-right: 0.375em;
+      width: em(42);
+    }
+
+    &__text {
+      span {
+        display: none;
+      }
+
+      @include breakpoint-up(small) {
+        span {
+          display: inline;
+        }
+        sup {
+          display: none;
+        }
+      }
+    }
+
+    &__subtitle {
+      flex: 0 1 auto;
+
+      @include breakpoint-down(small) {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}

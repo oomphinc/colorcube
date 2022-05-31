@@ -1,0 +1,81 @@
+// Helper
+@function palette($color) {
+  @return map-get($project-colors, $color);
+}
+
+
+//
+// Colors
+//
+$white: #fff;
+$black: #1a1818; // slightly warm black h0 s5 b10
+
+// Oomph color palette
+$project-colors: (
+  red: #d62901,
+  teal: #70BDC1,
+  blue: #4a7090,
+  denim: #2d5070,
+  orange: #e89424,
+  green: #008a65,
+  grey-100: #f8f2f2, // h0 s2 b97
+  grey-300: #b8aeae, // h0 s5 b72
+  grey-400: #aaa2a2, // h0 s5 b65
+  grey-700: #474444, // h0 s5 b28
+  grey-800: #333030, // h0 s5 b20
+  blackest: #0f0e0e
+);
+
+$border-color__dark: rgba($white, 0.15);
+$border-color__light: rgba($black, 0.15);
+
+$pass__dark: #14cc45;
+$fail__dark: #f23900;
+$edge__dark: #fe6;
+
+$pass__light: #0b8428;
+$fail__light: #c63606;
+$edge__light: #b45e09;
+
+
+//
+// Theme-defined Variables
+//
+:root {
+  // Default theme is dark
+
+  // Body and backgrounds
+  --theme__bg--navs: #{palette(blackest)};
+  --theme__bg: #{$black};
+  --theme__fg: #{palette(grey-400)};
+  --theme__fg--accent: #{$white};
+
+  --theme__link: #{palette(teal)};
+  --theme__link--hover: #{palette(grey-100)};
+  --theme__link--accent: #{palette(grey-100)};
+  --theme__link--accent--hover: #{$white};
+
+  --theme__border: rgba(255,255,255,0.15);
+
+  --theme__ratio-pass: #{$pass__dark};
+  --theme__ratio-fail: #{$fail__dark};
+}
+
+html[data-theme="light"] {
+
+  // Body and backgrounds
+  --theme__bg--navs: #{palette(grey-100)};
+  --theme__bg: #{$white};
+  --theme__fg: #{palette(grey-700)};
+  --theme__fg--accent: #{palette(grey-800)};
+
+  --theme__link: #{palette(denim)};
+  --theme__link--hover: #{palette(grey-700)};
+  --theme__link--accent: #{palette(grey-800)};
+  --theme__link--accent--hover: #{$black};
+
+  --theme__border: rgba(26,24,24,0.15);
+
+  --theme__ratio-pass: #{$pass__light};
+  --theme__ratio-fail: #{$fail__light};
+}
