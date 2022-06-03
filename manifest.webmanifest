@@ -1,6 +1,6 @@
 {
-  "name": "ColorCube",
-  "short_name": "ColorCube",
+  "name": "AccessibleColor",
+  "short_name": "AccessibleColor",
   "start_url": "/index.html",
   "display": "standalone",
   "description": "Color accessibility checker built by Oomph, Inc.",
