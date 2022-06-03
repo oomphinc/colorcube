@@ -25,7 +25,6 @@
   &__brand {
 
     &__title {
-      color: var(--theme__link--accent);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -33,10 +32,25 @@
       flex-flow: row nowrap;
     }
 
-    &__logo {
-      height: em(42);
+    &__mark {
+      // Dark icon by default
+      background: center center no-repeat url('../img/ACd-icon-dark-theme.png') transparent;
+      background-size: contain;
+      display: block;
+      height: em(25);
       margin-right: 0.375em;
-      width: em(42);
+      width: em(25);
+
+      html[data-theme="light"] & {
+        background-image: url('../img/ACd-icon-light-theme.png');
+      }
+    }
+
+    &__logo {
+      color: var(--theme__link--accent);
+      height: em(20);
+      margin-right: 0.375em;
+      width: em(44);
     }
 
     &__text {
