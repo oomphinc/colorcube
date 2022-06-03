@@ -61,6 +61,7 @@ $edge__light: #b45e09;
   --theme__ratio-fail: #{$fail__dark};
 }
 
+// JS will add this attribute on page load or theme switch
 html[data-theme="light"] {
 
   // Body and backgrounds

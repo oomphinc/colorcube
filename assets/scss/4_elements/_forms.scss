@@ -42,6 +42,8 @@ button {
   }
 
   &__submit {
+    margin-bottom: 1.5em;
+
     @include breakpoint-up(medium) {
       text-align: center;
     }
