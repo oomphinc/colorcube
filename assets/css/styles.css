@@ -241,9 +241,11 @@ button {
   width: 100%; }
   .form__input:hover, .form__input:focus {
     border-color: var(--theme__link); }
-@media (min-width: 48.75em) {
-  .form__submit {
-    text-align: center; } }
+.form__submit {
+  margin-bottom: 1.5em; }
+  @media (min-width: 48.75em) {
+    .form__submit {
+      text-align: center; } }
 
 h1,
 .h1,
@@ -368,16 +370,25 @@ strong {
     .cc__header {
       align-items: flex-start; } }
 .cc__brand__title {
-  color: var(--theme__link--accent);
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-flow: row nowrap; }
-.cc__brand__logo {
-  height: 2.625em;
+.cc__brand__mark {
+  background: center center no-repeat url("../img/ACd-icon-dark-theme.png") transparent;
+  background-size: contain;
+  display: block;
+  height: 1.5625em;
   margin-right: 0.375em;
-  width: 2.625em; }
+  width: 1.5625em; }
+  html[data-theme="light"] .cc__brand__mark {
+    background-image: url("../img/ACd-icon-light-theme.png"); }
+.cc__brand__logo {
+  color: var(--theme__link--accent);
+  height: 1.25em;
+  margin-right: 0.375em;
+  width: 2.75em; }
 .cc__brand__text span {
   display: none; }
 @media (min-width: 38.75em) {
