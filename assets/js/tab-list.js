@@ -3,7 +3,7 @@
 *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
 *
 *   Modified!
-*   Where the previous implmentation used the HTML5 "hidden" attribute, we
+*   Where the previous implementation used the HTML5 "hidden" attribute, we
 *   needed to keep the elements accessible to JS. We use aria-hidden="true" instead
 *   and hook CSS onto that as well to visually hide the tab pane
 */
