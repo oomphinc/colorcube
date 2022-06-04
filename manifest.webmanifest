@@ -6,12 +6,12 @@
   "description": "Color accessibility checker built by Oomph, Inc.",
   "icons": [
     {
-      "src": "assets/img/Colorcube-logo.png",
+      "src": "assets/img/ColorCube-logo.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "assets/img/Colorcube-logo-512.png?bust=123",
+      "src": "assets/img/ColorCube-logo-512.png?bust=123",
       "sizes": "512x512",
       "type": "image/png"
     }

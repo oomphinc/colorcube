@@ -230,6 +230,8 @@ button {
   font-weight: var(--fw__bold);
   letter-spacing: var(--ls__loose);
   padding-bottom: 0.5em; }
+  .form__label[for="image-picker"] {
+    padding-bottom: 0; }
 .form__group {
   padding-bottom: var(--v-spacer); }
 .form__input {
@@ -241,6 +243,10 @@ button {
   width: 100%; }
   .form__input:hover, .form__input:focus {
     border-color: var(--theme__link); }
+  .form__input[type=file]::file-selector-button {
+    margin-right: 0.5em; }
+  .form__input[type=file]::-webkit-file-upload-button {
+    margin-right: 0.5em; }
 @media (min-width: 48.75em) {
   .form__submit {
     text-align: center; } }

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="/assets/img/ColorCube-logo-512.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'classic' theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"> <!-- 'classic' theme -->
     <meta name="theme-color" content="#1A1814">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="twitter:card" content="summary">
@@ -56,13 +56,13 @@
 
         <!-- Add new palette -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew" aria-hidden="false">
-          <h2 class="tabs__pane__title h1">Create new palette</h2>
+          <h2 class="tabs__pane__title h1">Evaluate a new palette</h2>
 
           <form action="" class="form" method="post">
             <div class="l__row">
               <div class="l__col form__group">
                 <label class="form__label" for="brand-color-field">Enter a color or list (required):</label>
-                <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
+                <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="10" required autofocus>#d62901
 #2d5070
 rgb(112,189,193)
 rgb(232,138,46)
@@ -71,13 +71,13 @@ rgb(232,138,46)
               </div>
 
               <div id="js-clr-f-img" class="l__col form__group clr-f-img">
-                <!-- Wondering if this is a better markup pattern to follow https://codepen.io/accessabilly/pen/qNpZJg -->
                 <p class="form__label">Palette from image</p>
                 <label class="form__label" for="image-picker">
-                  <input type="file" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
-                  <span class="file-custom"></span>
+                  <input type="file" class="form__input" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
                 </label>
-                <div id="js-clr-f-img-preview" class="clr-f-img__preview"></div>
+                <div id="js-clr-f-img-preview" class="clr-f-img__preview">
+                  <img src="assets/img/image-upload-placeholder.png" alt="Upload an image and the form will submit and proceed to color Ratios" />
+                </div>
                 <div id="js-clr-f-img-derived" class="palette__swatches"></div>
               </div>
             </div>
