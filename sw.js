@@ -17,7 +17,7 @@ const assets = [
   'https://p.typekit.net/p.css?s=1&k=brc4xco&ht=tk&f=28343.28344.28346.28347.28348.28349.37511.37512.37513.37514.37515.37516.37521.37522&a=4489166&app=typekit&e=css',
   // Image assets
   '/assets/img/oomph-square.png',
-  '/assets/img/ColorCube-logo.svg'
+  '/assets/img/ACd-wordmark.svg'
 
 ];
 
