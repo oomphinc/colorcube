@@ -1,6 +1,10 @@
 # Mac image stores
 .DS_Store
 
+# Editor files & caches
+/.nova
+/.sass-cache
+
 # Build files that aren't needed
 node_modules/
 /src/scss/libraries/neat/
