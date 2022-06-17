@@ -49,6 +49,11 @@ h4,
   letter-spacing: var(--ls__base);
 }
 
+.lead {
+  --fs__min: 1.1875; // 19px
+  --fs__max: 1.375; // 22px
+}
+
 body,
 h1,
 .h1,
@@ -59,6 +64,7 @@ h3,
 h4,
 .h4,
 p,
+.lead,
 label,
 input,
 textarea {
