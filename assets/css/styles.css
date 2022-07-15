@@ -603,7 +603,7 @@ html[data-theme=light] .cc__brand__mark {
 .results__details {
   margin-left: calc(var(--spacer__y--min) * 1em);
 }
-.results__details a {
+.results__details button {
   color: var(--theme__fg);
 }
 .results__details dl {
@@ -649,12 +649,15 @@ html[data-theme=light] .cc__brand__mark {
 .hsl__original p, .hsl__mod p {
   margin-left: calc(var(--spacer__y--min) * 1rem);
 }
-.hsl__original a {
+.hsl__original button {
   color: var(--theme__fg--accent);
+}
+.hsl__original abbr {
+  font-weight: bold;
 }
 .hsl__controls input {
   padding: 0.5em 0.25em;
-  width: 3.5em;
+  width: 4em;
 }
 
 .swatch {
@@ -665,7 +668,7 @@ html[data-theme=light] .cc__brand__mark {
   position: relative;
 }
 .swatch--half {
-  height: 3em;
+  height: 48px;
 }
 .palette__swatches .swatch {
   flex: 1 1 auto;
@@ -897,6 +900,11 @@ main {
   border: 0;
   margin: 0;
   -webkit-appearance: none;
+}
+.u__text-button {
+  color: inherit;
+  padding: 0;
+  text-decoration: underline;
 }
 
 .u__sr-only {
