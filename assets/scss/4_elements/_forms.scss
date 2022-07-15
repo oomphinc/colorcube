@@ -21,6 +21,10 @@ button {
     font-weight: var(--fw__bold);
     letter-spacing: var(--ls__loose);
     padding-bottom: 0.5em;
+
+    &[for="image-picker"] {
+      padding-bottom: 0;
+    }
   }
 
   &__group {
@@ -39,9 +43,22 @@ button {
     &:focus {
       border-color: var(--theme__link);
     }
+
+    // File upload elements
+    &[type=file]::file-selector-button {
+      // Mozilla
+      margin-right: 0.5em;
+    }
+
+    &[type=file]::-webkit-file-upload-button {
+      // Chrome, Safari, iOS
+      margin-right: 0.5em;
+    }
   }
 
   &__submit {
+    margin-bottom: 1.5em;
+
     @include breakpoint-up(medium) {
       text-align: center;
     }

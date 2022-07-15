@@ -2,31 +2,44 @@
 <html class="js no-touchevents">
   <head>
     <meta charset="UTF-8">
-    <title>ColorCube: A color A11y Tool for Designers &amp; Developers</title>
+    <title>AccessibleColor.design: Inclusive color palette evaluation tool</title>
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="apple-touch-icon" href="assets/img/ColorCube-logo-512.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'classic' theme -->
-    <meta name="theme-color" content="#1A1814">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@oomphinc">
-    <meta name="og:title" content="ColorCube: Evaluate Accessible Color Palettes">
-    <meta name="twitter:title" content="ColorCube: Evaluate Accessible Color Palettes">
-    <meta name="og:description" content="Adjust color values to meet WCAG Level AA or AAA standards for legible color combinations.">
-    <meta name="twitter:description" content="Adjust color values to meet WCAG Level AA or AAA standards for legible color combinations.">
-    <meta name="og:image" content="assets/img/ColorCube-screenshot.png">
-    <meta name="twitter:image" content="assets/img/ColorCube-screenshot.png">
-    <meta name="twitter:image:alt" content="We are sorry, but this tool is not optimized for the visually impaired.">
+    <meta name="og:description" content="Adjust color values to meet WCAG Level AA or AAA standards and create legible color combinations">
+    <meta name="twitter:description" content="Adjust color values to meet WCAG Level AA or AAA standards and create legible color combinations">
+    <meta name="og:image" content="assets/img/ACd-social-card.jpg">
+    <meta name="twitter:image" content="assets/img/ACd-social-card.jpg">
+    <meta name="twitter:image:alt" content="A visual tool for digital designers & developers to evaluate color palettes for accessibility conformance">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#1a1818">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <script>
+      /* UA Analytics */
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
       ga('create', 'UA-43388256-3', 'auto');
       ga('send', 'pageview');
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0JEFTT09Z"></script>
+    <script>
+      /* G4 Analytics */
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-W0JEFTT09Z');
     </script>
   </head>
   <body class="cc__app">
@@ -34,9 +47,9 @@
     <header class="cc__header u__px u__py">
       <h1 class="cc__brand u__pr u__mr">
         <a href="." class="cc__brand__title" title="Press to reload page and start over with default values">
-          <img class="cc__brand__logo" src="assets/img/ColorCube-logo.svg" alt="" width="90">
-          <span aria-hidden="true" aria-role="text" class="cc__brand__text">Color<span>Cube</span><sup>3</sup></span>
-          <span class="u__sr-only">Color Cube tool</span>
+          <span class="cc__brand__mark"></span>
+          <svg class="cc__brand__logo"><use xlink:href="#acd-wordmark" /></svg>
+          <span class="u__sr-only">Accessible Color design</span>
         </a>
       </h1>
       <p class="cc__brand__subtitle" role="text"><span>Accessible</span> Color Contrast Checker</p>
@@ -56,13 +69,13 @@
 
         <!-- Add new palette -->
         <div class="tabs__pane u__px u__py" tabindex="0" role="tabpanel" id="pane-addnew" aria-labelledby="addnew" aria-hidden="false">
-          <h2 class="tabs__pane__title h1">Create new palette</h2>
+          <h2 class="tabs__pane__title h1">Evaluate a new palette</h2>
 
           <form action="" class="form" method="post">
             <div class="l__row">
               <div class="l__col form__group">
                 <label class="form__label" for="brand-color-field">Enter a color or list (required):</label>
-                <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="6" required autofocus>#d62901
+                <textarea class="form__input form__textarea" id="brand-color-field" name="brand-color-field" rows="10" required autofocus>#d62901
 #2d5070
 rgb(112,189,193)
 rgb(232,138,46)
@@ -71,19 +84,23 @@ rgb(232,138,46)
               </div>
 
               <div id="js-clr-f-img" class="l__col form__group clr-f-img">
-                <!-- Wondering if this is a better markup pattern to follow https://codepen.io/accessabilly/pen/qNpZJg -->
                 <p class="form__label">Palette from image</p>
                 <label class="form__label" for="image-picker">
-                  <input type="file" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
-                  <span class="file-custom"></span>
+                  <input type="file" class="form__input" accept="image/*" id="image-picker" name="image-picker" aria-label="Upload image">
                 </label>
-                <div id="js-clr-f-img-preview" class="clr-f-img__preview"></div>
+                <div id="js-clr-f-img-preview" class="clr-f-img__preview">
+                  <img src="assets/img/image-upload-placeholder.png" alt="Upload an image and the form will submit and proceed to color Ratios" />
+                </div>
                 <div id="js-clr-f-img-derived" class="palette__swatches"></div>
               </div>
             </div>
 
             <div class="form__group form__submit">
               <input id="brand-color-button" name="brand-color-button" type="submit" class="js-get-ratios btn btn--primary" value="Get Ratios">
+            </div>
+
+            <div class="form__group form__submit">
+              <p><i>Need instructions?</i> The “How To” tab contains an explanation and link to a video. Or use the button above and the sample color palette to see what happens.</p>
             </div>
 
           </form>
@@ -153,6 +170,7 @@ rgb(232,138,46)
           <h2 class="tabs__pane__title h1">How to Use</h2>
           <article class="rhythm">
             <h3>Test a new palette</h3>
+            <p class="lead"><a title="Opens a new window" target="_blank" href="//www.loom.com/share/091000ba061b415fa560b618d7f2a5ef"><b>Watch our video</b> (under 5 minutes) to understand how this tool was designed to help craft accessible color palettes!</a></p>
             <p>Enter individual colors on their own line. Hex and rgb() values are accepted. Submit the default list to see what happens. Press “Get Ratios” to review results against light, dark, and the most accessible pair from the list provided. Light and dark default values can be changed in the “Settings” tab. </p>
 
             <h3>WCAG 2.1 criteria</h3>
@@ -182,7 +200,7 @@ rgb(232,138,46)
             <p>If <a title="Opens in a new window" target="_blank" href="//webaim.org/techniques/hypertext/link_text#appearance">links are not underlined</a>, there must be 3:1 contrast between link text and body text and also an additional change (e.g., underlining) on mouse hover and keyboard focus. Use the tool to compare your link color against your body text color to see how they perform.</p>
 
             <h3>What is this?</h3>
-            <p>ColorCube is an accessibility (a11y) tool aimed at designers and developers. From a list of colors we produce contrast information along with tools to adjust colors until they pass the recommended accessible ratios.</p>
+            <p>AccessibleColor is a tool aimed at designers and developers. From a list of colors we produce contrast information along with tools to adjust colors until they pass the recommended accessible ratios.</p>
             <p>Why? At <a title="Opens in a new window" target="_blank" href="//oomphinc.com">Oomph</a>, we believe the web should be inclusive for all. Our designers wanted a tool to assess how an existing brand color palette performs. Starting early means that we can educate a client and make adjustments to avoid non-accessible color combinations. </p>
             <p>Corporate brand color palettes often do not take accessibility into account. And brand colors are difficult to change. By changing the saturation or brightness of a color but not the hue, the color intention is preserved. Most users may not even notice that the color has been adjusted for accessibility.</p>
 
@@ -190,7 +208,7 @@ rgb(232,138,46)
             <a class="oomph-logo" href="//oomphinc.com" title="Visit the Oomph website">
               <img src="assets/img/oomph-square.png" width="90" alt="Oomph, Inc" />
             </a>
-            <p>Made with <span aria-label="love">&#10084</span> at Oomph, Inc. Last update May, 2022. Open source project with MIT license. <a title="Opens a new window" target="_blank"  href="//github.com/oomphinc/colorcube">Contribute to the GitHub repo</a>.</p>
+            <p>Made with <span aria-label="love">&#10084</span> at Oomph, Inc. Last update May, 2022. Open source project with MIT license. <a title="Opens a new window" target="_blank"  href="//github.com/oomphinc/colorcube">Contribute or submit issues to the GitHub repo</a>.</p>
             <p><b>Disclaimer:</b> The algorithm used in this tool and subsequent results are based on the luminosity algorithm recommended in the WCAG 2.1 guidelines to test for contrast. This tool is for general assessment purposes only and not a guarantee of compliance. This open-source visual tool is not optimized for use by screen readers.</p>
           </article>
         </div><!-- end #pane-howto -->
@@ -212,6 +230,22 @@ rgb(232,138,46)
       <svg role="img" xmlns="http://www.w3.org/2000/svg">
         <symbol id="trash" viewBox="0 0 448 512">
           <path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
+        </symbol>
+      </svg>
+      <svg role="img" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="acd-wordmark" viewBox="0 0 220 100">
+          <g>
+            <path fill="currentColor" d="M60.1,52.7c0-16.1-9.9-23-28-23.2c-20.6-0.1-28,9.6-29,21.5h17.8c0.9-4.9,2.6-8.2,10.5-8.2c8.7,0,10.4,4.7,10.4,9.5v4.1
+              c-2.2,0-6.3,0-9.6,0C12.4,56.4,0,63.5,0,78.9C0,89.3,6.9,100,23.2,100c12,0,16.6-4.4,19-8.2c0,1.7,0.4,5.3,0.9,6.6H61
+              c-0.4-1.6-0.9-11-0.9-17.3V52.7z M41.9,69.6c0,8.9-1.5,17.1-13.4,17.1c-6.7,0-9.7-4.1-9.7-9c0-6.5,4.2-10,15.5-10c2.4,0,6,0,7.6,0
+              V69.6z"/>
+            <path fill="currentColor" d="M202.7,0v34.1c-5.2-3-11.2-4.8-17.6-4.8c-8.7,0-16.7,3.2-22.9,8.5l-47.6,39.5l-1.3,1c-3,2.1-6.5,3.3-10.2,3.3
+              c-9.7,0-17.6-7.9-17.6-17.5s7.9-17.5,17.6-17.5c5.3,0,10.3,2.4,13.7,6.5l13.5-10.9c-6.7-8.2-16.6-12.9-27.1-12.9
+              c-19.3,0-34.9,15.7-34.9,34.8S84,98.8,103.2,98.8c7.5,0,14.6-2.3,20.6-6.7l1.8-1.4l25.1-20.8c2.8,16.5,17.2,29,34.4,29
+              c6.4,0,12.4-1.7,17.6-4.8v5.8H220V0H202.7z M185.1,81.8c-9.7,0-17.6-7.9-17.6-17.5c0-9.7,7.9-17.5,17.6-17.5
+              c9.7,0,17.6,7.9,17.6,17.5C202.7,73.9,194.8,81.8,185.1,81.8z"/>
+            <path fill="currentColor" d="M144.6,87c-3.2,0-5.9,2.5-5.9,5.7v1.6c0,3.1,2.6,5.7,5.9,5.7s5.9-2.6,5.9-5.7v-1.6C150.5,89.6,147.9,87,144.6,87z"/>
+          </g>
         </symbol>
       </svg>
     </div>
