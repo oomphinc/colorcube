@@ -102,7 +102,7 @@
   &__details {
     margin-left: calc(var(--spacer__y--min) * 1em);
 
-    a {
+    button {
       color: var(--theme__fg);
     }
 
@@ -170,8 +170,12 @@
   // Uneditable display of the original HSL values
   &__original {
 
-    a {
+    button {
       color: var(--theme__fg--accent);
+    }
+
+    abbr {
+      font-weight: bold;
     }
   }
 
@@ -183,7 +187,7 @@
   &__controls {
     input {
       padding: 0.5em 0.25em;
-      width: 3.5em;
+      width: 4em;
     }
   }
 }

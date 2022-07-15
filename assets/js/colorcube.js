@@ -140,7 +140,7 @@ function outputColorRow(color, bg, editable, iterator) {
           <span class="swatch__ratio " style="color: ${bghex}">${ratio}</span>
         </div>
         <div class="results__details">
-          <p>With <a href="#adjust-defaults" class="js-jump-tab">${bghex}</a></p>
+          <p>With <button data-tab="settings" data-anchor="modify" class="u__btn-reset u__text-button js-jump-tab">${bghex}</button></p>
           <dl>
             ${outputLevelTest(ratio, AAANORMALRATIO)}
             ${outputLevelTest(ratio, AANORMALRATIO)}
@@ -152,8 +152,21 @@ function outputColorRow(color, bg, editable, iterator) {
   return output;
 }
 
+// Add click event listener to palette results pane
+const resultsContainer = document.getElementById('js-results-output');
+if (resultsContainer) {
+  resultsContainer.addEventListener("click", (e) => {
+    // if a text color modifier button was clicked, navigate to app settings tab
+    if (e.target.classList.contains('js-jump-tab') && e.target.dataset.tab) {
+      const tabButton = document.getElementById(e.target.dataset.tab);
+      if (tabButton) {
+        tabButton.click();
+      }
+    }
+  });
+}
+
 $('.js-get-ratios').click( function(e) {
-  //console.log('Get Ratios clicked');
   e.preventDefault();
 
   var results = document.getElementById('js-results-output'),
@@ -169,7 +182,6 @@ $('.js-get-ratios').click( function(e) {
   var stringInput = document.querySelector('#brand-color-field').value;
   // if there's no input, get outta here
   if ( stringInput == '' ) {
-    // TODO: Add a message about the textarea being empty
     return;
   }
   // turn it into an array
@@ -192,23 +204,23 @@ $('.js-get-ratios').click( function(e) {
     <div class="results__row hsl">
       <div class="hsl__original">
         <div class="swatch swatch--half" style="background-color: ${hashhex}"></div>
-        <p><b><a href="#modify" class="js-jump-tab">HSL</a></b> ${round(hslColor.h)}, ${decimalToPercent(hslColor.s)}%, ${decimalToPercent(hslColor.l)}%</p>
+        <p><button data-tab="howto" class="u__btn-reset u__text-button js-jump-tab"><abbr title="Hue Saturation Lightness">HSL</abbr></button> ${round(hslColor.h)}, ${decimalToPercent(hslColor.s)}%, ${decimalToPercent(hslColor.l)}%</p>
       </div>
       <div class="hsl__mod">
         <div class="swatch swatch--half js-mod-swatch-${i}" style="background-color: ${hashhex}"></div>
         <p class="hsl__controls">
           <span class="hsl__hue">
-            <label class="u__sr-only" for="adjust-hue-${i}">H</label>
+            <label class="u__sr-only" for="adjust-hue-${i}">Hue</label>
             <input type="number" class="form__input adjust-hue"
               data-target="${i}" data-color="${hex}" id="adjust-hue-${i}" name="adjust-hue-${i}" value="${round(hslColor.h)}" min="0" max="360">
           </span>
           <span class="hsl__saturation">
-            <label class="u__sr-only" for="adjust-sat-${i}">S</label>
+            <label class="u__sr-only" for="adjust-sat-${i}">Saturation</label>
             <input type="number" class="form__input adjust-sat"
               data-target="${i}" data-color="${hex}" id="adjust-sat-${i}" name="adjust-sat-${i}" value="${decimalToPercent(hslColor.s)}" min="0" max="100">
           </span>
           <span class="hsl__lightness">
-            <label class="u__sr-only" for="adjust-lig-${i}">L</label>
+            <label class="u__sr-only" for="adjust-lig-${i}">Lightness</label>
             <input type="number" class="form__input adjust-lig"
               data-target="${i}" data-color="${hex}" id="adjust-lig-${i}" name="adjust-lig-${i}" value="${decimalToPercent(hslColor.l)}" min="0" max="100">
           </span>

@@ -8,7 +8,7 @@
   position: relative;
 
   &--half {
-    height: em($swatch-size-sm/2);
+    height: math.div($swatch-size-sm, 2);
   }
 
   .palette__swatches & {

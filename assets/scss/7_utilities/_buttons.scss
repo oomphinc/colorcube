@@ -2,4 +2,10 @@
   &__btn-reset {
     @include button-reset;
   }
+
+  &__text-button {
+    color: inherit;
+    padding: 0;
+    text-decoration: underline;
+  }
 }
