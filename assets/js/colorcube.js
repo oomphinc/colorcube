@@ -152,29 +152,21 @@ function outputColorRow(color, bg, editable, iterator) {
   return output;
 }
 
-var containerToObserve = document.getElementById('js-results-output')
-var elementToFind = document.getElementsByClassName(".js-jump-tab");
-var observer = new MutationObserver(function(mutations) {
-  if (containerToObserve.contains(elementToFind)) {
-
-    // We have three links that should jump to a specific tab, and then, jump to a specific anchor
-    $(".js-jump-tab").click(function() {
-      console.log("js-jump-menu classes found");
-      var destinationTab = $(this).data("tab"),
-          destinationAnchor = $(this).data("anchor"),
-          tabButton = $('#' + destinationTab + '"');
-      console.log(destinationTab);
-      console.log(destinationAnchor);
-      console.log(tabButton);
-
-      //tabButton.click();
-    });
-  }
-});
-observer.observe(containerToObserve, {attributes: false, childList: true, characterData: false, subtree:true});
+// Add click event listener to palette results pane
+const resultsContainer = document.getElementById('js-results-output');
+if (resultsContainer) {
+  resultsContainer.addEventListener("click", (e) => {
+    // if a text color modifier button was clicked, navigate to app settings tab
+    if (e.target.classList.contains('js-jump-tab') && e.target.dataset.tab) {
+      const tabButton = document.getElementById(e.target.dataset.tab);
+      if (tabButton) {
+        tabButton.click();
+      }
+    }
+  });
+}
 
 $('.js-get-ratios').click( function(e) {
-  //console.log('Get Ratios clicked');
   e.preventDefault();
 
   var results = document.getElementById('js-results-output'),
